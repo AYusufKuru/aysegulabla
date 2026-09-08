@@ -1,0 +1,2820 @@
+{
+  "companies": [
+    {
+      "id": "CYL",
+      "name": "Ceylanpınar",
+      "region": "Şanlıurfa"
+    },
+    {
+      "id": "KRC",
+      "name": "Karacabey",
+      "region": "Bursa"
+    },
+    {
+      "id": "GZL",
+      "name": "Gözlü",
+      "region": "Konya"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "E",
+      "name": "Çevre",
+      "short": "E"
+    },
+    {
+      "id": "S",
+      "name": "Sosyal",
+      "short": "S"
+    },
+    {
+      "id": "G",
+      "name": "Yönetişim",
+      "short": "G"
+    },
+    {
+      "id": "FO",
+      "name": "Finans ve Operasyon",
+      "short": "FO"
+    }
+  ],
+  "subgroups": [
+    {
+      "id": "e_enerji",
+      "block": "E",
+      "name": "Enerji ve Emisyonlar",
+      "nInd": 7,
+      "nSubInBlock": 4,
+      "matrix": "E_EnerjiEmis"
+    },
+    {
+      "id": "e_su",
+      "block": "E",
+      "name": "Su Yönetimi",
+      "nInd": 7,
+      "nSubInBlock": 4,
+      "matrix": "E_SuYonetim"
+    },
+    {
+      "id": "e_biyo",
+      "block": "E",
+      "name": "Biyoçeşitlilik ve Toprak",
+      "nInd": 5,
+      "nSubInBlock": 4,
+      "matrix": "E_BiyoToprak"
+    },
+    {
+      "id": "e_atik",
+      "block": "E",
+      "name": "Atıklar ve Kimyasallar",
+      "nInd": 7,
+      "nSubInBlock": 4,
+      "matrix": "E_AtikKimya"
+    },
+    {
+      "id": "s_isgucu",
+      "block": "S",
+      "name": "İşgücü / İstihdam",
+      "nInd": 9,
+      "nSubInBlock": 3,
+      "matrix": "S_IsgucuIst"
+    },
+    {
+      "id": "s_calisma",
+      "block": "S",
+      "name": "Çalışma Koşulları",
+      "nInd": 8,
+      "nSubInBlock": 3,
+      "matrix": "S_CalismaKos"
+    },
+    {
+      "id": "s_toplum",
+      "block": "S",
+      "name": "Toplum / Kişisel Koruma",
+      "nInd": 3,
+      "nSubInBlock": 3,
+      "matrix": "S_ToplumKor"
+    },
+    {
+      "id": "g_uyum",
+      "block": "G",
+      "name": "Uyum ve Politika",
+      "nInd": 12,
+      "nSubInBlock": 2,
+      "matrix": "G_UyumPolit"
+    },
+    {
+      "id": "g_tedarik",
+      "block": "G",
+      "name": "Tedarik Zinciri ve Risk",
+      "nInd": 7,
+      "nSubInBlock": 2,
+      "matrix": "G_TedarikRisk"
+    },
+    {
+      "id": "fo_finans",
+      "block": "FO",
+      "name": "Finansal",
+      "nInd": 6,
+      "nSubInBlock": 4,
+      "matrix": "FO_Finansal"
+    },
+    {
+      "id": "fo_oper",
+      "block": "FO",
+      "name": "Operasyonel",
+      "nInd": 5,
+      "nSubInBlock": 4,
+      "matrix": "FO_Operasyonel"
+    },
+    {
+      "id": "fo_hayvan",
+      "block": "FO",
+      "name": "Hayvancılık",
+      "nInd": 8,
+      "nSubInBlock": 4,
+      "matrix": "FO_Hayvancilik"
+    },
+    {
+      "id": "fo_bitki",
+      "block": "FO",
+      "name": "Bitkisel Üretim",
+      "nInd": 4,
+      "nSubInBlock": 4,
+      "matrix": "FO_BitkiselU"
+    }
+  ],
+  "indicators": [
+    {
+      "id": 1,
+      "code": "E-01",
+      "name": "Enerji Kaynağı(Fosil, Elektrik, Yenilenebilir)",
+      "reason": "işletmenin ana enerji bağımlılığını belirler. Şebeke elektriğinin payı, su yönetimi maliyetiyle doğrudan ilişkilidir.",
+      "block": "E",
+      "subId": "e_enerji",
+      "articleLocal": 0.0625,
+      "scores": {
+        "CYL": 3,
+        "KRC": 2,
+        "GZL": 2
+      },
+      "comments": {
+        "CYL": "İşletmenin enerji karmasında şebeke elektriği ile GES ve biyogaz gibi yenilenebilir enerji projeleri birlikte yer almaktadır. Bununla birlikte, yenilenebilir kaynakların mevcut toplam tüketim içindeki payının sınırlı olduğunu göstermektedir. GES kapsamının artırılması çalışmaları bulunmaktadır.",
+        "KRC": "İşletmenin enerji karmasında şebeke elektriği, kömür, LPG, CNG, benzin ve motorin tüketimleri bulunmaktadır. GES kullanımının yalnızca lojmanlarla sınırlıdır. Enerji türlerinin ayrıntılı biçimde envanterlenmesi olumlu olmakla birlikte, fosil yakıt bağımlılığı ve yenilenebilir enerji payının sınırlı olması nedeniyle gösterge orta-alt düzeyde puanlanmıştır.",
+        "GZL": "İşletmenin enerji kullanımı ağırlıklı olarak şebeke elektriği ve fosil yakıtlara dayanmaktadır; enerji türlerinin ayrıştırılması ve emisyon hesabına elverişli kayıtların bulunması olumlu bir izlenebilirlik unsurudur. Ancak enerji karmasının fosil yakıt ağırlığı nedeniyle performans puanı sınırlı tutulmuştur."
+      }
+    },
+    {
+      "id": 2,
+      "code": "E-02",
+      "name": "Yıllık toplam enerji tüketimi (kWh/litre)",
+      "reason": "İşletmenin genel büyüklüğü ile enerji kullanımı arasındaki dengeyi gösterir. Verimliliğin ham verisidir.",
+      "block": "E",
+      "subId": "e_enerji",
+      "articleLocal": 0.0375,
+      "scores": {
+        "CYL": 4,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "1.5 milyar MJ seviyesinde yüksek ölçekli bir tüketim olsa da, tüm yakıt türleri bazında (LPG, Fuel-oil, Motorin) hassas bir envanter takibi yapılmaktadır. Puan, toplam tüketimin düşük olduğunu değil, enerji girdilerinin farklı kaynaklar itibarıyla izlenmesi ve hesaplamaya elverişli biçimde envanterlenmesi durumunu yansıtmaktadır.",
+        "KRC": "Toplam enerji kullanımı yaklaşık 483,9 milyon MJ olarak hesaplanmıştır. Enerji kaynaklarının miktar ve dönüşüm katsayılarıyla birlikte kaydedilmesi ölçüm ve raporlama bakımından olumlu bir unsurdur",
+        "GZL": "Toplam enerji kullanımıyaklaşık 116,9 milyon MJ olarak verilmiş ve yakıt türleri ile dönüşüm katsayıları üzerinden hesaplamaya uygun hâle getirilmiştir. Bu durum enerji kullanımının izlenebilirliği bakımından olumlu bir bulgudur."
+      }
+    },
+    {
+      "id": 3,
+      "code": "E-03",
+      "name": "Enerji verimliliği artırma uygulamaları",
+      "reason": "Modernizasyon ve teknik iyileştirme iradesini gösterir (Örn: Pompa revizyonları).",
+      "block": "E",
+      "subId": "e_enerji",
+      "articleLocal": 0.025,
+      "scores": {
+        "CYL": 3,
+        "KRC": 2,
+        "GZL": 2
+      },
+      "comments": {
+        "CYL": "GES kaynaklı elektrik payı yaklaşık %1,77’dir. GES ve biyogaz projelerinin bulunması veya planlanması olumlu bir geçiş unsuru olmakla birlikte, mevcut tüketim içindeki fiilî yenilenebilir payın düşük olması nedeniyle gösterge düşük-orta düzeyde puanlanmıştır.",
+        "KRC": "Spesifik ve ölçülmüş bir enerji verimliliği projesi tanımlanmamakla birlikte, enerji kullanımının ayrıntılı izlenmesi gelecekte verimlilik hedeflerinin oluşturulmasına temel sağlayabilir. Bu nedenle mevcut uygulama kanıtı sınırlı düzeyde değerlendirilmiştir.",
+        "GZL": "Spesifik ve ölçülmüş bir enerji verimliliği projesi tanımlanmamakla birlikte, enerji kullanımının ayrıntılı izlenmesi gelecekte verimlilik hedeflerinin oluşturulmasına temel sağlayabilir. Bu nedenle mevcut uygulama kanıtı sınırlı düzeyde değerlendirilmiştir."
+      }
+    },
+    {
+      "id": 4,
+      "code": "E-04",
+      "name": "Yenilenebilir enerji kullanım oranı (%)",
+      "reason": "Ceylanpınar'daki GES/Biyogaz farkını ölçer. Karbonsuzlaşma stratejisinin en güçlü göstergesidir.",
+      "block": "E",
+      "subId": "e_enerji",
+      "articleLocal": 0.05,
+      "scores": {
+        "CYL": 3,
+        "KRC": 2,
+        "GZL": 1
+      },
+      "comments": {
+        "CYL": "Toplam elektrik tüketiminin yalnızca %1,77’si yenilenebilir kaynaklıdır. Mahsuplaşma usulü GES ve ısı geri kazanımlı Biyogaz projeleri ile aktif verimlilik yönetimi yapılmaktadır.",
+        "KRC": "Yalnızca lojmanlarda GES kullanımı bulunmaktadır",
+        "GZL": "işletmenin toplam enerji tüketimi içinde fiilî yenilenebilir enerji üretimi veya kullanımını gösteren doğrulanmış bir oran bulunmamaktadır."
+      }
+    },
+    {
+      "id": 5,
+      "code": "E-05",
+      "name": "Karbon ayak izi hesaplama durumu",
+      "reason": "Gözlü örneğindeki gibi IPCC katsayılarıyla analiz yapılıp yapılmadığını (denetim şeffaflığını) ölçer.",
+      "block": "E",
+      "subId": "e_enerji",
+      "articleLocal": 0.0375,
+      "scores": {
+        "CYL": 2,
+        "KRC": 2,
+        "GZL": 2
+      },
+      "comments": {
+        "CYL": "Kurumsal hesaplama ve raporlama henüz mevcut değil; ancak ayrıntılı kayıt ve dokümantasyon hesaplama altyapısı sağlamakta.",
+        "KRC": "Kurumsal hesaplama ve raporlama henüz mevcut değil; ancak ayrıntılı kayıt ve dokümantasyon hesaplama altyapısı sağlamakta.",
+        "GZL": "Kurumsal hesaplama ve raporlama henüz mevcut değil; ancak ayrıntılı kayıt ve dokümantasyon hesaplama altyapısı sağlamakta."
+      }
+    },
+    {
+      "id": 6,
+      "code": "E-06",
+      "name": "İş makineleri yakıt verimliliği",
+      "reason": "TİGEM’in devasa makine parkının (traktör vb.) operasyonel verimliliğidir.",
+      "block": "E",
+      "subId": "e_enerji",
+      "articleLocal": 0.025,
+      "scores": {
+        "CYL": 2,
+        "KRC": 2,
+        "GZL": 2
+      },
+      "comments": {
+        "CYL": "Envanterde modern makinelerin yanı sıra ekonomik ömrünü tamamlamış araçların bulunması ve yakıt verimliliği odaklı bir izleme/analiz çalışmasının olmaması puanı düşürmektedir.",
+        "KRC": "Envanterde modern makinelerin yanı sıra ekonomik ömrünü tamamlamış araçların bulunması ve yakıt verimliliği odaklı bir izleme/analiz çalışmasının olmaması puanı düşürmektedir.",
+        "GZL": "Envanterde modern makinelerin yanı sıra ekonomik ömrünü tamamlamış araçların bulunması ve yakıt verimliliği odaklı bir izleme/analiz çalışmasının olmaması puanı düşürmektedir."
+      }
+    },
+    {
+      "id": 7,
+      "code": "E-07",
+      "name": "Lojistik ve dağıtım ağı mesafesi (300 km kriteri)",
+      "reason": "Mesafe ve rota yönetimidir; enerji sepetindeki payı diğerlerine göre daha kısıtlıdır.",
+      "block": "E",
+      "subId": "e_enerji",
+      "articleLocal": 0.0125,
+      "scores": {
+        "CYL": 2,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "İşletmenin coğrafi konumu ve dağıtım noktalarına olan uzaklığı nedeniyle lojistik mesafenin yüksek olduğu değerlendirilmiştir",
+        "KRC": "Büyük pazarlara yakınlık avantajı olsa da nakliye ağı geniştir.",
+        "GZL": "Büyük tüketim ve pazarlara görece yakınlık lojistik mesafeyi azaltabilecek bir avantaj sağlasa"
+      }
+    },
+    {
+      "id": 8,
+      "code": "E-08",
+      "name": "Toplam yıllık su çekimi/tüketimi",
+      "reason": "Hacimsel Denetim: Kaynaktan çekilen ham suyun miktarıdır. Enerji tüketimiyle (kWh) en yüksek korelasyona sahip veridir.",
+      "block": "E",
+      "subId": "e_su",
+      "articleLocal": 0.0525,
+      "scores": {
+        "CYL": 3,
+        "KRC": 2,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "2023 Yılı Bilanço cetvellerinde bu gösterge için “180.017.524 m³” değeri yer almaktadır. Ceylanpınar'ın 180 milyon m³ su çekmesi tek başına hacim üzerinden \"yüksek tüketim\" gibi görünse de, 802 bin dekarı sulaması ve bunu yaparken Center Pivot ve toprak nem sensörleri kullanması, coğrafi riski teknolojiyle \"disipline ettiğini\" göstermektedir.",
+        "KRC": "Bilanço cetvellerinde miktar yer almamakla birlikte  5.889.453 TL sulama maliyeti ve 31 bin dekar sulanan arazi bilgisi yer almaktadır.",
+        "GZL": "Bilanço cetvellerinde miktar yer almamakla birlikte 1.971.960 TL sulama maliyeti ve 35 bin dekar sulanan arazi bilgisi yer almaktadır."
+      }
+    },
+    {
+      "id": 9,
+      "code": "E-09",
+      "name": "Su kaynakları (Yeraltı, Yüzey, Şebeke)",
+      "reason": "Stratejik Risk: Kaynağın kompozisyonudur. Yeraltı suyuna bağımlılık (Ceylanpınar örneği), yüksek enerji maliyeti ve tükenme riski demektir.",
+      "block": "E",
+      "subId": "e_su",
+      "articleLocal": 0.06999999999999999,
+      "scores": {
+        "CYL": 4,
+        "KRC": 4,
+        "GZL": 2
+      },
+      "comments": {
+        "CYL": "İşletmenin yeraltı suyu ile kanal/yüzey suyu kaynaklarını birlikte kullanması, tek bir su kaynağına bağımlılığı azaltan olumlu bir unsur olarak değerlendirilmiştir. Bununla birlikte bölgede düşük yağış (263 mm) ve yeraltı su seviyesine ilişkin riskler bulunduğundan, kaynak çeşitliliği su arzı riskini tamamen ortadan kaldırmamaktadır.",
+        "KRC": "428 mm yağışla en şanslı bölgededir; ancak su temini büyük oranda şebeke/yeraltı odaklıdır.",
+        "GZL": "Konya Havzası'ndaki aşırı yeraltı su çekimi ve obruk oluşumu riskleri altında faaliyet göstermektedir. 298 mm yağışla kurak bir iklimdedir. Düşük maliyetli yönetim sergilese de, yeraltı sularına olan yüksek bağımlılık çevresel sürdürülebilirlik açısından riski yükseltmektedir."
+      }
+    },
+    {
+      "id": 10,
+      "code": "E-10",
+      "name": "Toplam sulanan arazi varlığı (da)",
+      "reason": "Ölçek Etkisi: Operasyonun büyüklüğünü temsil eder. Birim başına hesaplamalar (MJ/ha) için temel oluşturur.",
+      "block": "E",
+      "subId": "e_su",
+      "articleLocal": 0.0875,
+      "scores": {
+        "CYL": 5,
+        "KRC": 4,
+        "GZL": 2
+      },
+      "comments": {
+        "CYL": "Toplam ekilebilir alanı 966 bin dekar iken 802 bin dekar sulanabilir arazi bulunmaktadır (%83,02).",
+        "KRC": "Yaklaşık ekilebilir alan 49 bin dekar iken sulanabilir arazi 31 bin dekardır(%63,27).",
+        "GZL": "Yaklaşık ekilebilir alan 151 bin dekar iken sulanabilir arazi 35 bin dekardır (%23,18)."
+      }
+    },
+    {
+      "id": 11,
+      "code": "E-11",
+      "name": "Su tasarrufu teknikleri (Damla/Yağmurlama)",
+      "reason": "Doğrudan Enerji Bağı: Sulama teknolojisi, suyun ne kadar verimli (ve ne kadar az enerjiyle) basıldığını belirler. En yüksek puana sahiptir.",
+      "block": "E",
+      "subId": "e_su",
+      "articleLocal": 0.034999999999999996,
+      "scores": {
+        "CYL": 5,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Ceylanpınar'ın 180 milyon m³ su çekmesi tek başına hacim üzerinden \"yüksek tüketim\" gibi görünse de, 802 bin dekarı sulaması ve bunu yaparken Center Pivot ve toprak nem sensörleri kullanması, coğrafi riski teknolojiyle \"disipline ettiğini\" göstermektedir.",
+        "KRC": "İşletmenin kontrollü sulama tekniklerinden yararlanması, bölgesel su riskine karşı teknolojik uyum kapasitesini göstermektedir.",
+        "GZL": "İşletmenin su kısıtı bulunan bir bölgede damla veya pivot gibi daha kontrollü sulama tekniklerinden yararlanması, bölgesel su riskine karşı teknolojik uyum kapasitesini göstermektedir."
+      }
+    },
+    {
+      "id": 12,
+      "code": "E-12",
+      "name": "Atık su bertaraf ve arıtma yöntemleri",
+      "reason": "Çevresel Uyum: Hayvancılık ve sosyal tesis atık sularının yönetimidir. Kirletmeme prensibi denetimin bir parçasıdır.",
+      "block": "E",
+      "subId": "e_su",
+      "articleLocal": 0.034999999999999996,
+      "scores": {
+        "CYL": 1,
+        "KRC": 1,
+        "GZL": 1
+      },
+      "comments": {
+        "CYL": "Atık su bertaraf sistemi bulunmamaktadır.",
+        "KRC": "Atık su bertaraf sistemi bulunmamaktadır.",
+        "GZL": "Atık su bertaraf sistemi bulunmamaktadır."
+      }
+    },
+    {
+      "id": 13,
+      "code": "E-13",
+      "name": "Sulu Tarım oranı",
+      "reason": "Kapasite Kullanımı: İşletmenin su potansiyelini ne kadar kullandığını gösterir. Toplam arazinin ne kadarının bu \"Nexus\" döngüsünde olduğunu belirler.",
+      "block": "E",
+      "subId": "e_su",
+      "articleLocal": 0.0525,
+      "scores": {
+        "CYL": 5,
+        "KRC": 4,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "%83 oranında sulamayı sensör ve pivotla yönettiği için \"yüksek riski yüksek teknolojiyle yönetme\" başarısından dolayı 5 alır.",
+        "KRC": "63% oranında sulu tarım yapılması ve yağış miktarının yüksek olması riskini azaltır.",
+        "GZL": "23% sulu tarım oranı ile su bağımlılığı  daha düşüktür."
+      }
+    },
+    {
+      "id": 14,
+      "code": "E-14",
+      "name": "Yıllık Yağış",
+      "reason": "Dışsal Faktör: Önemlidir ancak işletmenin yönetemeyeceği \"sabit\" bir doğal koşul olduğu için ağırlığı daha düşüktür.",
+      "block": "E",
+      "subId": "e_su",
+      "articleLocal": 0.017499999999999998,
+      "scores": {
+        "CYL": 2,
+        "KRC": 4,
+        "GZL": 2
+      },
+      "comments": {
+        "CYL": "263 mm yıllık yağış ile yarı-çöl iklimi.",
+        "KRC": "428 mm yıllık yağış ile  ekolojik konforu göreli yüksektir.",
+        "GZL": "298 mm yıllık yağış. Konya Havzası’nın kronik yeraltı su seviyesi düşüşü riskiyle karşı karşıya."
+      }
+    },
+    {
+      "id": 15,
+      "code": "E-15",
+      "name": "Korunan alanlara veya hassas ekosistemlere yakınlık",
+      "reason": "Risk Yönetimi: İşletme faaliyetlerinin çevredeki sit alanlarına veya sulak alanlara olan etkisinin yönetilmesidir.",
+      "block": "E",
+      "subId": "e_biyo",
+      "articleLocal": 0.020000000000000004,
+      "scores": {
+        "CYL": 5,
+        "KRC": 4,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "İşletme bünyesinde yer alan Asya Ceylanı koruma alanı ve Suriye sınırındaki hassas ekosistem, İşletmeyi doğrudan bir \"ex-situ koruma merkezi\" haline getirir.",
+        "KRC": "İşletmenin Marmara Havzası’ndaki konumu, Uluabat Gölü ve Kocaçay Deltası gibi hassas sulak alanlarla ilişkili çevresel risklerin dikkate alınmasını gerektirmektedir. Safkan Arap atı mera alanlarının bulunması da mera yönetimi ve habitat bütünlüğü bakımından ek bir değerlendirme alanı oluşturmaktadır.",
+        "GZL": "İşletme Konya Havzası’ndaki bozkır ekosistemi içinde yer almakta ve geniş tabi mera alanları nedeniyle bölgesel biyolojik çeşitlilik bakımından önem taşıyabilecek bir arazi varlığına sahiptir."
+      }
+    },
+    {
+      "id": 16,
+      "code": "E-16",
+      "name": "Biyoçeşitliliği destekleme projeleri",
+      "reason": "Ekosistem Hizmetleri: İşletme sınırları içindeki endemik bitki/hayvan türlerinin korunması (Örn: Ceylanpınar'daki ceylanlar veya gen kaynakları).",
+      "block": "E",
+      "subId": "e_biyo",
+      "articleLocal": 0.03,
+      "scores": {
+        "CYL": 5,
+        "KRC": 5,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Ceylan ve Gen Kaynakları (Asya Ceylanı) koruma projeleri.",
+        "KRC": "Safkan Arap atı yetiştiriciliği ve doğal mera alanlarının korunması, genetik kaynakların ve mera ekosistemlerinin sürdürülmesi bakımından olumlu uygulamalar olarak değerlendirilmiştir.",
+        "GZL": "İşletmenin tabi mera varlığını koruması, bozkır ekosistemi ve yerel türler açısından potansiyel bir koruma katkısı sağlayabilir ancak endüstriyel çeşitlilik yüksek olmasına rağmen  tür koruma bulunmamaktadır."
+      }
+    },
+    {
+      "id": 17,
+      "code": "E-17",
+      "name": "Toprak analizi",
+      "reason": "Veri Odaklılık: Gübrelemenin analize dayalı yapılması, yeraltı sularının kirlenmesini önler ve maliyeti düşürür. Denetimin \"doğrulanabilir\" ayağıdır.",
+      "block": "E",
+      "subId": "e_biyo",
+      "articleLocal": 0.05,
+      "scores": {
+        "CYL": 5,
+        "KRC": 5,
+        "GZL": 5
+      },
+      "comments": {
+        "CYL": "İşletmelerin toprak analizleri program dahilinde yapılmakta gübre ihtiyacı ekilen ürün çeşidine göre ayarlanmaktadır.",
+        "KRC": "İşletmelerin toprak analizleri program dahilinde yapılmakta gübre ihtiyacı ekilen ürün çeşidine göre ayarlanmaktadır.",
+        "GZL": "İşletmelerin toprak analizleri program dahilinde yapılmakta gübre ihtiyacı ekilen ürün çeşidine göre ayarlanmaktadır."
+      }
+    },
+    {
+      "id": 18,
+      "code": "E-18",
+      "name": "Münavebe",
+      "reason": "Verimlilik & Sağlık: Toprağın yorulmasını engeller, hastalık zincirini kırar ve kimyasal gübre ihtiyacını azaltır. Sürdürülebilirliğin en temel operasyonel göstergesidir.",
+      "block": "E",
+      "subId": "e_biyo",
+      "articleLocal": 0.06,
+      "scores": {
+        "CYL": 5,
+        "KRC": 5,
+        "GZL": 5
+      },
+      "comments": {
+        "CYL": "Münavebe yöntemi uygulanmaktadır.",
+        "KRC": "Münavebe yöntemi uygulanmaktadır.",
+        "GZL": "Münavebe yöntemi uygulanmaktadır."
+      }
+    },
+    {
+      "id": 19,
+      "code": "E-19",
+      "name": "Erozyonla mücadele",
+      "reason": "Fiziksel Koruma: Özellikle rüzgar erozyonuna açık bölgelerde (Ceylanpınar vb.) üst toprak katmanının korunması, varlık yönetiminin ana şartıdır.",
+      "block": "E",
+      "subId": "e_biyo",
+      "articleLocal": 0.04000000000000001,
+      "scores": {
+        "CYL": 5,
+        "KRC": 5,
+        "GZL": 5
+      },
+      "comments": {
+        "CYL": "Ağaçlandırma çalışmaları yapılmaktadır.",
+        "KRC": "Ağaçlandırma çalışmaları yapılmaktadır.",
+        "GZL": "Ağaçlandırma çalışmaları yapılmaktadır."
+      }
+    },
+    {
+      "id": 20,
+      "code": "E-20",
+      "name": "Gübre Kullanımı (Organik/İnorganik)",
+      "reason": "Döngüsellik: Hayvancılık atıklarının (sıvı/katı) biyogaz veya bitkisel üretimde gübre olarak geri kazanılması, TİGEM’in en büyük sürdürülebilirlik avantajıdır.",
+      "block": "E",
+      "subId": "e_atik",
+      "articleLocal": 0.03,
+      "scores": {
+        "CYL": 3,
+        "KRC": 2,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "509.200.000TL inorganik gübre maliyeti yüksek ölçekli yapay gübre harcaması, İşletmenin ölçeğini ve kimyasal bağımlılık riskini ortaya koyarken; Biyogaz tesisi entegrasyonu bu riski yönetme çabasını işaret etmektedir. Toplam arazide(ekilebilir alan:966 bin dekar) dekar başına düşen gübre maliyeti (527,12TL/dekar) ve kimyasal yoğunluğu çevresel baskıyı artırmaktadır.",
+        "KRC": "İnorganik gübre harcaması yaklaşık 40,3 milyon TL olarak verilmiştir. Mutlak tutarın diğer işletmelere göre düşük olması olumlu bir işaret olmakla birlikte, ekilebillir alan miktarı 49 bin dekardır (822,44 TL/dekar).",
+        "GZL": "Gözlü’de inorganik gübre harcaması yaklaşık 48,1 milyon TL olarak iken alan miktarı 151 bin dekardır (318,54 TL/dekar)"
+      }
+    },
+    {
+      "id": 21,
+      "code": "E-21",
+      "name": "Hayvansal gübre yönetimi",
+      "reason": "Emisyon & Maliyet: Sentetik gübreler hem maliyetli hem de yüksek karbon ayak izine sahiptir. Hassas tarımla optimize edilmesi beklenir.",
+      "block": "E",
+      "subId": "e_atik",
+      "articleLocal": 0.04000000000000001,
+      "scores": {
+        "CYL": 4,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Biyogaz tesisi bulunmakla birlikte tesis özel sektörce işletilmektedir.",
+        "KRC": "Hayvansal atıkların tarımsal üretimde organik gübre olarak değerlendirilme potansiyeli bulunmaktadır.",
+        "GZL": "Hayvansal atıkların organik gübre olarak kullanılma potansiyeli bulunmaktadır."
+      }
+    },
+    {
+      "id": 22,
+      "code": "E-22",
+      "name": "Kimyasal İlaç Kullanımı",
+      "reason": "Çevresel Etki: Toprak ve su kirliliğinin birincil kaynağıdır. Birim alandaki kullanım miktarı denetimin en sıkı parametresidir.",
+      "block": "E",
+      "subId": "e_atik",
+      "articleLocal": 0.04000000000000001,
+      "scores": {
+        "CYL": 3,
+        "KRC": 2,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "70 Milyon TL maliyet (72,46 TL/delar) ile göreli olarak yüksek kimyasal yüke sahiptir; ancak yüksek ölçekli büyüklükte bir alanda tarım uygulamaları modernize cihazlarla(Uydu destekli uygulama ekipmanı ve teknik personel gözetimi dozaj ve uygulama kontrolü) yapılmaktadır.",
+        "KRC": "Bitkisel üretim ilaçlama maliyeti yaklaşık 5,44 milyon TL(111,02 TL/dekar) olarak verilmiştir. İyi Tarım Uygulamaları sistemine ilişkin uygulamalar diğer işletmelere göre daha yerleşiktir. Ancak iklim koşulları nedeniyle hastalıkla mücadele gereği yüksektir.",
+        "GZL": "Bitkisel üretim ilaçlama maliyeti yaklaşık 8,69 milyon TL (57,55TL/dekar) olarak verilmiştir. Münavebe, teknik ekipman ve uygulayıcı sertifikaları kimyasal uygulama riskini azaltabilecek kontrol unsurlarıdır."
+      }
+    },
+    {
+      "id": 23,
+      "code": "E-23",
+      "name": "Biyolojik mücadele",
+      "reason": "İnovasyon: Kimyasala alternatif yöntemlerin (yararlı böcek vb.) varlığı, sürdürülebilirlik olgunluk seviyesini gösterir.",
+      "block": "E",
+      "subId": "e_atik",
+      "articleLocal": 0.03,
+      "scores": {
+        "CYL": 3,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Münavebe ve ağaçlandırma(süne mücadelesi için badem ağaçları) gibi alternatif mücadele yöntemleri aktif uygulanmaktadır. İTU sertifikası bulunmaktadır.",
+        "KRC": "Münavebe ve ağaçlandırma(süne mücadelesi için badem ağaçları) gibi alternatif mücadele yöntemleri aktif uygulanmaktadır. İTU sertifikası bulunmaktadır.",
+        "GZL": "Münavebe ve ağaçlandırma(süne mücadelesi için badem ağaçları) gibi alternatif mücadele yöntemleri aktif uygulanmaktadır. İTU sertifikası bulunmaktadır."
+      }
+    },
+    {
+      "id": 24,
+      "code": "E-24",
+      "name": "Tehlikeli Atık Bertarafı",
+      "reason": "Yasal Uyum: Tıbbi atıklar, atık yağlar ve akülerin mevzuata (Sıfır Atık) uygun yönetilmesidir.",
+      "block": "E",
+      "subId": "e_atik",
+      "articleLocal": 0.020000000000000004,
+      "scores": {
+        "CYL": 3,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Depolama alanları inşa edilmiş olsa da \"tam uyum sağlanamaması\" ve \"kayıt eksiklikleri\" nedeniyle orta seviyededir",
+        "KRC": "Depolama alanları inşa edilmiş olsa da \"tam uyum sağlanamaması\" ve \"kayıt eksiklikleri\" nedeniyle orta seviyededir",
+        "GZL": "Depolama alanları inşa edilmiş olsa da \"tam uyum sağlanamaması\" ve \"kayıt eksiklikleri\" nedeniyle orta seviyededir"
+      }
+    },
+    {
+      "id": 25,
+      "code": "E-25",
+      "name": "Kimyasal Muhafaza Depoları",
+      "reason": "Güvenliği & Sızıntı: İlaç ve gübrelerin sızdırmazlık ve güvenlik standartlarına göre depolanmasıdır.",
+      "block": "E",
+      "subId": "e_atik",
+      "articleLocal": 0.020000000000000004,
+      "scores": {
+        "CYL": 4,
+        "KRC": 4,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "ITU kapsamında yenilenmiş,mevzuata uygun, ayrı ve fiziksel şartları tanımlanmış depo varlığı risk yönetimini güçlendirmektedir.",
+        "KRC": "ITU kapsamında yenilenmiş,mevzuata uygun, ayrı ve fiziksel şartları tanımlanmış depo varlığı risk yönetimini güçlendirmektedir.",
+        "GZL": "ITU kapsamında yenilenmiş,mevzuata uygun, ayrı ve fiziksel şartları tanımlanmış depo varlığı risk yönetimini güçlendirmektedir."
+      }
+    },
+    {
+      "id": 26,
+      "code": "E-26",
+      "name": "Ambalaj",
+      "reason": "Sıfır Atık: Boş ilaç kutuları ve tohum çuvallarının geri dönüşüm sürecine dahil edilmesidir.",
+      "block": "E",
+      "subId": "e_atik",
+      "articleLocal": 0.020000000000000004,
+      "scores": {
+        "CYL": 4,
+        "KRC": 4,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "Depolama alanları inşa edilmiş olsa da \"tam uyum sağlanamaması\" ve \"kayıt eksiklikleri\" nedeniyle orta seviyededir",
+        "KRC": "Depolama alanları inşa edilmiş olsa da \"tam uyum sağlanamaması\" ve \"kayıt eksiklikleri\" nedeniyle orta seviyededir",
+        "GZL": "Depolama alanları inşa edilmiş olsa da \"tam uyum sağlanamaması\" ve \"kayıt eksiklikleri\" nedeniyle orta seviyededir"
+      }
+    },
+    {
+      "id": 27,
+      "code": "S-27",
+      "name": "Kadro  Dağılımları",
+      "reason": "Operasyonel Yapı: İşletmenin yönetimsel ve teknik kadro dengesini gösterir.",
+      "block": "S",
+      "subId": "s_isgucu",
+      "articleLocal": 0.034999999999999996,
+      "scores": {
+        "CYL": 4,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Teknik personel oranı Ceylanpınar'da (136 kişi) operasyonel güç sağlarken, operasyonel yük işçi kadrolarındadır.",
+        "KRC": "3 kadrolu, 73 sözleşmeli, 57 daimi işçi ve 266 taşeron çalışandan oluşmaktadır.Operasyonel yük işçi personeldedir.",
+        "GZL": "3 idari; 12 teknik peronel yer alan toplam 550 kişilik kadro  bulunmaktadır.Operasyonel yük işçi personeldedir."
+      }
+    },
+    {
+      "id": 28,
+      "code": "S-28",
+      "name": "Taşeron oranı",
+      "reason": "Kurumsal Risk: Yüksek taşeron oranı, iş sürekliliği ve çalışan aidiyeti açısından risk taşır. Denetimde \"güvenceli istihdam\" göstergesidir.",
+      "block": "S",
+      "subId": "s_isgucu",
+      "articleLocal": 0.0525,
+      "scores": {
+        "CYL": 2,
+        "KRC": 2,
+        "GZL": 2
+      },
+      "comments": {
+        "CYL": "Çok yüksek taşeron sayısı (İş gücü güvencesi riski yüksek).%68 gibi yüksek düzeyde bir taşeron oranıyla (2373 kişi) ciddi bir istihdam riski taşır",
+        "KRC": "266 taşeron çalışanın bulunduğu ve taşeron oranının yaklaşık %66 olduğu bildirilmiştir. Bu oran, özellikle mevsimsel üretim ve yoğun dönemlerde işgücü yönetimi bakımından önemli bir risk alanına işaret etmektedir",
+        "GZL": "399 taşeron çalışanın bulunduğu ve oranın yaklaşık %72 olduğu bildirilmiştir. Sezonluk işçilik ve hayvancılık faaliyetlerinde taşeron kullanımının bulunması, işgücü sürekliliği ve taşeron çalışanların İSG bakımından izlenmesi gereğini artırmaktadır."
+      }
+    },
+    {
+      "id": 29,
+      "code": "S-29",
+      "name": "Yaş Dağılımı",
+      "reason": "Kuşak Devri: Personelin yaş ortalaması, kurumsal hafızanın korunması ve teknolojik adaptasyon yeteneği (gençleşme ihtiyacı) hakkında fikir verir.",
+      "block": "S",
+      "subId": "s_isgucu",
+      "articleLocal": 0.017499999999999998,
+      "scores": {
+        "CYL": 2,
+        "KRC": 4,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Kadrolu personelin yaklaşık %51'i 40 yaş ve üzerindedir; bu durum deneyim açısından avantaj olsa da uzun vadede emeklilik yükü ve fiziksel iş gücü yenilenmesi riski taşır.",
+        "KRC": "Çalışanların yaklaşık %55’inin 40 yaş altında olduğu ve yaş gruplarının dengeli dağıldığı bildirilmiştir. Bu yapı, deneyimli çalışanların kurumsal hafızaya katkısı ile genç çalışanların teknolojik uyum kapasitesini birlikte taşıyabilir",
+        "GZL": "Personelin yaklaşık %59’unun 25–44 yaş aralığında yer alması, üretim faaliyetleri bakımından aktif yaş gruplarının ağırlıklı olduğunu göstermektedir. Bununla birlikte, 18–24 yaş grubunun yaklaşık %3,3 ile sınırlı olması genç çalışanların kuruma kazandırılması bakımından geliştirilmesi gereken bir alan bulunduğuna işaret etmektedir."
+      }
+    },
+    {
+      "id": 30,
+      "code": "S-30",
+      "name": "Sendikalılık",
+      "reason": "Çalışan Hakları: Kamu işletmelerinde sosyal diyaloğun ve toplu iş sözleşmesi güvencesinin kanıtıdır.",
+      "block": "S",
+      "subId": "s_isgucu",
+      "articleLocal": 0.034999999999999996,
+      "scores": {
+        "CYL": 2,
+        "KRC": 3,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "Bu bilgiye ulaşılamadı (Maaş hesaplama tabloları gereği bu bilgi kullanılmakla birlikte bu yönde istatistiki bir çalışma bulunmamaktadır)",
+        "KRC": "Kadrolu personelin sendikalaşma oranının yaklaşık %32 olduğu bildirilmiştir. Bu oran, çalışanların belirli bir bölümünün sendikal temsil ve toplu pazarlık mekanizmalarına eriştiğini göstermektedir;",
+        "GZL": "151 kadrolu çalışanın 104’ünün sendikalı olduğu bildirilmiştir. Bu değer, kadrolu çalışanlar içinde yaklaşık %68,9’luk bir sendikalılık oranına karşılık gelmektedir."
+      }
+    },
+    {
+      "id": 31,
+      "code": "S-31",
+      "name": "Çalışma Süreleri",
+      "reason": "Refah ve İSG: Personelin iş-yaşam dengesini ve yorgunluğa bağlı iş kazası riskini ölçer.",
+      "block": "S",
+      "subId": "s_isgucu",
+      "articleLocal": 0.034999999999999996,
+      "scores": {
+        "CYL": 3,
+        "KRC": 4,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Daha fazla devir daim hızı gözlemlendiği beyan edilmiştir; istatistiki bilgi mevcut değildir. Kurum genelinde işletmelerde çalışan teknik personel çalışma koşulları karşısında özlük haklarını yetersiz bularak diğer kurumlara geçiş arayışındadır.",
+        "KRC": "İstifa sayıları çok düşüktür; istatistiki bilgi mevcut değildir.çalışan memnuniyeti diğer işletmelere oranla daha yüksek gözlemlenmektedir.Kurum genelinde işletmelerde çalışan teknik personel çalışma koşulları karşısında özlük haklarını yetersiz bularak diğer kurumlara geçiş arayışındadır.",
+        "GZL": "İstifa sayıları çok düşüktür; istatistiki bilgi mevcut değildir.Kurum genelinde işletmelerde çalışan teknik personel çalışma koşulları karşısında özlük haklarını yetersiz bularak diğer kurumlara geçiş arayışındadır."
+      }
+    },
+    {
+      "id": 32,
+      "code": "S-32",
+      "name": "Eğitim",
+      "reason": "Yetenek Yönetimi: Modern tarım tekniklerinin uygulanabilirliği personelin eğitim seviyesine bağlıdır. Nexus yönetimi için \"nitelikli beyin\" göstergesidir.",
+      "block": "S",
+      "subId": "s_isgucu",
+      "articleLocal": 0.0525,
+      "scores": {
+        "CYL": 4,
+        "KRC": 2,
+        "GZL": 5
+      },
+      "comments": {
+        "CYL": "Kadrolu personelin yaklaşık %27'si (250 kişi) önlisans, lisans ve yüksek lisans mezunudur; bu oran teknik uzmanlık gerektiren büyük ölçekli operasyonlar için güçlü bir temel oluşturur.",
+        "KRC": "Çalışanların %57'si ilkokul veya ortaokul mezunudur; bu düşük eğitim seviyesi, teknolojik dönüşüm ve karmaşık İSG süreçlerinin yönetimi açısından risk teşkil eder.",
+        "GZL": "Lisans ve lisansüstü mezun oranı yaklaşık %28'dir; ayrıca 9 kişilik yüksek lisans kadrosuyla \"akademik uzmanlık\" derinliği en yüksek işletmedir."
+      }
+    },
+    {
+      "id": 33,
+      "code": "S-33",
+      "name": "Cinsiyet",
+      "reason": "Sosyal Eşitlik: Tarımda kadın işgücünün nitelikli ve kayıtlı istihdamı, uluslararası ESG raporlamalarında en yüksek puanı getiren kalemdir.",
+      "block": "S",
+      "subId": "s_isgucu",
+      "articleLocal": 0.0525,
+      "scores": {
+        "CYL": 2,
+        "KRC": 2,
+        "GZL": 2
+      },
+      "comments": {
+        "CYL": "92kadın /3396erkek. Teknik ve idari kadroda kadın oranı düşük. Tüm işletmelerde kadın çalışan oranı %2-10 arasındadır; bu durum toplumsal cinsiyet eşitliği açısından zayıf bir performanstır.",
+        "KRC": "42 kadın çalışanın bulunduğu ve kadın çalışan oranının yaklaşık %10,5 olduğu bildirilmiştir.",
+        "GZL": "Benzer idari/teknik iş gücü yapısı; kadın istihdamı kısıtlı."
+      }
+    },
+    {
+      "id": 34,
+      "code": "S-34",
+      "name": "Devir Daim Hızı",
+      "reason": "Kurumsal Bağlılık: Personelin kurumdan ayrılma hızı; çalışma barışı ve personel memnuniyetinin en somut matematiksel çıktısıdır.",
+      "block": "S",
+      "subId": "s_isgucu",
+      "articleLocal": 0.034999999999999996,
+      "scores": {
+        "CYL": 3,
+        "KRC": 5,
+        "GZL": 5
+      },
+      "comments": {
+        "CYL": "Kadrolu ve sözleşmeli 922 personel içinde 115 ayrılma (40'ı istifa/tayin) mevcuttur; devir hızı diğer işletmelere göre daha yüksektir.",
+        "KRC": "399 personel içinde beş yıllık dönemde 10 istifa gerçekleştiği bildirilmiştir. Bu veri, söz konusu dönem ve personel grubu bakımından düşük ayrılma düzeyine işaret etmektedir.",
+        "GZL": "151 kadrolu personel içinde beş yıllık dönemde 1 ayrılma gerçekleştiği bildirilmiştir. Bu durum kadrolu personel bakımından düşük hareketliliğe işaret etmektedir."
+      }
+    },
+    {
+      "id": 35,
+      "code": "S-35",
+      "name": "Eski Hükümlü/Engelli personel",
+      "reason": "Yasal & Sosyal Uyumluluk: Dezavantajlı grupların topluma kazandırılması misyonudur. TİGEM gibi kurumların yasal zorunluluğu ve etik duruşudur.",
+      "block": "S",
+      "subId": "s_isgucu",
+      "articleLocal": 0.034999999999999996,
+      "scores": {
+        "CYL": 5,
+        "KRC": 4,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "18 engelli 12 eski hükümlü personelle yasal ve sosyal sorumluluğunu en geniş ölçekte yerine getirmektedir.",
+        "KRC": "9 Engelli personel bulunmakta olup eski hükümlü personel bulunmamaktadır",
+        "GZL": "4 Engelli personel istihdam edilmektedir; eski hükümlü personel bulunmamaktadır."
+      }
+    },
+    {
+      "id": 36,
+      "code": "S-36",
+      "name": "Ortalama fazla mesai süreleri",
+      "reason": "İş-Yaşam Dengesi: Hasat dönemlerinde artan mesailerin personel yorgunluğu ve hata payı üzerindeki etkisidir.",
+      "block": "S",
+      "subId": "s_calisma",
+      "articleLocal": 0.020000000000000004,
+      "scores": {
+        "CYL": 2,
+        "KRC": 3,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "Devasa üretim; sezonluk fazla mesai kaçınılmaz; veriler net elde edilemedi",
+        "KRC": "Yıllık 60 saat (aylık ortalama 5 saat), yasal sınırların altındadır.",
+        "GZL": "Üç işletme arasında en düşük fazla mesai süresine sahiptir; bu durum personel verimliliği ve iş-yaşam dengesi açısından en iyi performansı gösterir."
+      }
+    },
+    {
+      "id": 37,
+      "code": "S-37",
+      "name": "Stajyer sayısı",
+      "reason": "Sosyal Katkı: Kurumun sektörel eğitime ve genç yeteneklere sağladığı kapıdır; operasyonel riskten ziyade \"toplumsal fayda\" odaklıdır.",
+      "block": "S",
+      "subId": "s_calisma",
+      "articleLocal": 0.020000000000000004,
+      "scores": {
+        "CYL": 3,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Stajyer öğrenci kabulü e-devlet sistemi üzerinden devam ettirilmektedir. Konuya dair istatistiki bilgiye ulaşılamadı.",
+        "KRC": "Stajyer öğrenci kabulü e-devlet sistemi üzerinden devam ettirilmektedir. Konuya dair istatistiki bilgiye ulaşılamadı.",
+        "GZL": "Stajyer öğrenci kabulü e-devlet sistemi üzerinden devam ettirilmektedir. Konuya dair istatistiki bilgiye ulaşılamadı."
+      }
+    },
+    {
+      "id": 38,
+      "code": "S-38",
+      "name": "Çalışanlar tarafından açılan davalar",
+      "reason": "Hukuki & Etik Uyumluluk: Kurum içi çalışma barışının ve hak ihlallerinin en resmi göstergesidir. Yüksek dava sayısı yönetimsel risktir.",
+      "block": "S",
+      "subId": "s_calisma",
+      "articleLocal": 0.06,
+      "scores": {
+        "CYL": 3,
+        "KRC": 2,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Dava sayıları ile ilgili işletme özelinde istatistiki kayıt bulunmamakla birlikte yapılan görüşmelerde idari davaların nadir olduğu belirtilmiştir.3488 personel içinde sadece 29 \"işçilik alacağı\" davası bulunduğu belirtilmiştir.",
+        "KRC": "Karacabey’de 125 dava bulunduğu bildirilmiştir.",
+        "GZL": "47  İşçilik alacağı bulunmaktadır."
+      }
+    },
+    {
+      "id": 39,
+      "code": "S-39",
+      "name": "Memnuniyet anketleri/şikayetler",
+      "reason": "Geri Bildirim: Çalışanların sesinin duyulup duyulmadığını gösteren, modern yönetim anlayışının bir parçasıdır.",
+      "block": "S",
+      "subId": "s_calisma",
+      "articleLocal": 0.04000000000000001,
+      "scores": {
+        "CYL": 3,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "İşletme bazında çalışan memnuniyeti ölçümü çalışması yapılmamakla birlikte saha gözlemlerinde personel mülakatlarında coğrafi konum haricinde olumsuz beyanda bulunulmamıştır.",
+        "KRC": "İşletme bazında düzenli çalışan memnuniyeti anketi yapılmadığı, saha görüşmelerinde coğrafi konum dışında belirgin bir olumsuzluğun dile getirilmediği bildirilmiştir.",
+        "GZL": "İşletme bazında düzenli çalışan memnuniyeti anketi yapılmadığı, saha görüşmelerinde coğrafi konum dışında belirgin bir olumsuzluğun dile getirilmediği bildirilmiştir."
+      }
+    },
+    {
+      "id": 40,
+      "code": "S-40",
+      "name": "İş kazaları",
+      "reason": "Kritik Risk: Sosyal sürdürülebilirliğin en somut negatif göstergesidir. Sıfır kaza hedefi, denetimin temelidir.",
+      "block": "S",
+      "subId": "s_calisma",
+      "articleLocal": 0.08000000000000002,
+      "scores": {
+        "CYL": 2,
+        "KRC": 3,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "Ceylanpınar: 158 iş kazasıyla yüksek riskli gruptadır.",
+        "KRC": "10 basit iş kazası",
+        "GZL": "2023 Yılı içinde iş kazası kaydı bulunmamaktadır."
+      }
+    },
+    {
+      "id": 41,
+      "code": "S-41",
+      "name": "Meslek Hastalıkları",
+      "reason": "Uzun Vadeli Sağlık: Zirai ilaçlara ve toza maruz kalan personel için kritik takip alanıdır. TİGEM'in koruyucu sağlık başarısını gösterir.",
+      "block": "S",
+      "subId": "s_calisma",
+      "articleLocal": 0.06,
+      "scores": {
+        "CYL": 3,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Meslek hastalıkları ile ilgili kayıt bulunmamaktadır. Ancak İSG kuralları prosedürleri; mevcut olup personel yazılı tebliğ ettirilmiştir.",
+        "KRC": "Meslek hastalıkları ile ilgili kayıt bulunmamaktadır. Ancak İSG kuralları prosedürleri; mevcut olup personel yazılı tebliğ ettirilmiştir.",
+        "GZL": "Meslek hastalıkları ile ilgili kayıt bulunmamaktadır. Ancak İSG kuralları prosedürleri; mevcut olup personel yazılı tebliğ ettirilmiştir."
+      }
+    },
+    {
+      "id": 42,
+      "code": "S-42",
+      "name": "İSG (Eğitimler/İSG Uzmanı istihdamı)",
+      "reason": "Önleyici Yaklaşım: Kişisel koruyucu donanım, risk analizleri ve eğitimler. Kazayı oluşmadan önleme kapasitesini ölçer.",
+      "block": "S",
+      "subId": "s_calisma",
+      "articleLocal": 0.08000000000000002,
+      "scores": {
+        "CYL": 5,
+        "KRC": 4,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "İSG uzmanı istihdam edilmekte; çalışanlara talimatlar yazılı kitapçıklar halinde imza karşılığı tebliğ edilmekte; eğitimler verilmekte.",
+        "KRC": "İSG uzmanının bulunduğu ve eğitimlerin verildiği bildirilmiştir.",
+        "GZL": "İSG uzmanının bulunduğu ve eğitimlerin verildiği bildirilmiştir."
+      }
+    },
+    {
+      "id": 43,
+      "code": "S-43",
+      "name": "Sağlık Hizmetleri",
+      "reason": "Refah: İşletme içinde veya yakınındaki sağlık birimleri, periyodik kontroller ve acil müdahale imkanları.",
+      "block": "S",
+      "subId": "s_calisma",
+      "articleLocal": 0.04000000000000001,
+      "scores": {
+        "CYL": 5,
+        "KRC": 5,
+        "GZL": 5
+      },
+      "comments": {
+        "CYL": "Çalışanlara sağlık hizmeti verilmekte; sigorta yapılmakta ve kurum doktoru bulunmaktadır.",
+        "KRC": "Çalışanlara sağlık hizmeti verilmekte; sigorta yapılmakta ve kurum doktoru bulunmaktadır.",
+        "GZL": "Çalışanlara sağlık hizmeti verilmekte; sigorta yapılmakta ve kurum doktoru bulunmaktadır."
+      }
+    },
+    {
+      "id": 44,
+      "code": "S-44",
+      "name": "KKD",
+      "reason": "Hayati Risk: Tarımda ilaçlama, gürültü ve toz maruziyeti yüksektir. KKD kullanımı sadece bir kural değil, \"Kişisel Koruma\"nın en somut ve denetlenebilir fiziksel kanıtıdır.",
+      "block": "S",
+      "subId": "s_toplum",
+      "articleLocal": 0.1,
+      "scores": {
+        "CYL": 4,
+        "KRC": 4,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "İSG kapsamında KKD personele verilmekte ve eğitimleri verilmekte ancak kayıtlarında aksaklıklar bulunmaktadır.",
+        "KRC": "İSG kapsamında KKD personele verilmekte ve eğitimleri verilmekte ancak kayıtlarında aksaklıklar bulunmaktadır.",
+        "GZL": "İSG kapsamında KKD personele verilmekte ve eğitimleri verilmekte ancak kayıtlarında aksaklıklar bulunmaktadır."
+      }
+    },
+    {
+      "id": 45,
+      "code": "S-45",
+      "name": "Yerel Topluluklara fayda",
+      "reason": "Kamu Misyonu: TİGEM'in çevre köylere sağladığı tohum desteği, eğitimler veya sosyal tesis imkanlarıdır. İşletmenin \"sosyal onay\" (social license) almasını sağlar.",
+      "block": "S",
+      "subId": "s_toplum",
+      "articleLocal": 0.0625,
+      "scores": {
+        "CYL": 5,
+        "KRC": 4,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "3.488 kişilik devasa istihdam hacmi, bünyesindeki Ceylan koruma alanı ve sınır güvenliğine katkısı ile bölgeye önemli düzeyde sosyo-ekonomik katkı sağlamaktadır.",
+        "KRC": "İyi Tarım Uygulamaları ve at yetiştiriciliği yoluyla bölgesel teknik bilgi ve genetik kaynak katkısı sağlandığı, ayrıca mera varlığının bulunduğu bildirilmiştir.",
+        "GZL": "%37’lik tabi mera varlığı ile bölge hayvancılığına genetik ve alan desteği sağlamakta, düşük kaza oranıyla güvenli bir yerel çalışma ortamı sunmaktadır."
+      }
+    },
+    {
+      "id": 46,
+      "code": "S-46",
+      "name": "Mesleki eğitimler",
+      "reason": "Yetenek ve Güvenlik: Personelin modern tarım teknikleri, İSG ve makine kullanımı konusundaki yetkinliğidir. Bilinçli çalışan, hem kendini hem de işletme varlıklarını korur.",
+      "block": "S",
+      "subId": "s_toplum",
+      "articleLocal": 0.0875,
+      "scores": {
+        "CYL": 4,
+        "KRC": 4,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "Kurum genelinde mesleki eğitim ihtiyacı program dahilinde belirlenmekte; danışman hocalar ile sözleşmeler imzalanarak danışmanlık alınmakta; ani gelişen eğitim ihtiyaçları da karşılanmaktadır.",
+        "KRC": "Kurum genelinde mesleki eğitim ihtiyacı program dahilinde belirlenmekte; danışman hocalar ile sözleşmeler imzalanarak danışmanlık alınmakta; ani gelişen eğitim ihtiyaçları da karşılanmaktadır.",
+        "GZL": "Kurum genelinde mesleki eğitim ihtiyacı program dahilinde belirlenmekte; danışman hocalar ile sözleşmeler imzalanarak danışmanlık alınmakta; ani gelişen eğitim ihtiyaçları da karşılanmaktadır."
+      }
+    },
+    {
+      "id": 47,
+      "code": "G-47",
+      "name": "İşletme Genel Bilgileri (kuruluş tarihçesi, coğrafi konum, büyüklük, ürün çeşidi)",
+      "reason": "Bağlam: İşletmenin kapasitesini ve kapasitesini tanımlayan arka plan bilgisi.",
+      "block": "G",
+      "subId": "g_uyum",
+      "articleLocal": 0.03,
+      "scores": {
+        "CYL": 5,
+        "KRC": 5,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "1937'den bu yana devam eden kurumsal hafıza, 64 km'lik sınır hattı ile stratejik gıda güvenliği konumu ve yaklaşık 1,6 milton dekar arazi varlığı bulunmaktadır",
+        "KRC": "1300 yılına (Çiftlikat-ı Hümayun) dayanan tarihi  \"kurumsal süreklilik\" puanına yukarı taşımaktadır. Marmara Bölgesi'ndeki lojistik avantajı stratejik katkı sağlamaktadır.Yaklaşık 89 bin dekar araziye sahiptir.",
+        "GZL": "1950'lerden beri süregelen devlet çiftliği yapısı ve Konya Havzası gibi kritik bir tarım merkezinde (Sarayönü) yer alması ile öne çıkmaktadır.Yaklaşık 288 bin dekar arazi varlığına sahiptir."
+      }
+    },
+    {
+      "id": 48,
+      "code": "G-48",
+      "name": "Ürün çeşitliliği",
+      "reason": "Dirençlilik: Pazar ve iklim değişimlerine karşı ürün desenini yönetebilme yeteneği.",
+      "block": "G",
+      "subId": "g_uyum",
+      "articleLocal": 0.042,
+      "scores": {
+        "CYL": 5,
+        "KRC": 5,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "Hububat ve baklagillerin yanı sıra sığır, koyun, keçi ve ceylan varlığı, işletmenin bitkisel ve hayvansal üretim bakımından geniş bir faaliyet portföyüne sahip olduğunu göstermektedir. Bu çeşitlilik, tek ürüne bağımlılığı azaltabilecek bir unsur olarak değerlendirilmiştir.",
+        "KRC": "Hibrit mısır ve sebze tohumculuğu ile atçılık ve genetik kaynak faaliyetlerinin birlikte yürütülmesi, ürün ve üretim alanlarının çeşitlendirildiğini göstermektedir.",
+        "GZL": "Patates ve hibrit ayçiçeği gibi belirli ürün grupları ile farklı koyun ırklarının bulunması, bitkisel ve hayvansal üretimde belirli bir çeşitlilik sağlamaktadır. Bununla birlikte, üretim portföyünün daha sınırlı olması nedeniyle puan 4 olarak değerlendirilmiştir."
+      }
+    },
+    {
+      "id": 49,
+      "code": "G-49",
+      "name": "Etik",
+      "reason": "Etik değerlere bağlılık yönetimsel, toplumsal ve iş ahlakı açısından önem taşır.",
+      "block": "G",
+      "subId": "g_uyum",
+      "articleLocal": 0.03,
+      "scores": {
+        "CYL": 4,
+        "KRC": 3,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "İşletme bazında etik kurallara yönelik spesifik bir çalışma bulunmamakla birlikte; 3488 personel içinde sadece 29 \"işçilik alacağı\" davası olması, devasa ölçeğine rağmen hukuki ihtilafların iyi yönetildiği sonucuna varılmıştır.",
+        "KRC": "İşletme bazında etik kurallara yönelik spesifik bir çalışma bulunmamakla birlikte;  416 çalışana karşılık 125 dava (yaklaşık her 3 çalışandan 1'i davalık) bulunması, kıdem tazminatı ve yürütme durdurma gibi konularda ciddi bir yönetimsel etik sorunu veya iletişim kopukluğu olduğuşeklinde değerlendirilmiştir.",
+        "GZL": "47  İşçilik alacağı bulunmaktadır. İşletme bazında etik kurallara yönelik spesifik bir çalışma bulunmamakla birlikte; sıfır iş kazası ve düşük fazla mesai süreleri, işletmenin \"Önce İnsan\" felsefesini kağıt üzerinde değil, sahada uyguladığı yönünde değerlendirilmiştir."
+      }
+    },
+    {
+      "id": 50,
+      "code": "G-50",
+      "name": "Çevre ve İklim Değişikliği Strateji Belgesi",
+      "reason": "Kurumsal Taahhüt: İklim krizine karşı resmi ve yazılı bir yol haritasının varlığı.",
+      "block": "G",
+      "subId": "g_uyum",
+      "articleLocal": 0.03,
+      "scores": {
+        "CYL": 3,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "İşletme özelinde iklim değişikliği strateji belgesi bulunmamakla birlikte; TİGEM geneli için strateji belgesinde iklim değişikliği riskler arasında tanımlanarak bunlara yönelik uygulanacak kontrol önlemleri tanımlanmıştır.",
+        "KRC": "İşletme özelinde iklim değişikliği strateji belgesi bulunmamakla birlikte; TİGEM geneli için strateji belgesinde iklim değişikliği riskler arasında tanımlanarak bunlara yönelik uygulanacak kontrol önlemleri tanımlanmıştır.",
+        "GZL": "İşletme özelinde iklim değişikliği strateji belgesi bulunmamakla birlikte; TİGEM geneli için strateji belgesinde iklim değişikliği riskler arasında tanımlanarak bunlara yönelik uygulanacak kontrol önlemleri tanımlanmıştır."
+      }
+    },
+    {
+      "id": 51,
+      "code": "G-51",
+      "name": "Çevre Mevzuatına Uyum",
+      "reason": "Yasal Zorunluluk: Yasalara uyum, her türlü sürdürülebilirlik çalışmasının asgari giriş biletidir.",
+      "block": "G",
+      "subId": "g_uyum",
+      "articleLocal": 0.06,
+      "scores": {
+        "CYL": 3,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Çevre mevzuatına aykırılık yönünde herhangi bir cezai yaptırım bulunmamaktadır.",
+        "KRC": "Çevre mevzuatına aykırılık yönünde herhangi bir cezai yaptırım bulunmamaktadır.",
+        "GZL": "Çevre mevzuatına aykırılık yönünde herhangi bir cezai yaptırım bulunmamaktadır."
+      }
+    },
+    {
+      "id": 52,
+      "code": "G-52",
+      "name": "İş Hukuku ve Sosyal Haklara Uyum",
+      "reason": "Sosyal Adalet: Çalışan haklarının yasal güvencesi, kurumsal meşruiyetin temelidir.",
+      "block": "G",
+      "subId": "g_uyum",
+      "articleLocal": 0.06,
+      "scores": {
+        "CYL": 4,
+        "KRC": 3,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "3488 personel içinde sadece 29 \"işçilik alacağı\" davası olması, devasa ölçeğine rağmen hukuki ihtilafların iyi yönetildiği sonucuna varılmıştır.",
+        "KRC": "Çoğu kıdem tazminatı veyürütmeyi durdurma konularında açılmış 125 dava bulunmaktadır.",
+        "GZL": "47  İşçilik alacağı bulunmaktadır."
+      }
+    },
+    {
+      "id": 53,
+      "code": "G-53",
+      "name": "İç Kontrol Sisteminin Etkinliği",
+      "reason": "Hata Önleme: Yolsuzluk veya kaynak israfını engelleyen mekanizmaların gücü.",
+      "block": "G",
+      "subId": "g_uyum",
+      "articleLocal": 0.06,
+      "scores": {
+        "CYL": 3,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "İç Kontrol Sistemi Kurum genelinde kurulmuş olup, pratikte uygulama eksiklikleri bulunmaktadır.",
+        "KRC": "İç Kontrol Sistemi Kurum genelinde kurulmuş olup, pratikte uygulama eksiklikleri bulunmaktadır.",
+        "GZL": "İç Kontrol Sistemi Kurum genelinde kurulmuş olup, pratikte uygulama eksiklikleri bulunmaktadır."
+      }
+    },
+    {
+      "id": 54,
+      "code": "G-54",
+      "name": "Stratejik Hedeflerde sürdürülebilirlik kriterleri",
+      "reason": "Vizyon: Sürdürülebilirliğin sadece \"kağıt üstünde\" mi yoksa kurumun ana hedefleri arasında mı olduğunu ölçer.",
+      "block": "G",
+      "subId": "g_uyum",
+      "articleLocal": 0.06,
+      "scores": {
+        "CYL": 1,
+        "KRC": 1,
+        "GZL": 1
+      },
+      "comments": {
+        "CYL": "Kurum Stratejik Planında spesifik sürdürülebilirlik hedefleri yer almamaktadır.",
+        "KRC": "Kurum Stratejik Planında spesifik sürdürülebilirlik hedefleri yer almamaktadır.",
+        "GZL": "Kurum Stratejik Planında spesifik sürdürülebilirlik hedefleri yer almamaktadır."
+      }
+    },
+    {
+      "id": 55,
+      "code": "G-55",
+      "name": "Şeffaflık (Raporlama)",
+      "reason": "Hesap Verilebilirlik: Verilerin (Örn: Gözlü'deki IPCC katsayıları) dış paydaşlara ne kadar açık sunulduğu.",
+      "block": "G",
+      "subId": "g_uyum",
+      "articleLocal": 0.06,
+      "scores": {
+        "CYL": 5,
+        "KRC": 5,
+        "GZL": 5
+      },
+      "comments": {
+        "CYL": "Kurum genelinde gerçekleştirilen faaliyetler sektör raporları ve faaliyet raporları halinde her yıl yayınlanmaktadır. Ayrıca İç ve Dış Denetim Faaliyetleri yürütülmektedir.",
+        "KRC": "Kurum genelinde gerçekleştirilen faaliyetler sektör raporları ve faaliyet raporları halinde her yıl yayınlanmaktadır. Ayrıca İç ve Dış Denetim Faaliyetleri yürütülmektedir.",
+        "GZL": "Kurum genelinde gerçekleştirilen faaliyetler sektör raporları ve faaliyet raporları halinde her yıl yayınlanmaktadır. Ayrıca İç ve Dış Denetim Faaliyetleri yürütülmektedir."
+      }
+    },
+    {
+      "id": 56,
+      "code": "G-56",
+      "name": "Denetlenebilirlik",
+      "reason": "Doğrulanabilirlik: Kanıtların (fatura, sayaç, rapor) denetime ne kadar hazır ve düzenli olduğu.",
+      "block": "G",
+      "subId": "g_uyum",
+      "articleLocal": 0.03,
+      "scores": {
+        "CYL": 5,
+        "KRC": 5,
+        "GZL": 5
+      },
+      "comments": {
+        "CYL": "Kurum genelinde gerçekleştirilen faaliyetler sektör raporları ve faaliyet raporları halinde her yıl yayınlanmaktadır. Ayrıca İç ve Dış Denetim Faaliyetleri yürütülmektedir.",
+        "KRC": "Kurum genelinde gerçekleştirilen faaliyetler sektör raporları ve faaliyet raporları halinde her yıl yayınlanmaktadır. Ayrıca İç ve Dış Denetim Faaliyetleri yürütülmektedir.",
+        "GZL": "Kurum genelinde gerçekleştirilen faaliyetler sektör raporları ve faaliyet raporları halinde her yıl yayınlanmaktadır. Ayrıca İç ve Dış Denetim Faaliyetleri yürütülmektedir."
+      }
+    },
+    {
+      "id": 57,
+      "code": "G-57",
+      "name": "İç Denetimin Bağımsızlık Düzeyi",
+      "reason": "Denetim Güvencesi: Denetçinin tarafsızlığı, sürdürülebilirlik verilerinin doğruluğu için en kritik \"yönetişim\" şartıdır.",
+      "block": "G",
+      "subId": "g_uyum",
+      "articleLocal": 0.09,
+      "scores": {
+        "CYL": 5,
+        "KRC": 5,
+        "GZL": 5
+      },
+      "comments": {
+        "CYL": "İç Denetim, Üst Yöneticiye direkt bağlı olarak hiyerarşik yapıda yer almakta ve 2022 yılından itibaren faaliyetlerini kesintisiz sürdürmektedir.",
+        "KRC": "İç Denetim, Üst Yöneticiye direkt bağlı olarak hiyerarşik yapıda yer almakta ve 2022 yılından itibaren faaliyetlerini kesintisiz sürdürmektedir.",
+        "GZL": "İç Denetim, Üst Yöneticiye direkt bağlı olarak hiyerarşik yapıda yer almakta ve 2022 yılından itibaren faaliyetlerini kesintisiz sürdürmektedir."
+      }
+    },
+    {
+      "id": 58,
+      "code": "G-58",
+      "name": "Sürdürülebilirlik Denetimi geçmişi",
+      "reason": "Öğrenme Eğrisi: Kurumun daha önce bu denetimlerden geçip geçmediği ve iyileşme hızı.",
+      "block": "G",
+      "subId": "g_uyum",
+      "articleLocal": 0.048,
+      "scores": {
+        "CYL": 1,
+        "KRC": 1,
+        "GZL": 1
+      },
+      "comments": {
+        "CYL": "Henüz işletmede sürdürülebilirlik denetimi uygulanmamıştır",
+        "KRC": "Henüz işletmede sürdürülebilirlik denetimi uygulanmamıştır",
+        "GZL": "Henüz işletmede sürdürülebilirlik denetimi uygulanmamıştır"
+      }
+    },
+    {
+      "id": 59,
+      "code": "G-59",
+      "name": "Sertifikasyon(ISO,Global GAP, İTU, Helal Gıda, vb)",
+      "reason": "Kalite Kanıtı: Üretilen tohum ve damızlıkların uluslararası standartlarda sertifikalandırılması, pazara erişim ve güven için esastır.",
+      "block": "G",
+      "subId": "g_tedarik",
+      "articleLocal": 0.06,
+      "scores": {
+        "CYL": 3,
+        "KRC": 4,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "2021 yılından beri işletme bünyesinde İTU devam ettirilmektedir. Uygulamada eksiklikler bulunmaktadır.",
+        "KRC": "2019 yılından beri  işletme bünyesinde pilot işletme olarak başlanılan İTU devam ettirilmektedir. Uygulamada eksiklikler bulunmaktadır.",
+        "GZL": "2021 yılından beri işletme bünyesinde İTU devam ettirilmektedir. Uygulamada eksiklikler bulunmaktadır."
+      }
+    },
+    {
+      "id": 60,
+      "code": "G-60",
+      "name": "Kalite Yönetim Sistemi",
+      "reason": "Süreç Disiplini: Operasyonların standartlara bağlılığı ve hata payının minimize edilmesini sağlayan kurumsal disiplindir.",
+      "block": "G",
+      "subId": "g_tedarik",
+      "articleLocal": 0.06,
+      "scores": {
+        "CYL": 3,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Kurum genelinde Kalite Yönetim Sistemi çalışmaları devam etmektedir;",
+        "KRC": "Kurum genelinde Kalite Yönetim Sistemi çalışmaları devam etmektedir;",
+        "GZL": "Kurum genelinde Kalite Yönetim Sistemi çalışmaları devam etmektedir;"
+      }
+    },
+    {
+      "id": 61,
+      "code": "G-61",
+      "name": "Tedarikçi Coğrafi konumu (300 km)",
+      "reason": "Lojistik Risk: Tedarikçilerin yakınlığı, nakliye maliyetini ve lojistik kaynaklı karbon ayak izini doğrudan etkiler.",
+      "block": "G",
+      "subId": "g_tedarik",
+      "articleLocal": 0.04000000000000001,
+      "scores": {
+        "CYL": 2,
+        "KRC": 2,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "Yerel tedarik imkanı kısıtlı; lojistik bağımlılığı yüksek.",
+        "KRC": "Tedarikçilerin çoğunun bölge dışı merkezlerden seçildiği bildirilmiştir. Bu yapı lojistik mesafeyi ve taşıma kaynaklı emisyonları artırabilir.",
+        "GZL": "Konya merkezli tedarikçi ekosistemine yakınlık, lojistik mesafeyi azaltabilecek bir unsur olarak değerlendirilmiştir."
+      }
+    },
+    {
+      "id": 62,
+      "code": "G-62",
+      "name": "Tedarikçi Sürdürülebilirlik Kriterleri",
+      "reason": "Sorumlu Satın Alma: TİGEM'in sadece kendi değil, alım yaptığı firmaların da çevresel/sosyal standartlara uymasını beklemesi (ESG olgunluğu).",
+      "block": "G",
+      "subId": "g_tedarik",
+      "articleLocal": 0.06,
+      "scores": {
+        "CYL": 2,
+        "KRC": 2,
+        "GZL": 2
+      },
+      "comments": {
+        "CYL": "Tedarikçi seçiminde çevresel, sosyal, etik ve veri güvenliği kriterlerinin kullanıldığına ilişkin kanıt sunulmamıştır.",
+        "KRC": "Tedarikçi seçiminde çevresel, sosyal, etik ve veri güvenliği kriterlerinin kullanıldığına ilişkin kanıt sunulmamıştır.",
+        "GZL": "Tedarikçi seçiminde çevresel, sosyal, etik ve veri güvenliği kriterlerinin kullanıldığına ilişkin kanıt sunulmamıştır."
+      }
+    },
+    {
+      "id": 63,
+      "code": "G-63",
+      "name": "Paydaş Etki Ölçümü",
+      "reason": "Dışsal Risk: İşletme faaliyetlerinin tedarikçiler ve yerel halk üzerindeki etkisinin düzenli olarak ölçülmesidir.",
+      "block": "G",
+      "subId": "g_tedarik",
+      "articleLocal": 0.04000000000000001,
+      "scores": {
+        "CYL": 2,
+        "KRC": 2,
+        "GZL": 2
+      },
+      "comments": {
+        "CYL": "İşletme faaliyetlerinin çalışanlar, tedarikçiler, yerel halk ve diğer paydaşlar üzerindeki etkisini düzenli ölçen bir sistem gösterilmemiştir.",
+        "KRC": "İşletme faaliyetlerinin çalışanlar, tedarikçiler, yerel halk ve diğer paydaşlar üzerindeki etkisini düzenli ölçen bir sistem gösterilmemiştir.",
+        "GZL": "İşletme faaliyetlerinin çalışanlar, tedarikçiler, yerel halk ve diğer paydaşlar üzerindeki etkisini düzenli ölçen bir sistem gösterilmemiştir."
+      }
+    },
+    {
+      "id": 64,
+      "code": "G-64",
+      "name": "Veri Güvenliği ve Gizlilik",
+      "reason": "Bilgi Güvenliği: Stratejik tarım verilerinin (gen kaynakları, verim projeksiyonları vb.) korunması ve siber risk yönetimidir.",
+      "block": "G",
+      "subId": "g_tedarik",
+      "articleLocal": 0.06,
+      "scores": {
+        "CYL": 4,
+        "KRC": 4,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "İşletmede Kurum bünyesinde oluşturulmuş bilgi güvenliği politikaları doğrultusunda parolalı erişim ve veri yedekleme yapılmaktadır.",
+        "KRC": "İşletmede Kurum bünyesinde oluşturulmuş bilgi güvenliği politikaları doğrultusunda parolalı erişim ve veri yedekleme yapılmaktadır.",
+        "GZL": "İşletmede Kurum bünyesinde oluşturulmuş bilgi güvenliği politikaları doğrultusunda parolalı erişim ve veri yedekleme yapılmaktadır."
+      }
+    },
+    {
+      "id": 65,
+      "code": "G-65",
+      "name": "Kurumsal Risk Yönetimi",
+      "reason": "Stratejik Şemsiye: İklim değişikliği, kur farkı ve arz güvenliği gibi risklerin kurum düzeyinde nasıl tanımlandığı ve yönetildiğidir.",
+      "block": "G",
+      "subId": "g_tedarik",
+      "articleLocal": 0.08000000000000002,
+      "scores": {
+        "CYL": 2,
+        "KRC": 2,
+        "GZL": 2
+      },
+      "comments": {
+        "CYL": "Kurumsal Risk Yönetimi uygulamaları Kurum genelinde henüz başlangıç düzeyindedir.",
+        "KRC": "Kurumsal Risk Yönetimi uygulamaları Kurum genelinde henüz başlangıç düzeyindedir.",
+        "GZL": "Kurumsal Risk Yönetimi uygulamaları Kurum genelinde henüz başlangıç düzeyindedir."
+      }
+    },
+    {
+      "id": 66,
+      "code": "FO-66",
+      "name": "Birim Alan Verimi",
+      "reason": "Arazi Verimliliği: Toprak varlığının finansal değere dönüşme oranı. Operasyonel başarının finansal tablolardaki karşılığıdır.",
+      "block": "FO",
+      "subId": "fo_finans",
+      "articleLocal": 0.03,
+      "scores": {
+        "CYL": 4,
+        "KRC": 5,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "İklimsel risklere rağmen yüksek teknolojiyle stabilize verim hedefleri gerçekleştirilmektedir.",
+        "KRC": "Verim raporunda 476 kg/da değeri bulunduğu bildirilmiştir.",
+        "GZL": "Bölgesel kuraklığa rağmen sulama ile korunan yüksek verim."
+      }
+    },
+    {
+      "id": 67,
+      "code": "FO-67",
+      "name": "Hayvansal Verimlilik",
+      "reason": "Varlık Performansı: Hayvancılık yatırımlarının geri dönüş hızı. Bitkisel üretime göre daha spesifik bir alan olduğu için payı dengelenmiştir.",
+      "block": "FO",
+      "subId": "fo_finans",
+      "articleLocal": 0.020000000000000004,
+      "scores": {
+        "CYL": 4,
+        "KRC": 4,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "Hacim ve Ekonomi Ölçeği: 13.000 baş damızlık satışı ve 256 ton yapağı ile devasa bir ciro yaratır. Ancak çok büyük ölçekli sürülerde (130 bin baş) birim maliyet yönetimi Gözlü kadar \"yalın\" olmayabilir.",
+        "KRC": "Yüksek Katma Değerli Ürün: Atçılık (Arap Atı) birimi, birim başına en yüksek kâr marjını sağlayan koldur. Sığırcılıkta döl verimi rekor seviyededir ancak %9,2'lik buzağı kaybı finansal bir \"fire/maliyet\" unsurudur.",
+        "GZL": "Yüksek Brüt Marj & Verimlilik: Sığırcılıkta günlük 24,5 kg süt verimi ve %100'e yakın süt satış oranıyla nakit akışı en güçlü işletmedir. Düşük ölüm oranları (%2) ve yüksek döl verimi (%95) sayesinde \"boşa giden maliyet\" (kayıp) en azdır."
+      }
+    },
+    {
+      "id": 68,
+      "code": "FO-68",
+      "name": "Dış Girdi Bağımlılığı",
+      "reason": "Ekonomik Direnç: İthal tohum, ilaç veya dövize endeksli girdilere olan bağımlılık seviyesi. Kur riskine karşı işletmenin dayanıklılığını ölçer.",
+      "block": "FO",
+      "subId": "fo_finans",
+      "articleLocal": 0.04000000000000001,
+      "scores": {
+        "CYL": 4,
+        "KRC": 3,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "33 bin tonluk yem kullanımı devasa bir dış girdi gibi görünse de, işletmenin devasa tarım arazilerinde kendi kaba yemini (silaj, yonca) üretme kapasitesi bu bağımlılığı dengeler. Ancak lojistik maliyetleri ölçek nedeniyle bir risk unsurudur.",
+        "KRC": "Sınırlı mera varlığı ve atçılık faaliyetlerindeki özel rasyon ihtiyacı, dışarıdan girdi teminini artırabilecek unsurlardır.",
+        "GZL": "Tabi mera varlığının %37 düzeyinde olması ve mera kullanımının yem ihtiyacını kısmen karşılaması dış girdi bağımlılığını azaltabilir."
+      }
+    },
+    {
+      "id": 69,
+      "code": "FO-69",
+      "name": "Üretim Maliyet Hesaplamaları",
+      "reason": "Mali Disiplin: Sürdürülebilirliğin temeli doğru ölçümdür. Girdi maliyetlerinin (enerji, su, gübre) hassas takibi, verimlilik kararları için en kritik veridir.",
+      "block": "FO",
+      "subId": "fo_finans",
+      "articleLocal": 0.05,
+      "scores": {
+        "CYL": 4,
+        "KRC": 4,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "Bilanço alt tablolarında maliyet unsur hesaplamaları yapılmaktadır.",
+        "KRC": "Bilanço alt tablolarında maliyet unsur hesaplamaları yapılmaktadır.",
+        "GZL": "Bilanço alt tablolarında maliyet unsur hesaplamaları yapılmaktadır."
+      }
+    },
+    {
+      "id": 70,
+      "code": "FO-70",
+      "name": "İşletme Karlılığı",
+      "reason": "Süreklilik: TİGEM bir kamu kurumu olsa da, kendi yatırımlarını finanse edebilmesi için operasyonel kâr üretmesi \"ekonomik sürdürülebilirlik\" gereğidir.",
+      "block": "FO",
+      "subId": "fo_finans",
+      "articleLocal": 0.03,
+      "scores": {
+        "CYL": 4,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "2023-2024 yılı kayıtlarında işletme karlılığı raporlanmaktadır.                         ( Net Kar Marjı:\n Net Kar / Satışlar=yaklaşık %30)",
+        "KRC": "Kamu işletmesi niteliği nedeniyle kârlılık yalnızca özel şirket net kârı gibi yorumlanmamalıdır. Faaliyet geliri, faaliyet gideri, kamu hizmeti maliyeti, yatırım harcaması ve sübvansiyon/transfer etkisi",
+        "GZL": "Kamu işletmesi niteliği nedeniyle kârlılık yalnızca özel şirket net kârı gibi yorumlanmamalıdır. Faaliyet geliri, faaliyet gideri, kamu hizmeti maliyeti, yatırım harcaması ve sübvansiyon/transfer etkisi"
+      }
+    },
+    {
+      "id": 71,
+      "code": "FO-71",
+      "name": "Üretim Kayıpları",
+      "reason": "İsrafın Önlenmesi: Hasat sonrası kayıpların ve verimsizliğin nakit akışına verdiği zarar. \"Sıfır Atık\" ve verimlilik odaklı denetimin mali ayağıdır.",
+      "block": "FO",
+      "subId": "fo_finans",
+      "articleLocal": 0.03,
+      "scores": {
+        "CYL": 4,
+        "KRC": 4,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "Hasat kayıpları hesaplanarak tablolara yansıtılmaktadır;",
+        "KRC": "Hasat kayıpları hesaplanarak mali  tablolara yansıtılmaktadır;",
+        "GZL": "Hasat kayıpları hesaplanarak  mali tablolara yansıtılmaktadır;"
+      }
+    },
+    {
+      "id": 72,
+      "code": "FO-72",
+      "name": "Stok Devir Hızı",
+      "reason": "Lojistik Verimlilik: Girdilerin (gübre, tohum, ilaç) depoda bekleme süresi. Sermayenin bağlanmaması ve ürün bozulma riskinin yönetimidir.",
+      "block": "FO",
+      "subId": "fo_oper",
+      "articleLocal": 0.03,
+      "scores": {
+        "CYL": 3,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Ambar kayıtları tutulmakla birlikte dijitalizasyon ve stok takip sistemi geliştirilmelidir.",
+        "KRC": "Ambar kayıtları tutulmakla birlikte dijitalizasyon ve stok takip sistemi geliştirilmelidir.",
+        "GZL": "Ambar kayıtları tutulmakla birlikte dijitalizasyon ve stok takip sistemi geliştirilmelidir."
+      }
+    },
+    {
+      "id": 73,
+      "code": "FO-73",
+      "name": "Uluslararası Kalite Standartlarına Uyum",
+      "reason": "Standardizasyon: ISO 9001, 14001 gibi belgeler. Süreçlerin sadece yerel değil, küresel standartlarda yönetildiğinin kanıtıdır.",
+      "block": "FO",
+      "subId": "fo_oper",
+      "articleLocal": 0.03,
+      "scores": {
+        "CYL": 3,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "İTU ve Kalite Belgelendirme Faaliyetleri devam etmektedir",
+        "KRC": "İTU ve Kalite Belgelendirme Faaliyetleri devam etmektedir",
+        "GZL": "İTU ve Kalite Belgelendirme Faaliyetleri devam etmektedir"
+      }
+    },
+    {
+      "id": 74,
+      "code": "FO-74",
+      "name": "Üretimde Teknoloji Kullanımı",
+      "reason": "Modernizasyon Gücü: Akıllı tarım, GPS'li traktörler ve hassas sulama sistemlerinin varlığı. Verimliliğin en büyük teknolojik kaldıracıdır.",
+      "block": "FO",
+      "subId": "fo_oper",
+      "articleLocal": 0.05,
+      "scores": {
+        "CYL": 4,
+        "KRC": 4,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "Bölge ve ülke koşullarına öncülük edecek teknolojik üretim altyapısı yanı sıra geleneksel üretim teknolojileri de bulunmaktadır.",
+        "KRC": "Makine parkı, kullanım süresi, kapasite ve bakım kayıtlarının bulunması yüksek bir varlık yönetimi kapasitesine işaret etmektedir.",
+        "GZL": "Makine parkı, kullanım süresi, kapasite ve bakım kayıtlarının bulunması yüksek bir varlık yönetimi kapasitesine işaret etmektedir."
+      }
+    },
+    {
+      "id": 75,
+      "code": "FO-75",
+      "name": "Verilerin Bilgi Teknolojileri ile takibi",
+      "reason": "Veri Güvenilirliği: Denetimin temelidir. Elle tutulan kayıt yerine dijital (ERP/Bulut) takibi, verinin doğrulanabilirliğini ve şeffaflığını garanti eder.",
+      "block": "FO",
+      "subId": "fo_oper",
+      "articleLocal": 0.05,
+      "scores": {
+        "CYL": 4,
+        "KRC": 4,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "Teknolojik takip sitemleri uygulamaları kullanılmaktadır; yeni proje ve hızlı altyapı adaptasyonu önerilmektedir.",
+        "KRC": "Teknolojik takip sitemleri uygulamaları kullanılmaktadır; yeni proje ve hızlı altyapı adaptasyonu önerilmektedir.",
+        "GZL": "Teknolojik takip sitemleri uygulamaları kullanılmaktadır; yeni proje ve hızlı altyapı adaptasyonu önerilmektedir."
+      }
+    },
+    {
+      "id": 76,
+      "code": "FO-76",
+      "name": "Makine ve Ekipman Kullanım Oranı",
+      "reason": "Kapasite Verimliliği: Atıl makine parkının önlenmesi. Mevcut varlıkların ne kadar efektif kullanıldığını ve bakım-onarım başarısını gösterir.",
+      "block": "FO",
+      "subId": "fo_oper",
+      "articleLocal": 0.04000000000000001,
+      "scores": {
+        "CYL": 5,
+        "KRC": 5,
+        "GZL": 5
+      },
+      "comments": {
+        "CYL": "Makine ve ekipman kullanımı yüksek kapasite ile devam etmekte; makine ekipman bakım onarım işlemleri yürütülmektedir.",
+        "KRC": "Makine ve ekipman kullanımı yüksek kapasite ile devam etmekte; makine ekipman bakım onarım işlemleri yürütülmektedir.",
+        "GZL": "Makine ve ekipman kullanımı yüksek kapasite ile devam etmekte; makine ekipman bakım onarım işlemleri yürütülmektedir."
+      }
+    },
+    {
+      "id": 77,
+      "code": "FO-77",
+      "name": "Üretim Performansı ve Döl Verimi Çıkarımları",
+      "reason": "Üretim İzleme: Teknik kayıtların tutulma kalitesi ve döl verimindeki istikrarın analitik takibidir.",
+      "block": "FO",
+      "subId": "fo_hayvan",
+      "articleLocal": 0.025,
+      "scores": {
+        "CYL": 4,
+        "KRC": 4,
+        "GZL": 5
+      },
+      "comments": {
+        "CYL": "Koyunculukta yaklaşık %122, keçicilikte %130 ve sığırcılıkta %90 doğum oranları üretim kayıtlarının izlendiğini göstermektedir.",
+        "KRC": "Sığrcılıkta %99 gibi teorik limitlerde bir doğum oranı yakalamış olsa da, küçükbaş ve atçılık gibi farklı kolların toplam verimlilik ortalamasındaki varyasyonu nedeniyle Gözlü'nün bir adım gerisindedir.",
+        "GZL": "Sığırcılıkta yaklaşık %95,1 doğum oranı ve koyunculukta yaklaşık %129 kuzu doğum oranı yüksek üretim sonuçları olarak değerlendirilmiştir."
+      }
+    },
+    {
+      "id": 78,
+      "code": "FO-78",
+      "name": "Besleme ve Girdi Yönetimi Çıkarımları",
+      "reason": "Nexus ve Maliyet: Rasyon yönetimi ve yem verimliliği. Bitkisel üretimle olan \"yem-gübre\" döngüsünün en kritik maliyet ayağıdır.",
+      "block": "FO",
+      "subId": "fo_hayvan",
+      "articleLocal": 0.03,
+      "scores": {
+        "CYL": 4,
+        "KRC": 4,
+        "GZL": 5
+      },
+      "comments": {
+        "CYL": "33 bin tona yakın kesif yem kullanımında; fresh sığır, kuru dönem, başlangıç ve büyütme yemleri gibi çok katmanlı bir rasyon yönetimi izlenmektedir.  Küçükbaş birimine ayrılan payın %55 olduğu bilgisi mera-yem kullanım yapısını açıklar. Bu, iyi yem verimliliği yönetimi olarak değerlendirilmiştir.",
+        "KRC": "Sığır ve safkan Arap atları için farklı rasyonların kullanılması, tür ve faaliyet bazında teknik besleme ihtiyacının dikkate alındığını göstermektedir.",
+        "GZL": "İşletme bünyesinde Kurum bünyesinde yer alan diğer işletmelerin de rasyon ihtiyacını karşılayan yem fabrikası mevcut;%37'lik mera kullanımıyla ve işletmeler arasında en yüksek süt verimi (24,5 kg)  göstermesi rasyon dengesine katkı sağlıyor şeklinde değerlendirilmiştir."
+      }
+    },
+    {
+      "id": 79,
+      "code": "FO-79",
+      "name": "Ürün Çeşitliliği ve Yan Ürün Ekonomisi",
+      "reason": "Döngüsellik: Gübre, biyokütle veya farklı hayvansal ürünlerin ekonomiye kazandırılmasıyla sağlanan ek katma değerdir.",
+      "block": "FO",
+      "subId": "fo_hayvan",
+      "articleLocal": 0.015,
+      "scores": {
+        "CYL": 5,
+        "KRC": 3,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "256 tonluk yapağı hacmiyle tekstil sanayisine katkı sağlamaktadır. Keçicilikteki yüksek sağım oranı (%70) ve tiftik üretimi, işletmenin yüksek kapasite yan ürün yönetimi yaptığı ve biyolojik çıktı israfını minimize ettiği yargısını sağlamıştır. Süt verimi (1,36 kg/gün) ve sağım oranının (%70) yüksekliği, işletmenin süt odaklı ve ekonomik olarak karlı bir alt dal olarak yönetildiği sonucuna varılmıştır.",
+        "KRC": "Atçılık ve süt üretimindeki uzmanlaşma, belirli yüksek değerli ürün alanları oluşturmaktadır. Ancak yan ürün hacmi de göz önüne alınarak değerlendirilmiştir.",
+        "GZL": "Koyun sütünün tamamının ve sığır sütünün büyük bölümünün satışa aktarıldığı bilgisi, ürün kayıplarının sınırlı olabileceğini göstermektedir."
+      }
+    },
+    {
+      "id": 80,
+      "code": "FO-80",
+      "name": "Birim Hayvan Başına Üretim Performansı",
+      "reason": "Verimlilik: Hayvan başına alınan süt veya et miktarı. Kaynakların (su/enerji) ne kadar efektif ürüne dönüştüğünü gösterir.",
+      "block": "FO",
+      "subId": "fo_hayvan",
+      "articleLocal": 0.03,
+      "scores": {
+        "CYL": 4,
+        "KRC": 4,
+        "GZL": 5
+      },
+      "comments": {
+        "CYL": "Büyük sürü ölçeğine rağmen günlük yaklaşık 20,82 kg sağmal veriminin korunması olumlu bir hayvan başına üretim göstergesidir.",
+        "KRC": "Hayvan başına üretim performansının kabul edilebilir düzeyde olduğu, ancak işletmeler arası teknik verim karşılaştırmasında Gözlü’nün gerisinde kaldığı değerlendirilmiştir.",
+        "GZL": "Günlük 24,51 kg süt verimi ile işletmeler arasında  en verimli performansa sahiptir."
+      }
+    },
+    {
+      "id": 81,
+      "code": "FO-81",
+      "name": "Sürü Sağlığı ve Yaşatma Başarısı",
+      "reason": "Operasyonel Etik: Hayvan refahının ve işletme devamlılığının en somut verisidir. Düşük ölüm oranları doğrudan verimlilik demektir.",
+      "block": "FO",
+      "subId": "fo_hayvan",
+      "articleLocal": 0.0375,
+      "scores": {
+        "CYL": 4,
+        "KRC": 3,
+        "GZL": 5
+      },
+      "comments": {
+        "CYL": "\"Düşük Mortalite (Ölüm) Oranları: Buzağılarda %3,5, kuzularda ise %4,9 seviyesindeki ölüm oranları, \"Hayvan Refahı\"kriterlerine göre yüksek performansa işaret ettiği değerlendirilmiştir;",
+        "KRC": "Sığırcılıkta %9,2 ölüm oranı, sürü sağlığı yönetiminde ciddi bir risk ve iyileştirme alanı olduğunu gösterir.",
+        "GZL": "1.819 doğan buzağıdan 37’sinin öldüğü ve ölüm oranının yaklaşık %2,03 olduğu bildirilmiştir. Koyunlarda 23.523 doğuma karşılık 704 ölüm bilgisi yaklaşık %2,99 oranına karşılık gelmektedir. Bu değerler düşük kayıp oranı şeklinde değerlendirilmiştir."
+      }
+    },
+    {
+      "id": 82,
+      "code": "FO-82",
+      "name": "Genetik Çoğaltım ve Döl Verimi Verimliliği",
+      "reason": "Islah Başarısı: İşletmenin kendi sürüsünü ve dışarıya satacağı damızlık kalitesini iyileştirme gücünü ölçer.",
+      "block": "FO",
+      "subId": "fo_hayvan",
+      "articleLocal": 0.0375,
+      "scores": {
+        "CYL": 4,
+        "KRC": 5,
+        "GZL": 5
+      },
+      "comments": {
+        "CYL": "Yaklaşık %122 kuzu doğum oranı ve damızlık üretimi, genetik çoğaltım faaliyetinin sürdürüldüğünü göstermektedir.",
+        "KRC": "%99,7 buzağılama oranı ile biyolojik kapasiteyi iyi kullandığı değerlendirmesi yapılmıştır.",
+        "GZL": "Sığırlarda yaklaşık %95, kuzularda %129 döl verimi bildirimi olumlu bir genetik ve sürü yönetimi performansı şeklinde değerlendirilmiştir."
+      }
+    },
+    {
+      "id": 83,
+      "code": "FO-83",
+      "name": "Bölgesel Gıda Güvenliği ve Damızlık Arzı",
+      "reason": "Temel Misyon: TİGEM'in hayvancılıkta var olma sebebidir. Yerel çiftçiye sağlanan genetik katkı, sosyal ve ekonomik sürdürülebilirliğin zirvesidir.",
+      "block": "FO",
+      "subId": "fo_hayvan",
+      "articleLocal": 0.05,
+      "scores": {
+        "CYL": 5,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Yıllık yaklaşık 13.000 baş (9.861 koyun + 2.992 sığır) damızlık satışı yapılmaktadır.",
+        "KRC": "Atçılık ve sınırlı sığır damızlığı faaliyetleri, işletmenin belirli genetik kaynak ve üretim alanlarında katkı sunduğunu göstermektedir.",
+        "GZL": "Hayvancılıkta butik ve verim odaklı yapısı nedeniyle toplam üretim hacminde Ceylanpınar'ın stratejik ağırlığının gerisindedir."
+      }
+    },
+    {
+      "id": 84,
+      "code": "FO-84",
+      "name": "Çevresel Emisyon Yoğunluğu (Karbon Ayak İzi)",
+      "reason": "Çevresel Etki: Hayvancılık kaynaklı metan emisyonu ve atık yönetimi riskidir. Modern ESG raporlamasının vazgeçilmezidir.",
+      "block": "FO",
+      "subId": "fo_hayvan",
+      "articleLocal": 0.025,
+      "scores": {
+        "CYL": 4,
+        "KRC": 3,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "1 kg sığır sütü başına hesaplanan 1,18 kg CO₂e değeri; koyun eti üretimi için hesaplanan 375 kg CO₂e/kg et değeri; işletmenin hayvanları önemli ölçüde kesim amacıyla değil, damızlık olarak canlı satması; işletme sınırlarında yer alan biyogaz tesisinin gübre kaynaklı organik materyali enerji üretiminde değerlendirmesi, emisyon azaltımı ve döngüsel kaynak kullanımı bakımından olumlu bir kontrol uygulaması olarak dikkate alınmıştır.",
+        "KRC": "Yüksek döl verimi sayesinde \"buzağı başına karbon maliyeti\" düşüktür, ancak ölüm oranları bu verimliliği bir miktar gölgelemektedir.",
+        "GZL": "Yüksek süt verimi ve düşük hayvan kaybı oranı nedeniyle, birim ürün başına emisyonun azalması olumlu değerlendirilmiştir."
+      }
+    },
+    {
+      "id": 85,
+      "code": "FO-85",
+      "name": "Tarımsal Yoğunluk ve Birim Maliyet Yönetimi",
+      "reason": "Ekonomik Sürdürülebilirlik: Girdi maliyetlerinin (gübre, tohum, ilaç) birim verime oranıdır. İşletmenin kârlılığını doğrudan belirleyen en temel operasyonel veridir.",
+      "block": "FO",
+      "subId": "fo_bitki",
+      "articleLocal": 0.105,
+      "scores": {
+        "CYL": 4,
+        "KRC": 5,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "Yaklaşık toplam ekilebilir alanı 966 bin dekar büyüklüğündeki üretim alanının %83’ünde gelişmiş sulama sistemlerinin kullanılması, sulama faaliyetlerinin geniş bir alanda mekanize ve standartlaştırılmış biçimde yürütüldüğünü göstermektedir. Pivot sistemlerinin kullanılması, sulama uygulamalarının daha düzenli izlenmesine ve alan başına girdi kullanımının yönetilmesine katkı sağlayabilecek bir altyapı unsuru olarak değerlendirilmiştir. Göstergenin puanlanmasında sulanan alan, kullanılan su ve enerji miktarı, bakım–işletme giderleri ve dekar başına üretim maliyeti birlikte dikkate alınmıştır",
+        "KRC": "Gider tablosunda görülen mısır silajı ve yonca kalemlerindeki yoğun harcama, \"İntansif Tarım\" (Birim alandan yüksek verim) başarısını gösterir. Hayvancılığa doğrudan destek olduğu için finansal verimliliği yüksek olarak değerlendirilmiştir.",
+        "GZL": "Güzlük hububat ağırlıklı üretim ve daha sınırlı ürün çeşitliliği, girdi planlamasını daha az riskli hale getirdiği değerlendirilmiştir."
+      }
+    },
+    {
+      "id": 86,
+      "code": "FO-86",
+      "name": "Toprak Hazırlığı ve Koruyucu Tarım Kalitesi",
+      "reason": "Varlık Yönetimi: Doğrudan ekim veya minimum toprak işleme gibi yöntemlerin kalitesidir. Toprağın uzun vadeli sağlığını ve su tutma kapasitesini korur.",
+      "block": "FO",
+      "subId": "fo_bitki",
+      "articleLocal": 0.0875,
+      "scores": {
+        "CYL": 3,
+        "KRC": 4,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Geniş alanlarda toprağın sürekli işlenmesi ve ağır mekanizasyon kullanımı, \"toprak sıkışması\" riski taşımaktadır. Bununla birlikte gübreleme işlemlerine temel oluşturmak üzere her ekim öncesi toprak analizleri yaptırılmaktadır.",
+        "KRC": "Devasa alanlarda toprağın sürekli işlenmesi ve ağır mekanizasyon kullanımı, \"toprak sıkışması\" riski taşımaktadır. Bununla birlikte gübreleme işlemlerine temel oluşturmak üzere her ekim öncesi toprak analizleri yaptırılmaktadır.Hayvancılık atıklarının (gübre) bitkisel üretime geri kazandırılması (döngüsellik), toprak organik maddesinin korunmasında büyük avantaj sağlar.",
+        "GZL": "Geniş alanlarda toprağın sürekli işlenmesi ve ağır mekanizasyon kullanımı, \"toprak sıkışması\" riski taşımaktadır. Bununla birlikte gübreleme işlemlerine temel oluşturmak üzere her ekim öncesi toprak analizleri yaptırılmaktadır."
+      }
+    },
+    {
+      "id": 87,
+      "code": "FO-87",
+      "name": "Tarımsal Girdi Kaynaklı Karbon Ayak İzi",
+      "reason": "Çevresel Etki: Gübre ve mazot kullanımı kaynaklı emisyonların takibidir. Yeşil Mutabakat ve modern sürdürülebilirlik denetiminin \"emisyon\" ayağını temsil eder.",
+      "block": "FO",
+      "subId": "fo_bitki",
+      "articleLocal": 0.06999999999999999,
+      "scores": {
+        "CYL": 2,
+        "KRC": 3,
+        "GZL": 3
+      },
+      "comments": {
+        "CYL": "Elektrik tüketiminden kaynaklandığı hesaplanan yaklaşık 143 milyon kg CO₂e emisyon ve yüksek akaryakıt kullanımı, tarımsal üretim girdilerinin karbon yoğunluğunun yüksek olduğunu göstermektedir. Bu durum, Tarımsal Girdi Kaynaklı Karbon Ayak İzi göstergesinin puanını aşağı çeken temel unsur olarak değerlendirilmiştir.",
+        "KRC": "Elektrik, kömür, LPG, CNG, benzin ve motorin tüketimlerini içeren ayrıntılı enerji envanteri, girdi kaynaklı emisyonların kaynak bazında izlenebildiğini göstermektedir. Bununla birlikte yaklaşık 55,8 milyon kg CO₂ emisyonu düzeyindeki hesaplama ve yüksek motorin/elektrik kullanımı çevresel maruziyetin sınırlı olmadığını göstermektedir.",
+        "GZL": "Daha sınırlı üretim ölçeği ve mera kullanımının dış yem ihtiyacını azaltabilmesi, girdi kaynaklı emisyonların yönetimi bakımından olumlu olabilir."
+      }
+    },
+    {
+      "id": 88,
+      "code": "FO-88",
+      "name": "Ürün Deseninde Stratejik Esneklik",
+      "reason": "İklim ve Pazar Uyumu: TİGEM'in arz güvenliği misyonudur. Kuraklık veya piyasa talebine göre ürün desenini (buğday, mısır vb.) hızla güncelleyebilme yeteneğidir.",
+      "block": "FO",
+      "subId": "fo_bitki",
+      "articleLocal": 0.0875,
+      "scores": {
+        "CYL": 5,
+        "KRC": 4,
+        "GZL": 4
+      },
+      "comments": {
+        "CYL": "Hububat, yağlı tohumlar ve mısır gibi farklı ürün gruplarının üretim planında yer alması, işletmenin ürün çeşitliliğini ve değişen üretim koşullarına uyum kapasitesini artırmaktadır. Ürün deseninin sertifikalı tohumluk üretimi ve gıda arzının sürekliliğine ilişkin kurumsal misyonla uyumlu olması, Ürün Deseninde Stratejik Esneklik göstergesi bakımından olumlu değerlendirilmiştir.",
+        "KRC": "Ürün deseninde yem bitkileri ve tohumluk üretiminin birlikte bulunması, hayvansal üretimi destekleyen ve gelir kaynaklarını çeşitlendiren bir yapı olarak değerlendirilmiştir.",
+        "GZL": "Güzlük hububat ve belirli tohumluk ürünlerine dayalı yapı, bölgesel iklim ve kuraklık koşullarına uyum sağlayabilecek bir üretim planı sağlaması yönüyle değerlendirilmiştir."
+      }
+    }
+  ],
+  "matrices": [
+    {
+      "id": "blocks_new",
+      "title": "Ana bloklar — Yeni AHP",
+      "group": "Ana blok",
+      "kind": "blocks",
+      "block": null,
+      "subId": null,
+      "labels": [
+        "E – Çevre",
+        "S – Sosyal",
+        "G – Yönetişim",
+        "FO – Finans ve Operasyon"
+      ],
+      "labelsFull": [
+        "E – Çevre",
+        "S – Sosyal",
+        "G – Yönetişim",
+        "FO – Finans ve Operasyon"
+      ],
+      "upper": [
+        [
+          3.0,
+          4.0,
+          7.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          2.0
+        ],
+        []
+      ]
+    },
+    {
+      "id": "blocks_article",
+      "title": "Ana bloklar — Makale",
+      "group": "Ana blok",
+      "kind": "blocks_article",
+      "block": null,
+      "subId": null,
+      "labels": [
+        "E – Çevre",
+        "S – Sosyal",
+        "G – Yönetişim",
+        "FO – Finans ve Operasyon"
+      ],
+      "labelsFull": [
+        "E – Çevre",
+        "S – Sosyal",
+        "G – Yönetişim",
+        "FO – Finans ve Operasyon"
+      ],
+      "upper": [
+        [
+          5.0,
+          6.0,
+          9.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          2.0
+        ],
+        []
+      ]
+    },
+    {
+      "id": "e_subs",
+      "title": "Çevre alt grupları",
+      "group": "Alt grup",
+      "kind": "subs",
+      "block": "E",
+      "subId": null,
+      "labels": [
+        "Enerji ve Emisyonlar",
+        "Su Yönetimi",
+        "Biyoçeşitlilik ve Toprak",
+        "Atıklar ve Kimyasallar"
+      ],
+      "labelsFull": [
+        "Enerji ve Emisyonlar",
+        "Su Yönetimi",
+        "Biyoçeşitlilik ve Toprak",
+        "Atıklar ve Kimyasallar"
+      ],
+      "upper": [
+        [
+          0.5,
+          0.33,
+          2.0
+        ],
+        [
+          0.5,
+          4.0
+        ],
+        [
+          6.0
+        ],
+        []
+      ]
+    },
+    {
+      "id": "s_subs",
+      "title": "Sosyal alt grupları",
+      "group": "Alt grup",
+      "kind": "subs",
+      "block": "S",
+      "subId": null,
+      "labels": [
+        "İşgücü / İstihdam",
+        "Çalışma Koşulları",
+        "Toplum/Kişisel Koruma"
+      ],
+      "labelsFull": [
+        "İşgücü / İstihdam",
+        "Çalışma Koşulları",
+        "Toplum/Kişisel Koruma"
+      ],
+      "upper": [
+        [
+          2.0,
+          0.5
+        ],
+        [
+          0.333333
+        ],
+        []
+      ]
+    },
+    {
+      "id": "g_subs",
+      "title": "Yönetişim alt grupları",
+      "group": "Alt grup",
+      "kind": "subs",
+      "block": "G",
+      "subId": null,
+      "labels": [
+        "Uyum ve Politika",
+        "Tedarik Zinciri ve Risk"
+      ],
+      "labelsFull": [
+        "Uyum ve Politika",
+        "Tedarik Zinciri ve Risk"
+      ],
+      "upper": [
+        [
+          2.0
+        ],
+        []
+      ]
+    },
+    {
+      "id": "fo_subs",
+      "title": "FO alt grupları",
+      "group": "Alt grup",
+      "kind": "subs",
+      "block": "FO",
+      "subId": null,
+      "labels": [
+        "Finansal",
+        "Operasyonel",
+        "Hayvancılık",
+        "Bitkisel Üretim"
+      ],
+      "labelsFull": [
+        "Finansal",
+        "Operasyonel",
+        "Hayvancılık",
+        "Bitkisel Üretim"
+      ],
+      "upper": [
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          1.0
+        ],
+        []
+      ]
+    },
+    {
+      "id": "e_enerji_ind",
+      "title": "Enerji ve Emisyonlar göstergeleri",
+      "group": "Gösterge",
+      "kind": "inds",
+      "block": "E",
+      "subId": "e_enerji",
+      "labels": [
+        "E-01",
+        "E-02",
+        "E-03",
+        "E-04",
+        "E-05",
+        "E-06",
+        "E-07"
+      ],
+      "labelsFull": [
+        "E-01 Enerji Kaynağı (Fosil, Elektrik, Yenilenebilir)",
+        "E-02 Yıllık toplam enerji tüketimi (kWh/litre)",
+        "E-03 Enerji verimliliği artırma uygulamaları",
+        "E-04 Yenilenebilir enerji kullanım oranı (%)",
+        "E-05 Karbon ayak izi hesaplama durumu",
+        "E-06 İş makineleri yakıt verimliliği",
+        "E-07 Lojistik ve dağıtım ağı mesafesi (300 km kriteri)"
+      ],
+      "upper": [
+        [
+          2.0,
+          3.0,
+          3.0,
+          4.0,
+          2.0,
+          4.0
+        ],
+        [
+          2.0,
+          3.0,
+          5.0,
+          2.0,
+          3.0
+        ],
+        [
+          0.5,
+          3.0,
+          2.0,
+          3.0
+        ],
+        [
+          4.0,
+          2.0,
+          2.0
+        ],
+        [
+          0.25,
+          0.25
+        ],
+        [
+          4.0
+        ],
+        []
+      ]
+    },
+    {
+      "id": "e_su_ind",
+      "title": "Su Yönetimi göstergeleri",
+      "group": "Gösterge",
+      "kind": "inds",
+      "block": "E",
+      "subId": "e_su",
+      "labels": [
+        "E-08",
+        "E-09",
+        "E-10",
+        "E-11",
+        "E-12",
+        "E-13",
+        "E-14"
+      ],
+      "labelsFull": [
+        "E-08 Toplam yıllık su çekimi/tüketimi",
+        "E-09 Su kaynakları (Yeraltı, Yüzey, Şebeke)",
+        "E-10 Toplam sulanan arazi varlığı (da)",
+        "E-11 Su tasarrufu teknikleri (Damla/Yağmurlama)",
+        "E-12 Atık su bertaraf ve arıtma yöntemleri",
+        "E-13 Sulu Tarım oranı",
+        "E-14 Yıllık Yağış"
+      ],
+      "upper": [
+        [
+          1.0,
+          3.0,
+          3.0,
+          6.0,
+          4.0,
+          6.0
+        ],
+        [
+          2.0,
+          2.0,
+          5.0,
+          3.0,
+          4.0
+        ],
+        [
+          0.5,
+          3.0,
+          1.0,
+          2.0
+        ],
+        [
+          4.0,
+          2.0,
+          3.0
+        ],
+        [
+          0.333333,
+          0.5
+        ],
+        [
+          2.0
+        ],
+        []
+      ]
+    },
+    {
+      "id": "e_biyo_ind",
+      "title": "Biyoçeşitlilik ve Toprak göstergeleri",
+      "group": "Gösterge",
+      "kind": "inds",
+      "block": "E",
+      "subId": "e_biyo",
+      "labels": [
+        "E-15",
+        "E-16",
+        "E-17",
+        "E-18",
+        "E-19"
+      ],
+      "labelsFull": [
+        "E-15 Korunan alanlara veya hassas ekosistemlere yakınlık",
+        "E-16 Biyoçeşitliliği destekleme projeleri",
+        "E-17 Toprak analizi",
+        "E-18 Münavebe",
+        "E-19 Erozyonla mücadele"
+      ],
+      "upper": [
+        [
+          0.5,
+          6.0,
+          3.0,
+          4.0
+        ],
+        [
+          7.0,
+          4.0,
+          5.0
+        ],
+        [
+          0.5,
+          0.25
+        ],
+        [
+          0.5
+        ],
+        []
+      ]
+    },
+    {
+      "id": "e_atik_ind",
+      "title": "Atıklar ve Kimyasallar göstergeleri",
+      "group": "Gösterge",
+      "kind": "inds",
+      "block": "E",
+      "subId": "e_atik",
+      "labels": [
+        "E-20",
+        "E-21",
+        "E-22",
+        "E-23",
+        "E-24",
+        "E-25",
+        "E-26"
+      ],
+      "labelsFull": [
+        "E-20 Gübre Kullanımı (Organik/İnorganik)",
+        "E-21 Hayvansal gübre yönetimi",
+        "E-22 Kimyasal İlaç Kullanımı",
+        "E-23 Biyolojik mücadele",
+        "E-24 Tehlikeli Atık Bertarafı",
+        "E-25 Kimyasal Muhafaza Depoları",
+        "E-26 Ambalaj"
+      ],
+      "upper": [
+        [
+          4.0,
+          2.0,
+          5.0,
+          6.0,
+          5.0,
+          7.0
+        ],
+        [
+          0.5,
+          3.0,
+          4.0,
+          3.0,
+          5.0
+        ],
+        [
+          2.0,
+          5.0,
+          4.0,
+          6.0
+        ],
+        [
+          3.0,
+          2.0,
+          4.0
+        ],
+        [
+          0.5,
+          2.0
+        ],
+        [
+          3.0
+        ],
+        []
+      ]
+    },
+    {
+      "id": "s_isgucu_ind",
+      "title": "İşgücü / İstihdam göstergeleri",
+      "group": "Gösterge",
+      "kind": "inds",
+      "block": "S",
+      "subId": "s_isgucu",
+      "labels": [
+        "S-27",
+        "S-28",
+        "S-29",
+        "S-30",
+        "S-31",
+        "S-32",
+        "S-33",
+        "S-34",
+        "S-35"
+      ],
+      "labelsFull": [
+        "S-27 Kadro Dağılımları",
+        "S-28 Taşeron oranı",
+        "S-29 Yaş Dağılımı",
+        "S-30 Sendikalılık",
+        "S-31 Çalışma Süreleri",
+        "S-32 Eğitim",
+        "S-33 Cinsiyet",
+        "S-34 Devir Daim Hızı",
+        "S-35 Eski Hükümlü/Engelli personel"
+      ],
+      "upper": [
+        [
+          2.0,
+          3.0,
+          6.0,
+          4.0,
+          4.0,
+          5.0,
+          6.0,
+          8.0
+        ],
+        [
+          2.0,
+          5.0,
+          3.0,
+          3.0,
+          4.0,
+          5.0,
+          7.0
+        ],
+        [
+          4.0,
+          2.0,
+          0.5,
+          2.0,
+          4.0,
+          6.0
+        ],
+        [
+          0.333333,
+          0.25,
+          0.2,
+          0.2,
+          2.0
+        ],
+        [
+          0.333333,
+          0.5,
+          0.5,
+          5.0
+        ],
+        [
+          3.0,
+          4.0,
+          6.0
+        ],
+        [
+          2.0,
+          5.0
+        ],
+        [
+          3.0
+        ],
+        []
+      ]
+    },
+    {
+      "id": "s_calisma_ind",
+      "title": "Çalışma Koşulları göstergeleri",
+      "group": "Gösterge",
+      "kind": "inds",
+      "block": "S",
+      "subId": "s_calisma",
+      "labels": [
+        "S-36",
+        "S-37",
+        "S-38",
+        "S-39",
+        "S-40",
+        "S-41",
+        "S-42",
+        "S-43"
+      ],
+      "labelsFull": [
+        "S-36 Ortalama fazla mesai süreleri",
+        "S-37 Stajyer sayısı",
+        "S-38 Çalışanlar tarafından açılan davalar",
+        "S-39 Memnuniyet anketleri/şikayetler",
+        "S-40 İş kazaları",
+        "S-41 Meslek Hastalıkları",
+        "S-42 İSG (Eğitimler/İSG Uzmanı istihdamı)",
+        "S-43 Sağlık Hizmetleri"
+      ],
+      "upper": [
+        [
+          3.0,
+          0.333333,
+          2.0,
+          0.333333,
+          0.5,
+          0.25,
+          0.5
+        ],
+        [
+          0.25,
+          0.5,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ],
+        [
+          4.0,
+          0.5,
+          2.0,
+          3.0,
+          5.0
+        ],
+        [
+          0.2,
+          0.25,
+          0.2,
+          0.5
+        ],
+        [
+          3.0,
+          4.0,
+          5.0
+        ],
+        [
+          0.5,
+          2.0
+        ],
+        [
+          3.0
+        ],
+        []
+      ]
+    },
+    {
+      "id": "s_toplum_ind",
+      "title": "Toplum / Kişisel Koruma göstergeleri",
+      "group": "Gösterge",
+      "kind": "inds",
+      "block": "S",
+      "subId": "s_toplum",
+      "labels": [
+        "S-44",
+        "S-45",
+        "S-46"
+      ],
+      "labelsFull": [
+        "S-44 KKD",
+        "S-45 Yerel Topluluklara fayda",
+        "S-46 Mesleki eğitimler"
+      ],
+      "upper": [
+        [
+          3.0,
+          5.0
+        ],
+        [
+          2.0
+        ],
+        []
+      ]
+    },
+    {
+      "id": "g_uyum_ind",
+      "title": "Uyum ve Politika göstergeleri",
+      "group": "Gösterge",
+      "kind": "inds",
+      "block": "G",
+      "subId": "g_uyum",
+      "labels": [
+        "G-47",
+        "G-48",
+        "G-49",
+        "G-50",
+        "G-51",
+        "G-52",
+        "G-53",
+        "G-54",
+        "G-55",
+        "G-56",
+        "G-57",
+        "G-58"
+      ],
+      "labelsFull": [
+        "G-47 İşletme Genel Bilgileri (kuruluş tarihçesi, coğrafi konum, büyüklük, ürün çeşidi)",
+        "G-48 Ürün çeşitliliği",
+        "G-49 Etik",
+        "G-50 Çevre ve İklim Değişikliği Strateji Belgesi",
+        "G-51 Çevre Mevzuatına Uyum",
+        "G-52 İş Hukuku ve Sosyal Haklara Uyum",
+        "G-53 İç Kontrol Sisteminin Etkinliği",
+        "G-54 Stratejik Hedeflerde sürdürülebilirlik kriterleri",
+        "G-55 Şeffaflık (Raporlama)",
+        "G-56 Denetlenebilirlik",
+        "G-57 İç Denetimin Bağımsızlık Düzeyi",
+        "G-58 Sürdürülebilirlik Denetimi geçmişi"
+      ],
+      "upper": [
+        [
+          6.0,
+          5.0,
+          3.0,
+          0.5,
+          0.333333,
+          0.5,
+          2.0,
+          0.5,
+          0.5,
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.333333,
+          0.2,
+          0.2,
+          0.25,
+          0.2
+        ],
+        [
+          0.5,
+          0.25,
+          0.25,
+          0.25,
+          0.5,
+          0.25,
+          0.25,
+          0.333333,
+          0.25
+        ],
+        [
+          0.333333,
+          0.25,
+          0.5,
+          3.0,
+          0.333333,
+          0.25,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          3.0,
+          5.0,
+          3.0,
+          1.0,
+          3.0,
+          4.0
+        ],
+        [
+          3.0,
+          6.0,
+          3.0,
+          1.0,
+          3.0,
+          4.0
+        ],
+        [
+          4.0,
+          0.5,
+          0.5,
+          2.0,
+          2.0
+        ],
+        [
+          0.333333,
+          0.333333,
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          3.0,
+          4.0
+        ],
+        [
+          4.0,
+          5.0
+        ],
+        [
+          2.0
+        ],
+        []
+      ]
+    },
+    {
+      "id": "g_tedarik_ind",
+      "title": "Tedarik Zinciri ve Risk göstergeleri",
+      "group": "Gösterge",
+      "kind": "inds",
+      "block": "G",
+      "subId": "g_tedarik",
+      "labels": [
+        "G-59",
+        "G-60",
+        "G-61",
+        "G-62",
+        "G-63",
+        "G-64",
+        "G-65"
+      ],
+      "labelsFull": [
+        "G-59 Sertifikasyon (ISO, Global GAP, İTU, Helal Gıda vb.)",
+        "G-60 Kalite Yönetim Sistemi",
+        "G-61 Tedarikçi Coğrafi konumu (300 km)",
+        "G-62 Tedarikçi Sürdürülebilirlik Kriterleri",
+        "G-63 Paydaş Etki Ölçümü",
+        "G-64 Veri Güvenliği ve Gizlilik",
+        "G-65 Kurumsal Risk Yönetimi"
+      ],
+      "upper": [
+        [
+          2.0,
+          4.0,
+          4.0,
+          6.0,
+          3.0,
+          0.5
+        ],
+        [
+          3.0,
+          3.0,
+          5.0,
+          2.0,
+          0.5
+        ],
+        [
+          0.5,
+          3.0,
+          0.25,
+          0.25
+        ],
+        [
+          3.0,
+          0.25,
+          0.25
+        ],
+        [
+          0.142857,
+          0.166667
+        ],
+        [
+          0.5
+        ],
+        []
+      ]
+    },
+    {
+      "id": "fo_finans_ind",
+      "title": "Finansal göstergeleri",
+      "group": "Gösterge",
+      "kind": "inds",
+      "block": "FO",
+      "subId": "fo_finans",
+      "labels": [
+        "FO-66",
+        "FO-67",
+        "FO-68",
+        "FO-69",
+        "FO-70",
+        "FO-71"
+      ],
+      "labelsFull": [
+        "FO-66 Birim Alan Verimi",
+        "FO-67 Hayvansal Verimlilik",
+        "FO-68 Dış Girdi Bağımlılığı",
+        "FO-69 Üretim Maliyet Hesaplamaları",
+        "FO-70 İşletme Karlılığı",
+        "FO-71 Üretim Kayıpları"
+      ],
+      "upper": [
+        [
+          0.5,
+          0.333333,
+          3.0,
+          0.25,
+          2.0
+        ],
+        [
+          0.5,
+          3.0,
+          0.333333,
+          3.0
+        ],
+        [
+          4.0,
+          0.5,
+          3.0
+        ],
+        [
+          0.2,
+          0.5
+        ],
+        [
+          5.0
+        ],
+        []
+      ]
+    },
+    {
+      "id": "fo_oper_ind",
+      "title": "Operasyonel göstergeleri",
+      "group": "Gösterge",
+      "kind": "inds",
+      "block": "FO",
+      "subId": "fo_oper",
+      "labels": [
+        "FO-72",
+        "FO-73",
+        "FO-74",
+        "FO-75",
+        "FO-76"
+      ],
+      "labelsFull": [
+        "FO-72 Stok Devir Hızı",
+        "FO-73 Uluslararası Kalite Standartlarına Uyum",
+        "FO-74 Üretimde Teknoloji Kullanımı",
+        "FO-75 Verilerin Bilgi Teknolojileri ile takibi",
+        "FO-76 Makine ve Ekipman Kullanım Oranı"
+      ],
+      "upper": [
+        [
+          0.25,
+          0.333333,
+          0.5,
+          0.5
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          2.0,
+          4.0
+        ],
+        [
+          3.0
+        ],
+        []
+      ]
+    },
+    {
+      "id": "fo_hayvan_ind",
+      "title": "Hayvancılık göstergeleri",
+      "group": "Gösterge",
+      "kind": "inds",
+      "block": "FO",
+      "subId": "fo_hayvan",
+      "labels": [
+        "FO-77",
+        "FO-78",
+        "FO-79",
+        "FO-80",
+        "FO-81",
+        "FO-82",
+        "FO-83",
+        "FO-84"
+      ],
+      "labelsFull": [
+        "FO-77 Üretim Performansı ve Döl Verimi Çıkarımları",
+        "FO-78 Besleme ve Girdi Yönetimi Çıkarımları",
+        "FO-79 Ürün Çeşitliliği ve Yan Ürün Ekonomisi",
+        "FO-80 Birim Hayvan Başına Üretim Performansı",
+        "FO-81 Sürü Sağlığı ve Yaşatma Başarısı",
+        "FO-82 Genetik Çoğaltım ve Döl Verimi Verimliliği",
+        "FO-83 Bölgesel Gıda Güvenliği ve Damızlık Arzı",
+        "FO-84 Çevresel Emisyon Yoğunluğu (Karbon Ayak İzi)"
+      ],
+      "upper": [
+        [
+          3.0,
+          4.0,
+          3.0,
+          0.333333,
+          3.0,
+          2.0,
+          0.5
+        ],
+        [
+          5.0,
+          4.0,
+          0.5,
+          3.0,
+          3.0,
+          0.5
+        ],
+        [
+          0.5,
+          0.2,
+          0.333333,
+          0.2,
+          0.166667
+        ],
+        [
+          0.333333,
+          0.5,
+          0.5,
+          0.25
+        ],
+        [
+          4.0,
+          5.0,
+          2.0
+        ],
+        [
+          2.0,
+          0.333333
+        ],
+        [
+          0.25
+        ],
+        []
+      ]
+    },
+    {
+      "id": "fo_bitki_ind",
+      "title": "Bitkisel Üretim göstergeleri",
+      "group": "Gösterge",
+      "kind": "inds",
+      "block": "FO",
+      "subId": "fo_bitki",
+      "labels": [
+        "FO-85",
+        "FO-86",
+        "FO-87",
+        "FO-88"
+      ],
+      "labelsFull": [
+        "FO-85 Tarımsal Yoğunluk ve Birim Maliyet Yönetimi",
+        "FO-86 Toprak Hazırlığı ve Koruyucu Tarım Kalitesi",
+        "FO-87 Tarımsal Girdi Kaynaklı Karbon Ayak İzi",
+        "FO-88 Ürün Deseninde Stratejik Esneklik"
+      ],
+      "upper": [
+        [
+          2.0,
+          0.5,
+          3.0
+        ],
+        [
+          0.333333,
+          2.0
+        ],
+        [
+          4.0
+        ],
+        []
+      ]
+    }
+  ]
+}
