@@ -130,8 +130,21 @@ export function compute(seed: Seed, state: AppState): Computed {
     return { global: 0, local: 0 }
   }
 
+  const blockMix = (recipe: string): Record<BlockId, number> => {
+    if (recipe === "S1") return wBlockNew
+    if (recipe === "S2") return wBlockArt
+    return FIXED_BLOCKS[recipe] ?? { E: 0, S: 0, G: 0, FO: 0 }
+  }
+
+  const totalRaw = { CYL: 0, KRC: 0, GZL: 0 } as Record<CompanyId, number>
+  for (const ind of seed.indicators) {
+    const sc = state.scores[ind.id] ?? ind.scores
+    for (const co of COMPANIES) totalRaw[co] += sc[co]
+  }
+
   const scenarios: Record<string, Record<CompanyId, CompanyResult>> = {}
   for (const sc of SCENARIOS) {
+    const mix = blockMix(sc.id)
     const byCo = {} as Record<CompanyId, CompanyResult>
     for (const co of COMPANIES) {
       const blocks = { E: 0, S: 0, G: 0, FO: 0 } as Record<BlockId, number>
@@ -142,7 +155,8 @@ export function compute(seed: Seed, state: AppState): Computed {
         bss += x * w.global
         blocks[ind.block] += x * w.local
       }
-      byCo[co] = { bss, blocks }
+      const ssCheck = BLOCKS.reduce((sum, b) => sum + blocks[b] * mix[b], 0)
+      byCo[co] = { bss, ssCheck, blocks }
     }
     scenarios[sc.id] = byCo
   }
@@ -165,6 +179,7 @@ export function compute(seed: Seed, state: AppState): Computed {
     wSub,
     wInd,
     scale,
+    totalRaw,
     scenarios,
     ranking,
     crAlerts,

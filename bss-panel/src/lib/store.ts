@@ -1,7 +1,26 @@
-import type { AppState, CompanyId, Seed } from "../types"
+import type { AppState, CompanyId, MatrixDef, Seed } from "../types"
+import { randomUpper, upperFromWeights } from "./ahp"
+
+export type RandomScope = "all" | "inds" | "subs" | "blocks"
+
+function matchesScope(m: MatrixDef, scope: RandomScope): boolean {
+  if (scope === "all") return true
+  if (scope === "inds") return m.kind === "inds"
+  if (scope === "subs") return m.kind === "subs"
+  return m.kind === "blocks" || m.kind === "blocks_article"
+}
 
 const KEY = "bss-panel-v1"
 const META_KEY = "bss-panel-meta-v1"
+const INVERT_KEY = "bss-invert-ahp-66-88"
+
+function invertAhbScores(scores: Record<CompanyId, number>): Record<CompanyId, number> {
+  return {
+    CYL: 5 - scores.CYL,
+    KRC: 5 - scores.KRC,
+    GZL: 5 - scores.GZL,
+  }
+}
 
 export interface SaveFile {
   version: 1
@@ -40,6 +59,14 @@ export function loadState(seed: Seed): AppState {
       for (const id of Object.keys(saved.scores)) {
         const n = Number(id)
         if (base.scores[n]) base.scores[n] = { ...base.scores[n], ...saved.scores[n] }
+      }
+      if (!localStorage.getItem(INVERT_KEY)) {
+        for (let id = 63; id <= 85; id++) {
+          if (!saved.scores[id] || !base.scores[id]) continue
+          base.scores[id] = invertAhbScores(base.scores[id])
+        }
+        localStorage.setItem(INVERT_KEY, "1")
+        persist(base, "auto")
       }
     }
     if (saved.comments) {
@@ -163,4 +190,17 @@ export function setMatrixUpper(state: AppState, matrixId: string, upper: number[
     ...state,
     matrices: { ...state.matrices, [matrixId]: upper },
   }
+}
+
+export function setMatrixFromWeights(state: AppState, matrixId: string, weights: number[]): AppState {
+  return setMatrixUpper(state, matrixId, upperFromWeights(weights))
+}
+
+export function randomizeMatrices(state: AppState, seed: Seed, scope: RandomScope): AppState {
+  const matrices = { ...state.matrices }
+  for (const m of seed.matrices) {
+    if (!matchesScope(m, scope)) continue
+    matrices[m.id] = randomUpper(m.labels.length)
+  }
+  return { ...state, matrices }
 }

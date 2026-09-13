@@ -100,3 +100,51 @@ export function setUpper(upper: number[][], i: number, j: number, value: number)
   }
   return next
 }
+
+export function normalizeWeights(weights: number[]): number[] {
+  const safe = weights.map((w) => (Number.isFinite(w) && w > 0 ? w : 1e-6))
+  const sum = safe.reduce((a, b) => a + b, 0)
+  return safe.map((w) => w / sum)
+}
+
+export function setNormalizedWeight(weights: number[], index: number, value: number): number[] {
+  const n = weights.length
+  if (n <= 0) return []
+  if (n === 1) return [1]
+  const next = weights.slice()
+  const clamped = Math.min(0.99, Math.max(0.01, value))
+  const rest = 1 - clamped
+  const others = next.reduce((s, w, i) => (i === index ? s : s + w), 0)
+  next[index] = clamped
+  if (others <= 1e-9) {
+    const eq = rest / (n - 1)
+    for (let i = 0; i < n; i++) if (i !== index) next[i] = eq
+  } else {
+    for (let i = 0; i < n; i++) {
+      if (i !== index) next[i] = (next[i] / others) * rest
+    }
+  }
+  return normalizeWeights(next)
+}
+
+export function upperFromWeights(weights: number[]): number[][] {
+  const w = normalizeWeights(weights)
+  const n = w.length
+  return Array.from({ length: n }, (_, i) =>
+    Array.from({ length: n - i - 1 }, (_, k) => {
+      const j = i + 1 + k
+      return w[j] > 0 ? w[i] / w[j] : 1
+    }),
+  )
+}
+
+export function randomWeights(n: number): number[] {
+  if (n <= 0) return []
+  if (n === 1) return [1]
+  const raw = Array.from({ length: n }, () => 0.12 + Math.random())
+  return normalizeWeights(raw)
+}
+
+export function randomUpper(n: number): number[][] {
+  return upperFromWeights(randomWeights(n))
+}

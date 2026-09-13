@@ -9,13 +9,16 @@ import {
   loadState,
   parseSaveFile,
   persist,
+  randomizeMatrices,
   resetState,
   setComment,
+  setMatrixFromWeights,
   setMatrixUpper,
   setScore,
+  type RandomScope,
   type SaveMeta,
 } from "./lib/store"
-import { setUpper } from "./lib/ahp"
+import { setNormalizedWeight, setUpper } from "./lib/ahp"
 import { dashboardView } from "./views/dashboard"
 import { scoringView } from "./views/scoring"
 import { ahpView } from "./views/ahp"
@@ -35,7 +38,7 @@ let flash = ""
 const NAV: { id: PageId; label: string; hint: string; no: string }[] = [
   { id: "dashboard", label: "Özet", hint: "Skorlar ve sıralama", no: "01" },
   { id: "scoring", label: "Puanlama", hint: "1–5 girişleri", no: "02" },
-  { id: "ahp", label: "AHP ağırlıkları", hint: "İkili karşılaştırma", no: "03" },
+  { id: "ahp", label: "AHP ağırlıkları", hint: "Karşılaştırma ve yerel ağırlık", no: "03" },
   { id: "scenarios", label: "Senaryolar", hint: "Duyarlılık tablosu", no: "04" },
 ]
 
@@ -74,7 +77,12 @@ function render() {
   root.innerHTML = `
     <aside class="side">
       <div class="brand">
-        <div class="mark" aria-hidden="true"></div>
+        <div class="mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <rect x="1" y="1" width="30" height="30" rx="8" fill="#e8eef6" stroke="#c5d4e6"/>
+            <path d="M10.5 22V10h6.1c2.7 0 4.4 1.6 4.4 3.9 0 1.4-.7 2.5-2 3.1 1.5.5 2.5 1.7 2.5 3.4 0 2.5-1.9 3.6-4.9 3.6h-6.1zm3-7.1h2.6c1.2 0 1.9-.6 1.9-1.5s-.7-1.5-1.9-1.5h-2.6v3zm0 5.3h3.1c1.4 0 2.2-.6 2.2-1.7s-.8-1.7-2.2-1.7h-3.1v3.4z" fill="#3d6ea8"/>
+          </svg>
+        </div>
         <div>
           <strong>BSS</strong>
           <span>Saha defteri</span>
@@ -114,12 +122,12 @@ function render() {
     <main class="main">${body}</main>
   `
 
-  bind(root)
+  bind(root, computed)
   const next = root.querySelector<HTMLElement>(".main")
   if (next) next.scrollTop = top
 }
 
-function bind(root: HTMLElement) {
+function bind(root: HTMLElement, computed: ReturnType<typeof compute>) {
   root.querySelectorAll<HTMLButtonElement>("[data-page]").forEach((btn) => {
     btn.addEventListener("click", () => {
       page = btn.dataset.page as PageId
@@ -249,6 +257,30 @@ function bind(root: HTMLElement) {
     })
   })
 
+  root.querySelectorAll<HTMLButtonElement>("[data-random]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const scope = btn.dataset.random as RandomScope
+      state = randomizeMatrices(state, seed, scope)
+      const labels: Record<RandomScope, string> = {
+        all: "Tüm AHP ağırlıkları rastgele atandı",
+        inds: "Gösterge ağırlıkları (wk) rastgele atandı",
+        subs: "Alt grup ağırlıkları rastgele atandı",
+        blocks: "Ana blok ağırlıkları rastgele atandı",
+      }
+      flash = labels[scope] ?? "Rastgele ağırlıklar atandı"
+      scheduleSave()
+      render()
+      window.setTimeout(() => {
+        flash = ""
+        const pill = document.querySelector(".save-pill")
+        if (pill && meta) {
+          pill.classList.remove("flash")
+          pill.innerHTML = `<i></i> ${meta.source === "file" ? "Dosyaya kaydedildi" : "Otomatik kayıt"} · ${formatSaved(meta.savedAt)}`
+        }
+      }, 1800)
+    })
+  })
+
   root.querySelectorAll<HTMLButtonElement>("[data-matrix]").forEach((btn) => {
     btn.addEventListener("click", () => {
       selectedMatrix = btn.dataset.matrix ?? selectedMatrix
@@ -267,6 +299,37 @@ function bind(root: HTMLElement) {
       scheduleSave()
       render()
     })
+  })
+
+  const originals: Record<string, number[]> = {}
+  for (const id of Object.keys(computed.matrix)) {
+    originals[id] = computed.matrix[id].weights.slice()
+  }
+
+  const applyWeights = (el: HTMLInputElement, commit: boolean) => {
+    const id = el.dataset.wMatrix ?? ""
+    const i = Number(el.dataset.wIndex)
+    const raw = Number(el.value)
+    if (!id || !originals[id] || !Number.isFinite(raw) || !Number.isInteger(i)) return
+    const next = setNormalizedWeight(originals[id], i, raw / 100)
+    root.querySelectorAll<HTMLInputElement>(`[data-w-matrix="${id}"]`).forEach((node) => {
+      const j = Number(node.dataset.wIndex)
+      if (node === el || !Number.isInteger(j)) return
+      node.value = (next[j] * 100).toFixed(1)
+    })
+    if (!commit) return
+    state = setMatrixFromWeights(state, id, next)
+    scheduleSave()
+    render()
+  }
+
+  root.querySelectorAll<HTMLInputElement>("[data-w-matrix]").forEach((el) => {
+    if (el.type === "range") {
+      el.addEventListener("input", () => applyWeights(el, false))
+      el.addEventListener("change", () => applyWeights(el, true))
+    } else {
+      el.addEventListener("change", () => applyWeights(el, true))
+    }
   })
 }
 

@@ -1,7 +1,8 @@
 import type { AppState, Computed, Seed } from "../types"
 import { closestSaaty, SAATY } from "../lib/ahp"
-import { fmt, fmtPct } from "../lib/engine"
+import { fmt } from "../lib/engine"
 import { crBadge, esc } from "../lib/dom"
+import { weightPct } from "./weights"
 
 export function ahpView(seed: Seed, state: AppState, computed: Computed, selectedId: string): string {
   const selected = seed.matrices.find((m) => m.id === selectedId) ?? seed.matrices[0]
@@ -25,11 +26,20 @@ export function ahpView(seed: Seed, state: AppState, computed: Computed, selecte
     })
     .join("")
 
-  const options = (current: number) =>
-    SAATY.map((o) => {
-      const sel = Math.abs(closestSaaty(current) - o.value) < 1e-9 ? "selected" : ""
-      return `<option value="${o.value}" ${sel}>${o.label}</option>`
-    }).join("")
+  const options = (current: number) => {
+    const closest = closestSaaty(current)
+    const exact = Math.abs(closest - current) < 1e-6
+    const extra = exact
+      ? ""
+      : `<option value="${current}" selected>${fmt(current, 2)} — ağırlıktan</option>`
+    return (
+      extra +
+      SAATY.map((o) => {
+        const sel = !extra && Math.abs(closest - o.value) < 1e-9 ? "selected" : ""
+        return `<option value="${o.value}" ${sel}>${o.label}</option>`
+      }).join("")
+    )
+  }
 
   let grid = `<thead><tr><th></th>${selected.labels.map((l, idx) => `<th title="${esc(selected.labelsFull[idx] ?? l)}">${esc(l)}</th>`).join("")}<th>Ağırlık</th></tr></thead><tbody>`
   for (let i = 0; i < n; i++) {
@@ -46,7 +56,8 @@ export function ahpView(seed: Seed, state: AppState, computed: Computed, selecte
         grid += `<td class="rec">${rec >= 1 ? fmt(rec, rec % 1 ? 2 : 0) : `1/${fmt(1 / rec, 0)}`}</td>`
       }
     }
-    grid += `<td class="w">${fmtPct(res.weights[i])}</td></tr>`
+    const pct = weightPct(res.weights[i] ?? 0)
+    grid += `<td class="w"><label class="wpct wpct-table"><input type="number" min="1" max="99" step="0.1" value="${pct}" data-w-matrix="${esc(selected.id)}" data-w-index="${i}" /><span>%</span></label></td></tr>`
   }
   grid += `</tbody>`
 
@@ -55,7 +66,7 @@ export function ahpView(seed: Seed, state: AppState, computed: Computed, selecte
       <div>
         <p class="eyebrow">AHP</p>
         <h1>İkili karşılaştırmalar</h1>
-        <p class="lede">Sarı hücreler Excel’deki giriş alanıdır. Alt üçgen, yerel ağırlık, λmax, CI ve CR otomatik üretilir.</p>
+        <p class="lede">İkili karşılaştırmayı veya sağdaki yerel ağırlığı değiştirin. Ağırlık girilince matris tutarlı oranlara çekilir; λmax, CI ve CR yenilenir.</p>
       </div>
       <div class="ahp-stats">
         ${crBadge(res.cr, res.consistent)}
@@ -63,6 +74,12 @@ export function ahpView(seed: Seed, state: AppState, computed: Computed, selecte
         <div class="stat"><span>CI</span><b>${fmt(res.ci, 3)}</b></div>
       </div>
     </header>
+    <div class="ahp-rand" role="group" aria-label="Rastgele ağırlık">
+      <button type="button" data-random="all">Tümü</button>
+      <button type="button" data-random="inds">Göstergeler (wk)</button>
+      <button type="button" data-random="subs">Alt gruplar</button>
+      <button type="button" data-random="blocks">Ana bloklar</button>
+    </div>
     <div class="ahp-layout">
       <aside class="mat-nav">${nav}</aside>
       <article class="panel matrix-panel">

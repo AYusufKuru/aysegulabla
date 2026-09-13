@@ -1,6 +1,7 @@
 import type { Computed, Seed } from "../types"
 import { BLOCKS, fmt } from "../lib/engine"
 import { crBadge, esc } from "../lib/dom"
+import { weightEditor } from "./weights"
 
 const CO_CLASS: Record<string, string> = { CYL: "cyl", KRC: "krc", GZL: "gzl" }
 
@@ -50,7 +51,7 @@ export function dashboardView(seed: Seed, computed: Computed): string {
       <div>
         <p class="eyebrow">Özet</p>
         <h1>Bütünleşik sürdürülebilirlik</h1>
-        <p class="lede">Puan veya AHP değerini değiştirdiğiniz anda BSS, blok skorları ve sıralama yenilenir.</p>
+        <p class="lede">Puan, AHP veya yerel ağırlığı değiştirdiğiniz anda BSS, blok skorları ve sıralama yenilenir.</p>
       </div>
       <div class="head-meta">
         <div><b>88</b><span>gösterge</span></div>
@@ -74,16 +75,35 @@ export function dashboardView(seed: Seed, computed: Computed): string {
       </article>
       <article class="panel">
         <div class="panel-h">
-          <h3>Yeni AHP ağırlıkları</h3>
-          <span class="hint">Ana blok yerel ağırlık</span>
+          <h3>Ana blok yerel ağırlıkları</h3>
+          <span class="hint">Toplam %100 · Yeni AHP</span>
         </div>
-        ${BLOCKS.map((b) => {
-          const name = seed.blocks.find((x) => x.id === b)?.name ?? b
-          const w = computed.wBlockNew[b]
-          return `<div class="wrow"><span>${esc(name)}</span><div class="track"><i style="width:${w * 100}%"></i></div><b>${fmtPctSafe(w)}</b></div>`
-        }).join("")}
-        <p class="foot-note">Makale seti: ${BLOCKS.map((b) => `${b} ${fmtPctSafe(computed.wBlockArt[b])}`).join(" · ")}</p>
+        ${weightEditor(
+          "blocks_new",
+          BLOCKS.map((b) => seed.blocks.find((x) => x.id === b)?.name ?? b),
+          BLOCKS.map((b) => computed.wBlockNew[b]),
+        )}
+        <p class="foot-note">Bir değeri değiştirince diğerleri orantılı ayarlanır. Makale seti: ${BLOCKS.map((b) => `${b} ${fmtPctSafe(computed.wBlockArt[b])}`).join(" · ")}</p>
       </article>
+    </section>
+
+    <section class="panel sub-weights">
+      <div class="panel-h">
+        <h3>Alt grup yerel ağırlıkları</h3>
+        <span class="hint">Her blok kendi içinde %100</span>
+      </div>
+      <div class="sub-w-grid">
+        ${seed.matrices
+          .filter((m) => m.kind === "subs")
+          .map((m) => {
+            const blockName = seed.blocks.find((b) => b.id === m.block)?.name ?? m.block ?? ""
+            return `<div class="sub-w">
+              <p class="sub-w-h">${esc(blockName)}</p>
+              ${weightEditor(m.id, m.labels, computed.matrix[m.id].weights)}
+            </div>`
+          })
+          .join("")}
+      </div>
     </section>
 
     <section class="split">

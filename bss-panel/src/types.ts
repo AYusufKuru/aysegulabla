@@ -79,6 +79,7 @@ export interface ScenarioDef {
 
 export interface CompanyResult {
   bss: number
+  ssCheck: number
   blocks: Record<BlockId, number>
 }
 
@@ -89,6 +90,7 @@ export interface Computed {
   wSub: Record<string, number>
   wInd: Record<number, number>
   scale: Record<number, Record<CompanyId, number>>
+  totalRaw: Record<CompanyId, number>
   scenarios: Record<string, Record<CompanyId, CompanyResult>>
   ranking: Record<string, CompanyId[]>
   crAlerts: { id: string; title: string; cr: number }[]

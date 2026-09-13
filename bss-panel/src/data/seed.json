@@ -1332,9 +1332,9 @@
       "subId": "g_tedarik",
       "articleLocal": 0.04000000000000001,
       "scores": {
-        "CYL": 2,
-        "KRC": 2,
-        "GZL": 2
+        "CYL": 3,
+        "KRC": 3,
+        "GZL": 3
       },
       "comments": {
         "CYL": "İşletme faaliyetlerinin çalışanlar, tedarikçiler, yerel halk ve diğer paydaşlar üzerindeki etkisini düzenli ölçen bir sistem gösterilmemiştir.",
@@ -1351,9 +1351,9 @@
       "subId": "g_tedarik",
       "articleLocal": 0.06,
       "scores": {
-        "CYL": 4,
-        "KRC": 4,
-        "GZL": 4
+        "CYL": 1,
+        "KRC": 1,
+        "GZL": 1
       },
       "comments": {
         "CYL": "İşletmede Kurum bünyesinde oluşturulmuş bilgi güvenliği politikaları doğrultusunda parolalı erişim ve veri yedekleme yapılmaktadır.",
@@ -1370,9 +1370,9 @@
       "subId": "g_tedarik",
       "articleLocal": 0.08000000000000002,
       "scores": {
-        "CYL": 2,
-        "KRC": 2,
-        "GZL": 2
+        "CYL": 3,
+        "KRC": 3,
+        "GZL": 3
       },
       "comments": {
         "CYL": "Kurumsal Risk Yönetimi uygulamaları Kurum genelinde henüz başlangıç düzeyindedir.",
@@ -1389,9 +1389,9 @@
       "subId": "fo_finans",
       "articleLocal": 0.03,
       "scores": {
-        "CYL": 4,
-        "KRC": 5,
-        "GZL": 4
+        "CYL": 1,
+        "KRC": 0,
+        "GZL": 1
       },
       "comments": {
         "CYL": "İklimsel risklere rağmen yüksek teknolojiyle stabilize verim hedefleri gerçekleştirilmektedir.",
@@ -1408,9 +1408,9 @@
       "subId": "fo_finans",
       "articleLocal": 0.020000000000000004,
       "scores": {
-        "CYL": 4,
-        "KRC": 4,
-        "GZL": 4
+        "CYL": 1,
+        "KRC": 1,
+        "GZL": 1
       },
       "comments": {
         "CYL": "Hacim ve Ekonomi Ölçeği: 13.000 baş damızlık satışı ve 256 ton yapağı ile devasa bir ciro yaratır. Ancak çok büyük ölçekli sürülerde (130 bin baş) birim maliyet yönetimi Gözlü kadar \"yalın\" olmayabilir.",
@@ -1427,9 +1427,9 @@
       "subId": "fo_finans",
       "articleLocal": 0.04000000000000001,
       "scores": {
-        "CYL": 4,
-        "KRC": 3,
-        "GZL": 4
+        "CYL": 1,
+        "KRC": 2,
+        "GZL": 1
       },
       "comments": {
         "CYL": "33 bin tonluk yem kullanımı devasa bir dış girdi gibi görünse de, işletmenin devasa tarım arazilerinde kendi kaba yemini (silaj, yonca) üretme kapasitesi bu bağımlılığı dengeler. Ancak lojistik maliyetleri ölçek nedeniyle bir risk unsurudur.",
@@ -1446,9 +1446,9 @@
       "subId": "fo_finans",
       "articleLocal": 0.05,
       "scores": {
-        "CYL": 4,
-        "KRC": 4,
-        "GZL": 4
+        "CYL": 1,
+        "KRC": 1,
+        "GZL": 1
       },
       "comments": {
         "CYL": "Bilanço alt tablolarında maliyet unsur hesaplamaları yapılmaktadır.",
@@ -1465,9 +1465,9 @@
       "subId": "fo_finans",
       "articleLocal": 0.03,
       "scores": {
-        "CYL": 4,
-        "KRC": 3,
-        "GZL": 3
+        "CYL": 1,
+        "KRC": 2,
+        "GZL": 2
       },
       "comments": {
         "CYL": "2023-2024 yılı kayıtlarında işletme karlılığı raporlanmaktadır.                         ( Net Kar Marjı:\n Net Kar / Satışlar=yaklaşık %30)",
@@ -1484,9 +1484,9 @@
       "subId": "fo_finans",
       "articleLocal": 0.03,
       "scores": {
-        "CYL": 4,
-        "KRC": 4,
-        "GZL": 4
+        "CYL": 1,
+        "KRC": 1,
+        "GZL": 1
       },
       "comments": {
         "CYL": "Hasat kayıpları hesaplanarak tablolara yansıtılmaktadır;",
@@ -1503,9 +1503,9 @@
       "subId": "fo_oper",
       "articleLocal": 0.03,
       "scores": {
-        "CYL": 3,
-        "KRC": 3,
-        "GZL": 3
+        "CYL": 2,
+        "KRC": 2,
+        "GZL": 2
       },
       "comments": {
         "CYL": "Ambar kayıtları tutulmakla birlikte dijitalizasyon ve stok takip sistemi geliştirilmelidir.",
@@ -1522,9 +1522,9 @@
       "subId": "fo_oper",
       "articleLocal": 0.03,
       "scores": {
-        "CYL": 3,
-        "KRC": 3,
-        "GZL": 3
+        "CYL": 2,
+        "KRC": 2,
+        "GZL": 2
       },
       "comments": {
         "CYL": "İTU ve Kalite Belgelendirme Faaliyetleri devam etmektedir",
@@ -1541,9 +1541,9 @@
       "subId": "fo_oper",
       "articleLocal": 0.05,
       "scores": {
-        "CYL": 4,
-        "KRC": 4,
-        "GZL": 4
+        "CYL": 1,
+        "KRC": 1,
+        "GZL": 1
       },
       "comments": {
         "CYL": "Bölge ve ülke koşullarına öncülük edecek teknolojik üretim altyapısı yanı sıra geleneksel üretim teknolojileri de bulunmaktadır.",
@@ -1560,9 +1560,9 @@
       "subId": "fo_oper",
       "articleLocal": 0.05,
       "scores": {
-        "CYL": 4,
-        "KRC": 4,
-        "GZL": 4
+        "CYL": 1,
+        "KRC": 1,
+        "GZL": 1
       },
       "comments": {
         "CYL": "Teknolojik takip sitemleri uygulamaları kullanılmaktadır; yeni proje ve hızlı altyapı adaptasyonu önerilmektedir.",
@@ -1579,9 +1579,9 @@
       "subId": "fo_oper",
       "articleLocal": 0.04000000000000001,
       "scores": {
-        "CYL": 5,
-        "KRC": 5,
-        "GZL": 5
+        "CYL": 0,
+        "KRC": 0,
+        "GZL": 0
       },
       "comments": {
         "CYL": "Makine ve ekipman kullanımı yüksek kapasite ile devam etmekte; makine ekipman bakım onarım işlemleri yürütülmektedir.",
@@ -1598,9 +1598,9 @@
       "subId": "fo_hayvan",
       "articleLocal": 0.025,
       "scores": {
-        "CYL": 4,
-        "KRC": 4,
-        "GZL": 5
+        "CYL": 1,
+        "KRC": 1,
+        "GZL": 0
       },
       "comments": {
         "CYL": "Koyunculukta yaklaşık %122, keçicilikte %130 ve sığırcılıkta %90 doğum oranları üretim kayıtlarının izlendiğini göstermektedir.",
@@ -1617,9 +1617,9 @@
       "subId": "fo_hayvan",
       "articleLocal": 0.03,
       "scores": {
-        "CYL": 4,
-        "KRC": 4,
-        "GZL": 5
+        "CYL": 1,
+        "KRC": 1,
+        "GZL": 0
       },
       "comments": {
         "CYL": "33 bin tona yakın kesif yem kullanımında; fresh sığır, kuru dönem, başlangıç ve büyütme yemleri gibi çok katmanlı bir rasyon yönetimi izlenmektedir.  Küçükbaş birimine ayrılan payın %55 olduğu bilgisi mera-yem kullanım yapısını açıklar. Bu, iyi yem verimliliği yönetimi olarak değerlendirilmiştir.",
@@ -1636,9 +1636,9 @@
       "subId": "fo_hayvan",
       "articleLocal": 0.015,
       "scores": {
-        "CYL": 5,
-        "KRC": 3,
-        "GZL": 4
+        "CYL": 0,
+        "KRC": 2,
+        "GZL": 1
       },
       "comments": {
         "CYL": "256 tonluk yapağı hacmiyle tekstil sanayisine katkı sağlamaktadır. Keçicilikteki yüksek sağım oranı (%70) ve tiftik üretimi, işletmenin yüksek kapasite yan ürün yönetimi yaptığı ve biyolojik çıktı israfını minimize ettiği yargısını sağlamıştır. Süt verimi (1,36 kg/gün) ve sağım oranının (%70) yüksekliği, işletmenin süt odaklı ve ekonomik olarak karlı bir alt dal olarak yönetildiği sonucuna varılmıştır.",
@@ -1655,9 +1655,9 @@
       "subId": "fo_hayvan",
       "articleLocal": 0.03,
       "scores": {
-        "CYL": 4,
-        "KRC": 4,
-        "GZL": 5
+        "CYL": 1,
+        "KRC": 1,
+        "GZL": 0
       },
       "comments": {
         "CYL": "Büyük sürü ölçeğine rağmen günlük yaklaşık 20,82 kg sağmal veriminin korunması olumlu bir hayvan başına üretim göstergesidir.",
@@ -1674,9 +1674,9 @@
       "subId": "fo_hayvan",
       "articleLocal": 0.0375,
       "scores": {
-        "CYL": 4,
-        "KRC": 3,
-        "GZL": 5
+        "CYL": 1,
+        "KRC": 2,
+        "GZL": 0
       },
       "comments": {
         "CYL": "\"Düşük Mortalite (Ölüm) Oranları: Buzağılarda %3,5, kuzularda ise %4,9 seviyesindeki ölüm oranları, \"Hayvan Refahı\"kriterlerine göre yüksek performansa işaret ettiği değerlendirilmiştir;",
@@ -1693,9 +1693,9 @@
       "subId": "fo_hayvan",
       "articleLocal": 0.0375,
       "scores": {
-        "CYL": 4,
-        "KRC": 5,
-        "GZL": 5
+        "CYL": 1,
+        "KRC": 0,
+        "GZL": 0
       },
       "comments": {
         "CYL": "Yaklaşık %122 kuzu doğum oranı ve damızlık üretimi, genetik çoğaltım faaliyetinin sürdürüldüğünü göstermektedir.",
@@ -1712,9 +1712,9 @@
       "subId": "fo_hayvan",
       "articleLocal": 0.05,
       "scores": {
-        "CYL": 5,
-        "KRC": 3,
-        "GZL": 3
+        "CYL": 0,
+        "KRC": 2,
+        "GZL": 2
       },
       "comments": {
         "CYL": "Yıllık yaklaşık 13.000 baş (9.861 koyun + 2.992 sığır) damızlık satışı yapılmaktadır.",
@@ -1731,9 +1731,9 @@
       "subId": "fo_hayvan",
       "articleLocal": 0.025,
       "scores": {
-        "CYL": 4,
-        "KRC": 3,
-        "GZL": 4
+        "CYL": 1,
+        "KRC": 2,
+        "GZL": 1
       },
       "comments": {
         "CYL": "1 kg sığır sütü başına hesaplanan 1,18 kg CO₂e değeri; koyun eti üretimi için hesaplanan 375 kg CO₂e/kg et değeri; işletmenin hayvanları önemli ölçüde kesim amacıyla değil, damızlık olarak canlı satması; işletme sınırlarında yer alan biyogaz tesisinin gübre kaynaklı organik materyali enerji üretiminde değerlendirmesi, emisyon azaltımı ve döngüsel kaynak kullanımı bakımından olumlu bir kontrol uygulaması olarak dikkate alınmıştır.",
@@ -1750,9 +1750,9 @@
       "subId": "fo_bitki",
       "articleLocal": 0.105,
       "scores": {
-        "CYL": 4,
-        "KRC": 5,
-        "GZL": 4
+        "CYL": 1,
+        "KRC": 0,
+        "GZL": 1
       },
       "comments": {
         "CYL": "Yaklaşık toplam ekilebilir alanı 966 bin dekar büyüklüğündeki üretim alanının %83’ünde gelişmiş sulama sistemlerinin kullanılması, sulama faaliyetlerinin geniş bir alanda mekanize ve standartlaştırılmış biçimde yürütüldüğünü göstermektedir. Pivot sistemlerinin kullanılması, sulama uygulamalarının daha düzenli izlenmesine ve alan başına girdi kullanımının yönetilmesine katkı sağlayabilecek bir altyapı unsuru olarak değerlendirilmiştir. Göstergenin puanlanmasında sulanan alan, kullanılan su ve enerji miktarı, bakım–işletme giderleri ve dekar başına üretim maliyeti birlikte dikkate alınmıştır",
