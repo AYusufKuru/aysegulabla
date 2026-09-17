@@ -1,23 +1,31 @@
+/* style.css — Tüm görünüm. Hesap yok; sadece renk/yerleşim.
+   :root değişkenleri işletme ve blok renkleri.
+   .side kenar menü, .main sayfa, .ahp-table AHP, .scen-table senaryo.
+   HTML sınıfları views/*.ts ve main.ts içinden gelir. */
 :root {
-  --paper: #f4f6f8;
+  /* CSS değişkeni = const gibi: bir kez tanımla, her yerde kullan. */
+  --paper: #f4f6f8;       /* sayfa zemini */
   --paper-2: #e8edf2;
-  --card: #ffffff;
-  --ink: #1c2430;
-  --muted: #6b7585;
+  --card: #ffffff;        /* panel/kart zemini */
+  --ink: #1c2430;         /* ana yazı */
+  --muted: #6b7585;       /* soluk yazı */
   --line: rgba(28, 36, 48, 0.08);
-  --accent: #3d6ea8;
+  --accent: #3d6ea8;      /* mavi vurgu */
   --accent-2: #5b86b5;
   --accent-soft: #e8eef6;
-  --cyl: #6b8499;
-  --krc: #3d6ea8;
-  --gzl: #8b9aab;
-  --ok: #2f6b5a;
-  --danger: #b54a3c;
-  --e: #4d7c8a;
-  --s: #3d6ea8;
-  --g: #6b8499;
-  --fo: #5a6e88;
-  --side: 256px;
+  --cyl: #6b8499;         /* Ceylanpınar */
+  --krc: #3d6ea8;         /* Karacabey */
+  --gzl: #8b9aab;         /* Gözlü */
+  --chart-cyl: #c56a1a;   /* radar / BSS seyri: kehribar */
+  --chart-krc: #1f5aa8;   /* radar / BSS seyri: koyu mavi */
+  --chart-gzl: #1a8f7a;   /* radar / BSS seyri: teal */
+  --ok: #2f6b5a;          /* tutarlı CR */
+  --danger: #b54a3c;      /* eşik aşıldı */
+  --e: #4d7c8a;           /* Çevre */
+  --s: #3d6ea8;           /* Sosyal */
+  --g: #6b8499;           /* Yönetişim */
+  --fo: #5a6e88;          /* Finans-Operasyon */
+  --side: 256px;          /* kenar menü genişliği */
   --font: "Source Sans 3", "Segoe UI", sans-serif;
   --shadow: 0 1px 2px rgba(28, 36, 48, 0.04), 0 10px 28px rgba(28, 36, 48, 0.05);
   --radius: 14px;
@@ -56,6 +64,7 @@ button { cursor: pointer; }
   position: sticky;
   top: 0;
   height: 100vh;
+  overflow-y: auto;
   padding: 24px 18px;
   display: flex;
   flex-direction: column;
@@ -90,7 +99,7 @@ button { cursor: pointer; }
   font-weight: 600;
 }
 
-nav { display: flex; flex-direction: column; gap: 4px; }
+nav { display: flex; flex-direction: column; gap: 2px; }
 nav button {
   display: grid;
   grid-template-columns: 28px 1fr;
@@ -101,7 +110,7 @@ nav button {
   border: 1px solid transparent;
   color: var(--ink);
   border-radius: 12px;
-  padding: 10px 12px;
+  padding: 8px 12px;
   transition: background 0.16s ease, border-color 0.16s ease;
 }
 nav button em {
@@ -358,13 +367,14 @@ h1 {
 .radar { width: 100%; height: 300px; }
 .radar .grid { fill: none; stroke: rgba(28, 36, 48, 0.07); }
 .radar .spoke { stroke: rgba(28, 36, 48, 0.07); }
-.radar .poly { fill-opacity: 0.12; stroke-width: 1.6; }
-.radar .poly.cyl { fill: var(--cyl); stroke: var(--cyl); }
-.radar .poly.krc { fill: var(--krc); stroke: var(--krc); }
-.radar .poly.gzl { fill: var(--gzl); stroke: var(--gzl); }
-.radar .dot.cyl { fill: var(--cyl); }
-.radar .dot.krc { fill: var(--krc); }
-.radar .dot.gzl { fill: var(--gzl); }
+.radar .poly { fill-opacity: 0.16; stroke-width: 2.2; stroke-linejoin: round; }
+.radar .poly.cyl { fill: var(--chart-cyl); stroke: var(--chart-cyl); }
+.radar .poly.krc { fill: var(--chart-krc); stroke: var(--chart-krc); stroke-width: 2.5; }
+.radar .poly.gzl { fill: var(--chart-gzl); stroke: var(--chart-gzl); stroke-dasharray: 5 3.5; }
+.radar .dot { stroke: #fff; stroke-width: 1.4; }
+.radar .dot.cyl { fill: var(--chart-cyl); }
+.radar .dot.krc { fill: var(--chart-krc); }
+.radar .dot.gzl { fill: var(--chart-gzl); }
 .radar text { fill: var(--muted); font-size: 12px; font-family: var(--font); }
 .legend { display: flex; gap: 16px; justify-content: center; margin-top: 4px; }
 .lg::before {
@@ -378,6 +388,9 @@ h1 {
 .lg.cyl::before { background: var(--cyl); }
 .lg.krc::before { background: var(--krc); }
 .lg.gzl::before { background: var(--gzl); }
+.chart-legend .lg.cyl::before { background: var(--chart-cyl); }
+.chart-legend .lg.krc::before { background: var(--chart-krc); }
+.chart-legend .lg.gzl::before { background: var(--chart-gzl); }
 
 .cr-chip {
   display: grid;
@@ -700,11 +713,301 @@ textarea {
 .scen-table tr.is-base { background: var(--accent-soft); }
 .empty { color: var(--muted); }
 
+.sim-actions { display: flex; flex-direction: column; gap: 8px; min-width: 188px; }
+.sim-run {
+  min-width: 168px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 650;
+}
+.sim-run:disabled { opacity: 0.65; cursor: wait; }
+.sim-dl {
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--accent);
+  background: #fff;
+  color: var(--accent);
+  font-weight: 650;
+}
+.sim-dl:hover { background: var(--accent-soft); }
+.sim-dl:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.sim-talk {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 10px;
+  align-items: start;
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  border: 1px solid #d5e1ee;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.sim-talk b {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  padding-top: 1px;
+}
+.sim-talk strong { display: block; font-weight: 650; margin-bottom: 2px; }
+.sim-panel > .sim-talk { margin: 0 0 12px; }
+.sim-table-panel > .sim-talk { margin: 0 20px 12px; }
+
+.sim-wait {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 28px;
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+  background: var(--card);
+  color: var(--muted);
+}
+.sim-wait.on i {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--accent-soft);
+  border-top-color: var(--accent);
+  border-radius: 99px;
+  animation: sim-spin 0.7s linear infinite;
+}
+@keyframes sim-spin { to { transform: rotate(360deg); } }
+
+.sim-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.sim-card {
+  padding: 16px 18px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+.sim-card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+.sim-card header span { font-weight: 650; }
+.sim-card header em { font-style: normal; color: var(--muted); font-size: 11px; }
+.sim-card > b {
+  display: block;
+  font-size: 28px;
+  letter-spacing: -0.04em;
+  margin: 8px 0 12px;
+}
+.sim-card.cyl > b { color: var(--cyl); }
+.sim-card.krc > b { color: var(--krc); }
+.sim-card.gzl > b { color: var(--gzl); }
+.sim-range {
+  position: relative;
+  height: 10px;
+  border-radius: 99px;
+  background: var(--paper-2);
+  margin-bottom: 12px;
+}
+.sim-range i {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: 99px;
+  animation: sim-grow 0.7s ease both;
+  transform-origin: left center;
+}
+.sim-card.cyl .sim-range i { background: rgba(107, 132, 153, 0.45); }
+.sim-card.krc .sim-range i { background: rgba(61, 110, 168, 0.45); }
+.sim-card.gzl .sim-range i { background: rgba(139, 154, 171, 0.55); }
+.sim-range em {
+  position: absolute;
+  top: -3px;
+  width: 3px;
+  height: 16px;
+  margin-left: -1.5px;
+  border-radius: 99px;
+  background: var(--ink);
+  animation: sim-pop 0.45s 0.35s ease both;
+}
+@keyframes sim-grow { from { transform: scaleX(0.08); opacity: 0.4; } }
+@keyframes sim-pop { from { transform: scaleY(0); } }
+.sim-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.sim-card ul strong { display: block; color: var(--ink); font-size: 13px; margin-top: 2px; }
+
+.sim-charts {
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.sim-panel { margin: 0; }
+.sim-span { grid-column: 1 / -1; }
+.sim-svg { width: 100%; height: auto; display: block; }
+.sim-h { transform-box: fill-box; transform-origin: center bottom; animation: sim-rise 0.55s ease both; }
+.sim-h.cyl { fill: var(--cyl); }
+.sim-h.krc { fill: var(--krc); }
+.sim-h.gzl { fill: var(--gzl); }
+@keyframes sim-rise { from { transform: scaleY(0.12); opacity: 0; } }
+.sim-axis { fill: var(--muted); font-size: 10px; font-family: var(--font); }
+.sim-grid { stroke: var(--line); stroke-width: 1; }
+.sim-spark { stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; fill: none; }
+.sim-spark.cyl { stroke: var(--chart-cyl); }
+.sim-spark.krc { stroke: var(--chart-krc); stroke-width: 2.8; }
+.sim-spark.gzl { stroke: var(--chart-gzl); stroke-dasharray: 6 4; }
+
+.sim-wins { display: flex; flex-direction: column; gap: 14px; padding: 6px 2px 4px; }
+.sim-win { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto; gap: 4px 10px; align-items: center; }
+.sim-win span { font-weight: 600; font-size: 13px; }
+.sim-win b { font-size: 16px; }
+.sim-win small { grid-column: 2; color: var(--muted); }
+.sim-win-track {
+  grid-column: 1 / -1;
+  height: 10px;
+  border-radius: 99px;
+  background: var(--paper-2);
+  overflow: hidden;
+}
+.sim-win-track i {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  animation: sim-grow 0.8s ease both;
+  transform-origin: left center;
+}
+.sim-win.cyl .sim-win-track i { background: var(--cyl); }
+.sim-win.krc .sim-win-track i { background: var(--krc); }
+.sim-win.gzl .sim-win-track i { background: var(--gzl); }
+
+.sim-stat { width: 100%; border-collapse: collapse; font-size: 12px; }
+.sim-stat th, .sim-stat td {
+  padding: 9px 8px;
+  border-bottom: 1px solid var(--line);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.sim-stat th:first-child,
+.sim-stat td:first-child { text-align: left; }
+.sim-stat thead th { font-weight: 650; background: var(--paper); }
+.sim-stat thead th.cyl { color: var(--cyl); }
+.sim-stat thead th.krc { color: var(--krc); }
+.sim-stat thead th.gzl { color: var(--gzl); }
+.sim-stat .sim-std { color: var(--accent); font-weight: 650; }
+.sim-stat tbody tr:hover td,
+.sim-stat tbody tr:hover th { background: var(--accent-soft); }
+
+.sim-table-panel { padding: 16px 0 0; overflow: hidden; }
+.sim-table-panel .panel-h { padding: 0 20px 4px; }
+.sim-wrap {
+  max-height: min(58vh, 640px);
+  border: none;
+  border-top: 1px solid var(--line);
+  border-radius: 0 0 14px 14px;
+  background: var(--card);
+}
+.sim-table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 11px;
+  table-layout: fixed;
+}
+.sim-col-n { width: 48px; }
+.sim-col { width: 72px; }
+.sim-table th, .sim-table td {
+  padding: 7px 6px;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  background: var(--card);
+}
+.sim-table thead th {
+  position: sticky;
+  z-index: 2;
+  font-weight: 650;
+}
+.sim-table thead tr:first-child th {
+  top: 0;
+  height: 36px;
+  border-bottom: 1px solid var(--line);
+}
+.sim-table thead tr:nth-child(2) th {
+  top: 36px;
+  height: 30px;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+.sim-table .sim-n {
+  text-align: center;
+  width: 48px;
+  min-width: 48px;
+  left: 0;
+  z-index: 4;
+  background: var(--paper);
+}
+.sim-table .sim-co {
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+}
+.sim-table .sim-metric { text-align: center; }
+.sim-table thead .cyl { background: #eef2f5; }
+.sim-table thead .krc { background: #e8eef6; }
+.sim-table thead .gzl { background: #f0f3f6; }
+.sim-table thead .sim-co.cyl,
+.sim-table thead .sim-metric.cyl { color: var(--cyl); }
+.sim-table thead .sim-co.krc,
+.sim-table thead .sim-metric.krc { color: var(--krc); }
+.sim-table thead .sim-co.gzl,
+.sim-table thead .sim-metric.gzl { color: var(--gzl); }
+.sim-table tbody th {
+  text-align: center;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--card);
+  font-weight: 600;
+  color: var(--muted);
+}
+.sim-table tbody td.cyl { background: rgba(107, 132, 153, 0.04); }
+.sim-table tbody td.krc { background: rgba(61, 110, 168, 0.05); }
+.sim-table tbody td.gzl { background: rgba(139, 154, 171, 0.05); }
+.sim-table tbody tr:hover td,
+.sim-table tbody tr:hover th { background: var(--accent-soft); }
+.sim-table .sim-split,
+.sim-table thead .sim-co.krc,
+.sim-table thead .sim-co.gzl {
+  border-left: 1px solid var(--line);
+}
+
 @media (max-width: 1100px) {
   #app { grid-template-columns: 1fr; }
   .side { position: relative; height: auto; }
   .main { height: auto; padding: 22px; }
-  .cards-3, .split, .ahp-layout, .notes, .ind-head, .ind-main, .sub-w-grid { grid-template-columns: 1fr; }
+  .cards-3, .split, .ahp-layout, .notes, .ind-head, .ind-main, .sub-w-grid, .sim-cards, .sim-charts { grid-template-columns: 1fr; }
   .page-head { flex-direction: column; align-items: flex-start; }
   h1 { font-size: 28px; }
+  .sim-wrap { max-height: none; }
+  .sim-card ul { grid-template-columns: repeat(2, 1fr); }
 }

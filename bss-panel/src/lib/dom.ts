@@ -1,3 +1,11 @@
+/**
+ * dom.ts — HTML üretirken güvenlik ve CR rozeti.
+ * esc: kullanıcı/Excel metnindeki < > & tırnakları etkisizler (XSS).
+ * crBadge: Saaty CR ≤ 0,10 yeşil, üstü kırmızı. engine.crAlerts ile bağlanır.
+ *
+ * replace: metindeki her özel karakteri güvenli karşılığıyla değiştirir.
+ * (c) => map[c]  → c "&" ise "&amp;" döner; tarayıcı onu işaret değil yazı görür.
+ */
 export function esc(s: string): string {
   return s.replace(/[&<>"']/g, (c) => {
     const map: Record<string, string> = {

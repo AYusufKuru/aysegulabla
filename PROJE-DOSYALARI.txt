@@ -1,0 +1,77 @@
+BSS PANELİ — PROJE DOSYALARI
+============================
+
+Bu belge, paneldeki klasör ve dosyaların ne işe yaradığını özetler.
+Amaç: Excel’deki AHP / BSS modelini tarayıcıda çalışır hale getirmek.
+Ayrı bir sunucu ve veritabanı yoktur. Hesap tarayıcıda yapılır.
+
+node_modules nedir?
+-------------------
+bss-panel/node_modules klasörü bizim yazdığımız kod değildir.
+Vite ve TypeScript gibi hazır paketlerin indirildiği yerdir.
+İçini ezbere bilmeye gerek yoktur. Silinirse “npm install” ile yeniden gelir.
+
+
+KÖK
+---
+.gitignore          Git’e gönderilmeyecekler (node_modules, dist, vs.)
+
+
+bss-panel/
+---------
+package.json        Proje adı, sürüm ve komutlar (npm run dev, build)
+package-lock.json   İndirilen paketlerin kilitli sürüm listesi
+tsconfig.json       TypeScript derleyici ayarları
+index.html          Sayfanın iskeleti; uygulama #app kutusunun içine yazılır
+.gitignore          Panel klasörüne özel yok sayılanlar
+
+
+bss-panel/public/   Doğrudan tarayıcıya verilen statik dosyalar
+-----------------
+tez-sablon.xlsx     Tez Excel’inin kopyası. “Excel indir” bunu doldurur.
+favicon.svg         Sekme ve kenar çubuğundaki B ikonu
+icons.svg           Eski şablon artığı; panel mantığında kullanılmaz
+
+
+bss-panel/src/      Asıl yazdığımız kod
+--------------
+main.ts             Uygulamanın merkezi: sayfa geçişi, tıklamalar,
+                    kayıt, Excel/JSON indirme, rastgele AHP, puan girişi
+style.css           Görünüm (renk, yazı, tablo, kenar menü)
+types.ts            Veri tipleri: işletme, blok, gösterge, matris, skor
+
+
+bss-panel/src/data/
+-------------------
+seed.json           Excel’den gelen başlangıç verisi:
+                    3 işletme, 4 ana blok, alt gruplar, 88 gösterge,
+                    1–5 puanlar, açıklamalar, AHP matrisleri
+
+
+bss-panel/src/lib/  Hesap ve kayıt (Excel’deki formüllerin karşılığı)
+-------------------
+engine.ts           BSS, blok skorları, SS, SS Sağlama, 10 senaryo
+ahp.ts              İkili karşılaştırma, yerel ağırlık, CR, rastgele ağırlık
+store.ts            Tarayıcı kaydı (localStorage), JSON yedek, sıfırlama
+excel.ts            Güncel puan ve ağırlıkları tez Excel’ine yazar
+xlsxPatch.ts        .xlsx dosyasını açıp hücre değiştirir (teknik katman)
+dom.ts              Metin kaçışı ve tutarlılık (CR) rozetleri
+
+
+bss-panel/src/views/  Ekranlar
+--------------------
+dashboard.ts        Özet: sıralama, radar, ana blok / alt grup ağırlıkları
+scoring.ts          1–5 puanlama
+ahp.ts              İkili karşılaştırma tabloları ve rastgele atama butonları
+weights.ts          Ağırlık kaydırıcısı (yüzde kutuları)
+scenarios.ts        Toplam puan, SS, SS Sağlama, S1–S10, blok skorları
+
+
+Çalıştırma (kısa)
+-----------------
+bss-panel klasöründe:
+  npm install     paketleri indirir (node_modules oluşur)
+  npm run dev     paneli açar (genelde http://localhost:5173)
+
+Kayıt tarayıcıdadır. Excel varsayılanına dön = seed.json değerleri.
+Excel indir = public/tez-sablon.xlsx içine güncel hesapları basar.

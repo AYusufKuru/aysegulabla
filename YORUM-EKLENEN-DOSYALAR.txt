@@ -1,0 +1,58 @@
+YORUM EKLENEN DOSYALAR
+======================
+
+Kök klasör: c:\Users\AYK\Desktop\aysegulabla
+
+Yorumlar Türkçe. Dosya başında ne işe yaradığı, Excel karşılığı
+ve diğer dosyalarla bağlantısı yazıyor.
+
+seed.json’a yorum yok (JSON yorum kabul etmez).
+node_modules’a dokunulmadı.
+
+
+GİRİŞ / İSKELET
+---------------
+bss-panel\index.html
+bss-panel\src\main.ts
+bss-panel\src\types.ts
+bss-panel\src\style.css
+
+
+HESAP VE KAYIT (src\lib)
+------------------------
+bss-panel\src\lib\engine.ts
+bss-panel\src\lib\ahp.ts
+bss-panel\src\lib\store.ts
+bss-panel\src\lib\excel.ts
+bss-panel\src\lib\xlsxPatch.ts
+bss-panel\src\lib\dom.ts
+
+
+EKRANLAR (src\views)
+--------------------
+bss-panel\src\views\dashboard.ts
+bss-panel\src\views\scoring.ts
+bss-panel\src\views\ahp.ts
+bss-panel\src\views\weights.ts
+bss-panel\src\views\scenarios.ts
+
+
+Tam yol örnekleri
+-----------------
+c:\Users\AYK\Desktop\aysegulabla\bss-panel\index.html
+c:\Users\AYK\Desktop\aysegulabla\bss-panel\src\main.ts
+c:\Users\AYK\Desktop\aysegulabla\bss-panel\src\types.ts
+c:\Users\AYK\Desktop\aysegulabla\bss-panel\src\style.css
+c:\Users\AYK\Desktop\aysegulabla\bss-panel\src\lib\engine.ts
+c:\Users\AYK\Desktop\aysegulabla\bss-panel\src\lib\ahp.ts
+c:\Users\AYK\Desktop\aysegulabla\bss-panel\src\lib\store.ts
+c:\Users\AYK\Desktop\aysegulabla\bss-panel\src\lib\excel.ts
+c:\Users\AYK\Desktop\aysegulabla\bss-panel\src\lib\xlsxPatch.ts
+c:\Users\AYK\Desktop\aysegulabla\bss-panel\src\lib\dom.ts
+c:\Users\AYK\Desktop\aysegulabla\bss-panel\src\views\dashboard.ts
+c:\Users\AYK\Desktop\aysegulabla\bss-panel\src\views\scoring.ts
+c:\Users\AYK\Desktop\aysegulabla\bss-panel\src\views\ahp.ts
+c:\Users\AYK\Desktop\aysegulabla\bss-panel\src\views\weights.ts
+c:\Users\AYK\Desktop\aysegulabla\bss-panel\src\views\scenarios.ts
+
+Toplam: 15 dosya.

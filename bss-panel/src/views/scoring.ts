@@ -1,3 +1,14 @@
+/**
+ * scoring.ts — 1–5 puan ekranı (Excel M/O/Q sütunları).
+ *
+ * Chip tıklanınca main.ts setScore → compute → BSS anında değişir.
+ * 100’lük skala to100 ile küçük yazıda gösterilir.
+ *
+ * Filtreleme:
+ *   blockFilter === "all"  → tüm bloklar
+ *   blockFilter === "E"    → sadece Çevre alt grupları
+ *   query (q)              → kod / ad / gerekçe içinde arama
+ */
 import type { AppState, BlockId, CompanyId, Computed, Seed } from "../types"
 import { BLOCKS, COMPANIES, fmt, to100 } from "../lib/engine"
 import { esc } from "../lib/dom"
@@ -10,7 +21,10 @@ export function scoringView(
   blockFilter: BlockId | "all",
   openNotes: Set<number>,
 ): string {
+  // Arama kutusunu küçük harfe çevir; "Su" ile "su" aynı olsun.
   const q = query.trim().toLowerCase()
+
+  // Üstteki E / S / G / FO hapları. "on" = seçili CSS sınıfı.
   const filters = [
     `<button type="button" class="pill ${blockFilter === "all" ? "on" : ""}" data-block="all">Tümü</button>`,
     ...BLOCKS.map((b) => {
@@ -19,24 +33,35 @@ export function scoringView(
     }),
   ].join("")
 
+  /**
+   * Alt grup bölümleri.
+   * 1) filter: seçili bloğa ait olmayan alt grupları çıkar.
+   * 2) map: her alt grup için göstergeleri süz, satır HTML’i üret.
+   * 3) boş alt grup (arama hiç tutmadıysa) "" döner, ekranda yer kaplamaz.
+   */
   const groups = seed.subgroups
     .filter((s) => blockFilter === "all" || s.block === blockFilter)
     .map((sub) => {
+      // Bu alt gruptaki göstergeler + arama.
       const inds = seed.indicators.filter((i) => {
-        if (i.subId !== sub.id) return false
-        if (!q) return true
+        if (i.subId !== sub.id) return false // başka alt grubun göstergesi
+        if (!q) return true // arama boşsa hepsini tut
+        // includes: metnin içinde q geçiyor mu? (Excel’de ARA benzeri)
         return (
           i.code.toLowerCase().includes(q) ||
           i.name.toLowerCase().includes(q) ||
           i.reason.toLowerCase().includes(q)
         )
       })
-      if (!inds.length) return ""
+      if (!inds.length) return "" // hiç satır yoksa bu bölümü çizme
       const blockName = seed.blocks.find((b) => b.id === sub.block)?.name ?? sub.block
       const rows = inds
         .map((ind) => {
+          // sc = bu göstergenin 1–5 puanları {CYL, KRC, GZL}.
           const sc = state.scores[ind.id]
+          // cm = üç işletmenin serbest metin notları (Excel L/N/P).
           const cm = state.comments[ind.id]
+          // Her işletme için 1–5 düğmesi. data-* main.ts .chip tıklamasına gider.
           const chips = (co: CompanyId) =>
             [1, 2, 3, 4, 5]
               .map(
@@ -94,7 +119,7 @@ export function scoringView(
     })
     .join("")
 
-  const s1 = computed.scenarios.S1
+  const s1 = computed.scenarios.S1 // canlı BSS şeridi
   return `
     <header class="page-head">
       <div>

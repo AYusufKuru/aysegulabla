@@ -1,3 +1,12 @@
+/**
+ * xlsxPatch.ts — .xlsx aslında ZIP + XML’dir.
+ * Bu dosya şablonu açar, hücre yazar, tekrar ZIP’ler.
+ * Tez hesabı burada değil; sadece dosya formatı. Asıl sayı engine.ts’dedir.
+ *
+ * colA1(1)="A", colA1(27)="AA" — Excel sütun adı.
+ * setNumber / setText XML içindeki <c r="M4"> hücresini değiştirir.
+ * crc32 + zipStore: indirilen dosyanın ZIP bütünlüğü (Excel’in açabilmesi için).
+ */
 const enc = new TextEncoder()
 const dec = new TextDecoder()
 
@@ -14,12 +23,13 @@ function xmlText(s: string): string {
     .replace(/>/g, "&gt;")
 }
 
+/** 1 → A, 27 → AA. Excel sütun adı. 26’lık sayı sistemi (A=1 … Z=26). */
 export function colA1(col: number): string {
   let n = col
   let s = ""
   while (n > 0) {
-    const m = (n - 1) % 26
-    s = String.fromCharCode(65 + m) + s
+    const m = (n - 1) % 26 // 0=A … 25=Z
+    s = String.fromCharCode(65 + m) + s // 65 = "A"
     n = Math.floor((n - 1) / 26)
   }
   return s
@@ -29,6 +39,7 @@ function cellPattern(ref: string): RegExp {
   return new RegExp(`<c r="${ref}"([^>]*?)(?:/>|>([\\s\\S]*?)</c>)`)
 }
 
+/** Hücreye sayı yaz (ör. M4 = 3). */
 export function setNumber(xml: string, ref: string, value: number): string {
   const next = Number.isInteger(value) ? String(value) : String(value)
   const re = cellPattern(ref)
@@ -216,6 +227,7 @@ async function unzip(buf: Uint8Array): Promise<Record<string, Uint8Array>> {
   return files
 }
 
+/** public/tez-sablon.xlsx dosyasını indirip ZIP olarak aç. */
 export async function loadTemplateZip(): Promise<Record<string, Uint8Array>> {
   const url = `${import.meta.env.BASE_URL}tez-sablon.xlsx`
   const res = await fetch(url)

@@ -1,3 +1,11 @@
+/**
+ * ahp.ts (görünüm) — İkili karşılaştırma tablosu.
+ * Asıl matematik src/lib/ahp.ts’dedir; burası HTML.
+ *
+ * Üst üçgen <select> (data-mi / data-i / data-j) → main.ts setUpper.
+ * Ağırlık % kutusu → setMatrixFromWeights (a_ij = w_i/w_j).
+ * data-random butonları rastgele wk / alt grup / ana blok.
+ */
 import type { AppState, Computed, Seed } from "../types"
 import { closestSaaty, SAATY } from "../lib/ahp"
 import { fmt } from "../lib/engine"
@@ -5,11 +13,13 @@ import { crBadge, esc } from "../lib/dom"
 import { weightPct } from "./weights"
 
 export function ahpView(seed: Seed, state: AppState, computed: Computed, selectedId: string): string {
+  // Seçili matris yoksa listedeki ilkini kullan.
   const selected = seed.matrices.find((m) => m.id === selectedId) ?? seed.matrices[0]
-  const upper = state.matrices[selected.id]
-  const res = computed.matrix[selected.id]
-  const n = selected.labels.length
+  const upper = state.matrices[selected.id] // üst üçgen sayıları
+  const res = computed.matrix[selected.id] // ahp() çıktısı: weights, CR, λmax
+  const n = selected.labels.length // n×n tablo
 
+  // Sol menü: Ana blok / Alt grup / Gösterge. filter grup adına göre ayırır.
   const nav = ["Ana blok", "Alt grup", "Gösterge"]
     .map((group) => {
       const items = seed.matrices
@@ -26,6 +36,10 @@ export function ahpView(seed: Seed, state: AppState, computed: Computed, selecte
     })
     .join("")
 
+  /**
+   * Saaty açılır listesi.
+   * Ağırlıktan gelen oran tam 1,2,3… değilse (ör. 2,33) ekstra <option> eklenir.
+   */
   const options = (current: number) => {
     const closest = closestSaaty(current)
     const exact = Math.abs(closest - current) < 1e-6
@@ -41,6 +55,7 @@ export function ahpView(seed: Seed, state: AppState, computed: Computed, selecte
     )
   }
 
+  // i=j köşegen 1; i<j girilebilir üst üçgen; i>j otomatik 1/üst.
   let grid = `<thead><tr><th></th>${selected.labels.map((l, idx) => `<th title="${esc(selected.labelsFull[idx] ?? l)}">${esc(l)}</th>`).join("")}<th>Ağırlık</th></tr></thead><tbody>`
   for (let i = 0; i < n; i++) {
     grid += `<tr><th title="${esc(selected.labelsFull[i])}">${esc(selected.labels[i])}</th>`
@@ -48,6 +63,7 @@ export function ahpView(seed: Seed, state: AppState, computed: Computed, selecte
       if (i === j) {
         grid += `<td class="diag">1</td>`
       } else if (i < j) {
+        // upper[i][k] k = j−i−1 (üst üçgen sıkıştırılmış dizi).
         const v = upper[i][j - i - 1]
         grid += `<td><select data-mi="${selected.id}" data-i="${i}" data-j="${j}">${options(v)}</select></td>`
       } else {

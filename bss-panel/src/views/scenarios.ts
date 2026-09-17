@@ -1,3 +1,12 @@
+/**
+ * scenarios.ts — Excel “Senaryolar ve Skorlar” + AHP ve BSS satır 92–97.
+ *
+ * Aynı 1–5 puan, on farklı ağırlık karışımı (S1–S10).
+ * Toplam puan: ağırlıksız 1–5 toplamı.
+ * SS: bss (satır 92). SS Sağlama: ssCheck (satır 97).
+ *
+ * sc burada senaryo (S1, S2, …), puan değil.
+ */
 import type { Computed, Seed } from "../types"
 import { COMPANIES, SCENARIOS, fmt } from "../lib/engine"
 import { esc } from "../lib/dom"
@@ -5,8 +14,9 @@ import { esc } from "../lib/dom"
 const CO_CLASS: Record<string, string> = { CYL: "cyl", KRC: "krc", GZL: "gzl" }
 
 export function scenariosView(seed: Seed, computed: Computed): string {
-  const s1 = computed.scenarios.S1
+  const s1 = computed.scenarios.S1 // Yeni AHP özeti
 
+  // Üst tablo: üç satır × üç işletme.
   const summaryRows = [
     { label: "Toplam puan", hint: "88 gösterge · 1–5 toplamı", cells: COMPANIES.map((co) => fmt(computed.totalRaw[co], 0)) },
     { label: "SS", hint: "Satır 92 · Yeni AHP bütünleşik skor", cells: COMPANIES.map((co) => fmt(s1[co].bss)) },
@@ -20,6 +30,7 @@ export function scenariosView(seed: Seed, computed: Computed): string {
     )
     .join("")
 
+  // S1–S10 gövdesi. rank[0] birincidir → "win" hücresi.
   const rows = SCENARIOS.map((sc) => {
     const rank = computed.ranking[sc.id]
     const cells = COMPANIES.map((co) => {
@@ -27,6 +38,7 @@ export function scenariosView(seed: Seed, computed: Computed): string {
       const first = rank[0] === co
       return `<td class="${first ? "win" : ""}">${fmt(r.bss)}<small>SS Sağlama ${fmt(r.ssCheck)}</small></td>`
     }).join("")
+    // ["GZL","KRC","CYL"] → "Gözlü → Karacabey → Ceylanpınar"
     const order = rank
       .map((id) => seed.companies.find((c) => c.id === id)?.name ?? id)
       .join(" → ")
@@ -37,6 +49,7 @@ export function scenariosView(seed: Seed, computed: Computed): string {
     </tr>`
   }).join("")
 
+  // Excel satır 92–97 düzeni: SS, E, S, G, FO, SS Sağlama.
   const blockRows = [
     `<tr>
       <th>SS<small>Satır 92</small></th>

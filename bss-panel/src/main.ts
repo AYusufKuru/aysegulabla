@@ -1,6 +1,23 @@
+/**
+ * main.ts — Uygulamanın merkezi (tek “controller”).
+ *
+ * index.html sadece boş #app bırakır; bu dosya:
+ *  1) seed.json + localStorage → state
+ *  2) compute() → BSS / SS
+ *  3) seçilen sayfanın HTML’ini views/* üretir
+ *  4) tıklamaları bind() ile state’e yazar, tekrar render
+ *
+ * Veritabanı yok. Kayıt store.persist → localStorage.
+ *
+ * Sözlük:
+ *   let state = ...  → canlı veri; puan/AHP değişince yenilenir.
+ *   const seed = ... → Excel kopyası; dosya değişmez, sadece okunur.
+ *   return           → fonksiyondan çık. Örn. if (!root) return = “#app yoksa dur”.
+ *   ?.               → “varsa devam et” (null ise hata verme).
+ */
 import "./style.css"
 import seedJson from "./data/seed.json"
-import type { AppState, BlockId, CompanyId, PageId, Seed } from "./types"
+import type { AppState, BlockId, CompanyId, PageId, Seed, SimulationSample, SimulationTrial } from "./types"
 import { compute } from "./lib/engine"
 import { downloadExcel } from "./lib/excel"
 import {
@@ -23,23 +40,30 @@ import { dashboardView } from "./views/dashboard"
 import { scoringView } from "./views/scoring"
 import { ahpView } from "./views/ahp"
 import { scenariosView } from "./views/scenarios"
+import { simulationView } from "./views/simulation"
+import { runThousandTrials } from "./lib/simulation"
+import { downloadSampleTrials } from "./lib/simExport"
 
-const seed = seedJson as Seed
-let state: AppState = loadState(seed)
-let page: PageId = "dashboard"
-let query = ""
-let blockFilter: BlockId | "all" = "all"
-let selectedMatrix = "blocks_new"
-let openNotes = new Set<number>()
-let saveTimer = 0
-let meta: SaveMeta | null = loadMeta()
-let flash = ""
+const seed = seedJson as Seed // 88 gösterge, 19 matris, işletmeler — değişmez kaynak
+let state: AppState = loadState(seed) // puan + yorum + AHP üst üçgen (kayıtlı veya seed)
+let page: PageId = "dashboard" // o an görünen kenar menü sayfası
+let query = "" // puanlama arama kutusu
+let blockFilter: BlockId | "all" = "all" // E/S/G/FO hapı
+let selectedMatrix = "blocks_new" // AHP sayfasında açık matris
+let openNotes = new Set<number>() // gerekçesi açık gösterge id’leri
+let saveTimer = 0 // scheduleSave gecikme kimliği
+let meta: SaveMeta | null = loadMeta() // son kayıt zamanı / kaynağı
+let flash = "" // yeşil hapta kısa mesaj (“Excel indirildi” vb.)
+let simTrials: SimulationTrial[] | null = null // 1000 ihtimal tablosu (kayıtlı AHP’yi değiştirmez)
+let simSamples: SimulationSample[] | null = null // 1 / 500 / 1000 denemenin AHP matrisleri (Excel)
+let simBusy = false // hesap sürerken butonu kilitle
 
 const NAV: { id: PageId; label: string; hint: string; no: string }[] = [
   { id: "dashboard", label: "Özet", hint: "Skorlar ve sıralama", no: "01" },
   { id: "scoring", label: "Puanlama", hint: "1–5 girişleri", no: "02" },
   { id: "ahp", label: "AHP ağırlıkları", hint: "Karşılaştırma ve yerel ağırlık", no: "03" },
   { id: "scenarios", label: "Senaryolar", hint: "Duyarlılık tablosu", no: "04" },
+  { id: "simulation", label: "1000 ihtimal", hint: "Rastgele AHP tablosu", no: "05" },
 ]
 
 function formatSaved(iso: string): string {
@@ -51,6 +75,10 @@ function formatSaved(iso: string): string {
   })
 }
 
+/**
+ * 200 ms bekle, sonra kaydet (her tuşta localStorage’a yazmamak için).
+ * Yeni tuş gelince eski zamanlayıcı iptal (clearTimeout), süre baştan başlar.
+ */
 function scheduleSave() {
   window.clearTimeout(saveTimer)
   saveTimer = window.setTimeout(() => {
@@ -61,18 +89,34 @@ function scheduleSave() {
   }, 200)
 }
 
+/**
+ * Tüm arayüzü yeniden kur.
+ * innerHTML eski düğmeleri siler; bu yüzden sonra bind() tekrar bağlar.
+ * Kaydırma: çizimden önce top alınır, bitince geri yazılır.
+ *
+ * 1000 ihtimal: tablo yoksa bu çizimde “Hesaplanıyor” gösterilir,
+ * asıl döngü setTimeout ile bir sonraki tura bırakılır (arayüz donmasın).
+ */
 function render() {
   const root = document.querySelector<HTMLDivElement>("#app")
-  if (!root) return
-  const scroller = root.querySelector<HTMLElement>(".main")
-  const top = scroller?.scrollTop ?? 0
-  const computed = compute(seed, state)
+  if (!root) return // #app yoksa (sayfa henüz yok) hiçbir şey yapma
 
-  let body = ""
+  let kickSimulation = false
+  if (page === "simulation" && simTrials === null && !simBusy) {
+    simBusy = true
+    kickSimulation = true
+  }
+
+  const scroller = root.querySelector<HTMLElement>(".main")
+  const top = scroller?.scrollTop ?? 0 // ?? 0 = kaydırıcı yoksa 0 kabul et
+  const computed = compute(seed, state) // BSS, ağırlık, CR, sıralama
+
+  let body = "" // seçilen sayfanın HTML’i
   if (page === "dashboard") body = dashboardView(seed, computed)
   if (page === "scoring") body = scoringView(seed, state, computed, query, blockFilter, openNotes)
   if (page === "ahp") body = ahpView(seed, state, computed, selectedMatrix)
   if (page === "scenarios") body = scenariosView(seed, computed)
+  if (page === "simulation") body = simulationView(seed, simTrials, simBusy)
 
   root.innerHTML = `
     <aside class="side">
@@ -125,8 +169,26 @@ function render() {
   bind(root, computed)
   const next = root.querySelector<HTMLElement>(".main")
   if (next) next.scrollTop = top
+
+  if (kickSimulation) {
+    window.setTimeout(() => {
+      try {
+        const run = runThousandTrials(seed, state)
+        simTrials = run.trials
+        simSamples = run.samples
+      } finally {
+        simBusy = false
+        render()
+      }
+    }, 40)
+  }
 }
 
+/**
+ * innerHTML sonrası olayları bağla.
+ * querySelectorAll("[data-page]") = data-page yazılmış tüm düğmeler.
+ * forEach: her düğme için click dinleyicisi ekle.
+ */
 function bind(root: HTMLElement, computed: ReturnType<typeof compute>) {
   root.querySelectorAll<HTMLButtonElement>("[data-page]").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -176,7 +238,7 @@ function bind(root: HTMLElement, computed: ReturnType<typeof compute>) {
   root.querySelector<HTMLInputElement>("#load-input")?.addEventListener("change", async (ev) => {
     const input = ev.target as HTMLInputElement
     const file = input.files?.[0]
-    if (!file) return
+    if (!file) return // kullanıcı iptal ettiyse çık
     try {
       const text = await file.text()
       state = parseSaveFile(text, seed)
@@ -200,7 +262,7 @@ function bind(root: HTMLElement, computed: ReturnType<typeof compute>) {
   })
 
   root.querySelector("#reset")?.addEventListener("click", () => {
-    if (!confirm("Tüm puan ve AHP girişleri Excel’deki değerlere döner. Emin misiniz?")) return
+    if (!confirm("Tüm puan ve AHP girişleri Excel’deki değerlere döner. Emin misiniz?")) return // Hayır → hiçbir şey silme
     state = resetState(seed)
     meta = null
     flash = ""
@@ -225,6 +287,7 @@ function bind(root: HTMLElement, computed: ReturnType<typeof compute>) {
     })
   })
 
+  // 1–5 chip: data-ind gösterge id, data-co işletme, data-v seçilen puan.
   root.querySelectorAll<HTMLButtonElement>(".chip").forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = Number(btn.dataset.ind)
@@ -288,6 +351,7 @@ function bind(root: HTMLElement, computed: ReturnType<typeof compute>) {
     })
   })
 
+  // AHP üst üçgen seçimi → setUpper → yeniden ağırlık/CR
   root.querySelectorAll<HTMLSelectElement>("select[data-mi]").forEach((sel) => {
     sel.addEventListener("change", () => {
       const id = sel.dataset.mi ?? ""
@@ -301,11 +365,18 @@ function bind(root: HTMLElement, computed: ReturnType<typeof compute>) {
     })
   })
 
+  // Kaydırıcı sürüklenirken “başlangıç ağırlıkları”. slice() kopyadır.
   const originals: Record<string, number[]> = {}
   for (const id of Object.keys(computed.matrix)) {
     originals[id] = computed.matrix[id].weights.slice()
   }
 
+  /**
+   * Kaydırıcı / yüzde kutusu.
+   * commit=false: sadece kardeş kutuları güncelle (sürüklerken).
+   * commit=true:  a_ij = w_i/w_j yaz, kaydet, sayfayı yenile.
+   * raw/100: ekrandaki 25,3 → 0,253 (AHP 0–1 ölçeği).
+   */
   const applyWeights = (el: HTMLInputElement, commit: boolean) => {
     const id = el.dataset.wMatrix ?? ""
     const i = Number(el.dataset.wIndex)
@@ -314,7 +385,7 @@ function bind(root: HTMLElement, computed: ReturnType<typeof compute>) {
     const next = setNormalizedWeight(originals[id], i, raw / 100)
     root.querySelectorAll<HTMLInputElement>(`[data-w-matrix="${id}"]`).forEach((node) => {
       const j = Number(node.dataset.wIndex)
-      if (node === el || !Number.isInteger(j)) return
+      if (node === el || !Number.isInteger(j)) return // sürüklenen kutuyu ezme
       node.value = (next[j] * 100).toFixed(1)
     })
     if (!commit) return
@@ -331,7 +402,29 @@ function bind(root: HTMLElement, computed: ReturnType<typeof compute>) {
       el.addEventListener("change", () => applyWeights(el, true))
     }
   })
+
+  root.querySelector("#sim-run")?.addEventListener("click", () => {
+    if (simBusy) return
+    simTrials = null
+    simSamples = null
+    render()
+  })
+
+  root.querySelector("#sim-sample-dl")?.addEventListener("click", () => {
+    if (!simSamples?.length) return
+    downloadSampleTrials(seed, state, simSamples)
+    flash = "3 örnek deneme indirildi"
+    render()
+    window.setTimeout(() => {
+      flash = ""
+      const pill = document.querySelector(".save-pill")
+      if (pill) {
+        pill.classList.remove("flash")
+        if (meta) pill.innerHTML = `<i></i> ${meta.source === "file" ? "Dosyaya kaydedildi" : "Otomatik kayıt"} · ${formatSaved(meta.savedAt)}`
+      }
+    }, 1800)
+  })
 }
 
-render()
-window.addEventListener("beforeunload", () => persist(state, meta?.source ?? "auto"))
+render() // ilk çizim
+window.addEventListener("beforeunload", () => persist(state, meta?.source ?? "auto")) // sekme kapanırken kaydet

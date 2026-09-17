@@ -1,3 +1,10 @@
+/**
+ * excel.ts — “Excel indir”: tez şablonuna güncel puan/AHP/sıra yazar.
+ * Şablon: public/tez-sablon.xlsx
+ * AHP ve BSS: satır = 3 + göstergeId, M/O/Q puan, L/N/P not.
+ * Matris sayfaları: üst üçgen sarı hücreler.
+ * Formüller Excel’de durur; biz girdi hücrelerini doldururuz.
+ */
 import type { AppState, BlockId, CompanyId, Computed, Seed } from "../types"
 import { BLOCKS, COMPANIES, compute, SCENARIOS } from "./engine"
 import { persist, type SaveMeta } from "./store"
@@ -13,6 +20,7 @@ import {
   writeXml,
 } from "./xlsxPatch"
 
+/** Panel matrisi id → Excel sayfa adı ve üst üçgenin ilk satırı. */
 const MATRIX_SHEETS: Record<string, { sheet: string; origin: number; n: number }> = {
   blocks_article: { sheet: "ESG_FO_Makale", origin: 9, n: 4 },
   blocks_new: { sheet: "ESG_FO_AnaBlok", origin: 9, n: 4 },
@@ -62,6 +70,12 @@ function deltaText(n: number): string {
   return abs
 }
 
+/**
+ * AHP ve BSS sayfasına 1–5 ve açıklama bas.
+ * Gösterge id 1 → Excel satır 4 (row = 3 + id).
+ * sc = üç işletmenin ham puanı. cm = L/N/P notları.
+ * let out = xml: her hücre yazılınca XML metni yenilenir, en sonda return out.
+ */
 function patchAhb(xml: string, seed: Seed, state: AppState): string {
   let out = xml
   for (const ind of seed.indicators) {
@@ -104,6 +118,7 @@ function patchScenarios(xml: string, computed: Computed): string {
   return out
 }
 
+/** YORUM sayfası: sıra adları, min/max/ort, S1’e göre fark (▲/▼). sc = senaryo. */
 function patchYorum(xml: string, computed: Computed): string {
   let out = xml
   SCENARIOS.forEach((sc, i) => {
@@ -135,6 +150,7 @@ function patchYorum(xml: string, computed: Computed): string {
   return out
 }
 
+/** Zip’i aç, ilgili sayfaları yama, indir. */
 export async function downloadExcel(seed: Seed, state: AppState): Promise<SaveMeta> {
   const savedAt = new Date().toISOString()
   const computed = compute(seed, state)

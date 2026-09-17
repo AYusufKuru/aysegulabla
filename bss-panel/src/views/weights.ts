@@ -1,5 +1,15 @@
+/**
+ * weights.ts — Ana blok / alt grup yüzde editörü (HTML).
+ *
+ * Bu dosya hesap yapmaz; kaydırıcı + yüzde kutusu üretir.
+ * data-w-matrix ve data-w-index: main.ts applyWeights bunları okur.
+ * Toplamı 1 yapan matematik: ahp.setNormalizedWeight.
+ *
+ * labels[i] ile weights[i] aynı sıradadır (0 = ilk satır).
+ */
 import { esc } from "../lib/dom"
 
+/** 0,253 → "25.3" (input value; virgül değil nokta, tarayıcı sayı alanı). */
 export function weightPct(n: number): string {
   return (n * 100).toFixed(1)
 }

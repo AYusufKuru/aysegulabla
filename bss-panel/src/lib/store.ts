@@ -1,8 +1,22 @@
+/**
+ * store.ts — Kayıt katmanı (veritabanı yerine tarayıcı localStorage).
+ *
+ * KEY: puan + AHP matrisleri. META_KEY: son kayıt zamanı.
+ * seed.json varsayılan; kullanıcı değişince üzerine yazılır.
+ * “Excel varsayılanına dön” KEY’i siler, seed’e döner.
+ *
+ * localStorage = tarayıcının bu siteye ayırdığı küçük defter.
+ * JSON.stringify nesneyi metne çevirir; JSON.parse tersini yapar.
+ *
+ * return { ...state, scores: ... }  → eski state’in kopyası + değişen alan.
+ * Spread (...state) Excel’de “satırı kopyala, bir hücreyi değiştir” gibidir.
+ */
 import type { AppState, CompanyId, MatrixDef, Seed } from "../types"
 import { randomUpper, upperFromWeights } from "./ahp"
 
 export type RandomScope = "all" | "inds" | "subs" | "blocks"
 
+/** Rastgele butonun hangi matrisleri kapsadığı. true = bu matrisi karıştır. */
 function matchesScope(m: MatrixDef, scope: RandomScope): boolean {
   if (scope === "all") return true
   if (scope === "inds") return m.kind === "inds"
@@ -12,8 +26,10 @@ function matchesScope(m: MatrixDef, scope: RandomScope): boolean {
 
 const KEY = "bss-panel-v1"
 const META_KEY = "bss-panel-meta-v1"
+/** Eski 5−x denemesinin izi; varsa bir kez geri çevrilir. */
 const INVERT_KEY = "bss-invert-ahp-66-88"
 
+/** Eski deneme: 5−x. Sadece INVERT_KEY varsa bir kez çalışır. */
 function invertAhbScores(scores: Record<CompanyId, number>): Record<CompanyId, number> {
   return {
     CYL: 5 - scores.CYL,
@@ -33,10 +49,12 @@ export interface SaveMeta {
   source: "auto" | "file"
 }
 
+/** Üst üçgenin kopyası. slice() olmazsa seed ile state aynı diziyi paylaşır. */
 function cloneUpper(upper: number[][]): number[][] {
   return upper.map((row) => row.slice())
 }
 
+/** Excel/seed kopyası: henüz kimse puan değiştirmeden önceki hal. */
 export function stateFromSeed(seed: Seed): AppState {
   const scores: AppState["scores"] = {}
   const comments: AppState["comments"] = {}
@@ -49,23 +67,24 @@ export function stateFromSeed(seed: Seed): AppState {
   return { scores, comments, matrices }
 }
 
+/** Açılış: seed + varsa tarayıcı kaydı. Kayıt bozuksa seed’e düşer. */
 export function loadState(seed: Seed): AppState {
-  const base = stateFromSeed(seed)
+  const base = stateFromSeed(seed) // önce Excel varsayılanı
   try {
     const raw = localStorage.getItem(KEY)
-    if (!raw) return base
+    if (!raw) return base // hiç kayıt yok → seed’i ver
     const saved = JSON.parse(raw) as Partial<AppState>
     if (saved.scores) {
       for (const id of Object.keys(saved.scores)) {
         const n = Number(id)
         if (base.scores[n]) base.scores[n] = { ...base.scores[n], ...saved.scores[n] }
       }
-      if (!localStorage.getItem(INVERT_KEY)) {
+      if (localStorage.getItem(INVERT_KEY)) {
         for (let id = 63; id <= 85; id++) {
           if (!saved.scores[id] || !base.scores[id]) continue
           base.scores[id] = invertAhbScores(base.scores[id])
         }
-        localStorage.setItem(INVERT_KEY, "1")
+        localStorage.removeItem(INVERT_KEY)
         persist(base, "auto")
       }
     }
@@ -88,6 +107,7 @@ export function loadState(seed: Seed): AppState {
   return base
 }
 
+/** void = dışarı sayı/nesne vermez, sadece kaydeder. */
 export function persist(state: AppState, source: SaveMeta["source"] = "auto"): void {
   localStorage.setItem(KEY, JSON.stringify(state))
   const meta: SaveMeta = { savedAt: new Date().toISOString(), source }
@@ -118,6 +138,7 @@ export function toSaveFile(state: AppState): SaveFile {
   }
 }
 
+/** JSON yedek: { version, state } veya çıplak AppState. */
 export function parseSaveFile(raw: string, seed: Seed): AppState {
   const data = JSON.parse(raw) as SaveFile | AppState
   const incoming: AppState =
@@ -160,11 +181,17 @@ export function downloadSave(state: AppState): SaveMeta {
   return { savedAt: file.savedAt, source: "file" }
 }
 
+/** Puanı 1–5 tam sayıya sıkıştır. Bozuk değer → 3 (orta). */
 export function clampScore(n: number): number {
   if (!Number.isFinite(n)) return 3
   return Math.min(5, Math.max(1, Math.round(n)))
 }
 
+/**
+ * Bir gösterge × bir işletme puanını değiştir.
+ * ...state diğer alanları (yorum, matris) olduğu gibi bırakır.
+ * [id] köşeli parantez: gösterge numarasını anahtar olarak kullan.
+ */
 export function setScore(state: AppState, id: number, co: CompanyId, value: number): AppState {
   return {
     ...state,
@@ -192,6 +219,7 @@ export function setMatrixUpper(state: AppState, matrixId: string, upper: number[
   }
 }
 
+/** Yüzde ağırlık → tutarlı ikili matris (a_ij = wi/wj). */
 export function setMatrixFromWeights(state: AppState, matrixId: string, weights: number[]): AppState {
   return setMatrixUpper(state, matrixId, upperFromWeights(weights))
 }
@@ -199,7 +227,7 @@ export function setMatrixFromWeights(state: AppState, matrixId: string, weights:
 export function randomizeMatrices(state: AppState, seed: Seed, scope: RandomScope): AppState {
   const matrices = { ...state.matrices }
   for (const m of seed.matrices) {
-    if (!matchesScope(m, scope)) continue
+    if (!matchesScope(m, scope)) continue // kapsam dışıysa bu turu atla
     matrices[m.id] = randomUpper(m.labels.length)
   }
   return { ...state, matrices }
